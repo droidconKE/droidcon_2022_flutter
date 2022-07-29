@@ -7,7 +7,6 @@ on:
       - '!dev'
       - '!main'
 
-
 jobs:
 
   run_tests:
