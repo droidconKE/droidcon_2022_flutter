@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '795674662357',
     projectId: 'droidconke2022',
     storageBucket: 'droidconke2022.appspot.com',
-    iosClientId: '795674662357-651ijj5uk5k4njpufishu43g4moe9r2g.apps.googleusercontent.com',
+    iosClientId:
+        '795674662357-651ijj5uk5k4njpufishu43g4moe9r2g.apps.googleusercontent.com',
     iosBundleId: 'com.droidConKe.flutterApp',
   );
 }
