@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "795674662357",
+    "project_id": "droidconke2022",
+    "storage_bucket": "droidconke2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795674662357:android:f37053b4dc99ca4ba0d95c",
+        "android_client_info": {
+          "package_name": "ke.co.droidcon.droidconKE2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795674662357-l2ejsjah50891tjsjbksbtjek1gaffl5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPFW3TF3-OgHPh6VytoiVSkEGTUwT_4FM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795674662357-l2ejsjah50891tjsjbksbtjek1gaffl5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
