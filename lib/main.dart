@@ -6,6 +6,7 @@ import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
@@ -13,7 +14,8 @@ import 'firebase_options.dart';
 void main() async {
   await runZonedGuarded(
     () async {
-      WidgetsFlutterBinding.ensureInitialized();
+      WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+      // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
