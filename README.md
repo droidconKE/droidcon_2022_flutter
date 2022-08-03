@@ -1,16 +1,34 @@
-# flutter_app
+# droidcon KE 2022
 
-A new Flutter project.
+Flutter app for Kenya's 3rd Android Developer Conference - droidcon to be held in Nairobi from November 16-18th 2022.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+App will have the following features:
 
-A few resources to get you started if this is your first Flutter project:
+- Sessions
+- Feed
+- About
+- Home
+- Speakers
+- Sponsors
+- Authentication
+- Feedback
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Designs
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is the link to the app designs:  
+Light Theme: [https://xd.adobe.com/view/dd5d0245-b92b-4678-9d4a-48b3a6f48191-880e/](https://xd.adobe.com/view/dd5d0245-b92b-4678-9d4a-48b3a6f48191-880e/)  
+Dark Theme: [https://xd.adobe.com/view/5ec235b6-c3c6-49a9-b783-1f1303deb1a8-0b91/](https://xd.adobe.com/view/5ec235b6-c3c6-49a9-b783-1f1303deb1a8-0b91/)
+
+## Architecture
+
+
+## Dependencies
+
+
+## Contributing
+
+Contributions are always welcome!
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for ways to get started.
