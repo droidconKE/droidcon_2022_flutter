@@ -52,6 +52,11 @@ jobs:
     - name: Pub get
       run: flutter pub get
 
+    - name: Format code
+      run: flutter format --dry-run --set-exit-if-changed .
+      
+    - name: Analyze static code
+      run: flutter analyze
 
     - name: Build
       run: flutter build apk 
