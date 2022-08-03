@@ -2,7 +2,6 @@ name: droidcon_app
 description: Flutter app for Kenya's 3rd Android Developer Conference - droidcon to be held in Nairobi from November 16-18th 2022.
 publish_to: 'none'
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.17.1 <3.0.0"
 
@@ -17,6 +16,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
+  flutter_native_splash: ^2.2.7
+  # flutter pub run flutter_native_splash:create
   freezed_annotation: ^2.1.0
   go_router: ^4.2.6
   json_serializable: ^6.3.1
@@ -31,8 +32,6 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.3
   # flutter pub run flutter_launcher_icons:main
   flutter_lints: ^2.0.1
-  flutter_native_splash: ^2.2.7
-  # flutter pub run flutter_native_splash:create
   flutter_test:
     sdk: flutter
   freezed: ^2.1.0+1
@@ -45,13 +44,20 @@ flutter_icons:
   image_path: "assets/icon/icon.png"
 
 flutter_native_splash:
-  color: "FFFFFF"
+  color: "#FFFFFF"
+  color_dark: "#000000"
   image: assets/splash/splash.png
-
+  image_dark: assets/splash/splash-dark.png
+  android_gravity: bottom
+  android_12:
+    image: assets/splash/splash.png
+    image_dark: assets/splash/splash-dark.png
+    icon_background_color: "#ffffff"
+    icon_background_color_dark: "#000000"
+    android_gravity: bottom
 
 flutter:
   uses-material-design: true
-
   assets:
     - environments/
 
