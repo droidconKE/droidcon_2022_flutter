@@ -5,6 +5,7 @@
 - Clone the repository to your local machine using `git clone https://github.com/github-username/repository-name.git`.
 - Create a branch against the main branch
 - Commit messages to be prefixed by `feat`, `fix`, `chore` etc. Refer to [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/)
+- Declare any issues by typing `fixes #1` or `closes #1` for example so that the automation can kick in when this is merged
 - Create a PR to main. Pull Requests must pass the following checks;
     - Must be approved by a code owner
     - Must pass all CI Checks
@@ -23,6 +24,7 @@ For more Dart conventions, refer to the [Effective Dart guide](https://dart.dev/
 
 ## Other / House-keeping
 
+- All navigation destination components must be suffixed with `Page` e.g. `HomePage`
 - Dependencies should be ordered alphabetically
 - Format files before opening a PR - `flutter format .`
 - Run static analysis before opening a PR
