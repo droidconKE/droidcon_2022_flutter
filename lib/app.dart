@@ -7,7 +7,7 @@ class DroidconApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'droidcon Ke 2022',
+      title: 'DroidconKe 2022',
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,
