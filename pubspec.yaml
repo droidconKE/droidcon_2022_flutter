@@ -49,12 +49,12 @@ flutter_native_splash:
   image: assets/splash/splash.png
   image_dark: assets/splash/splash-dark.png
   android_gravity: bottom
+  ios_content_mode: bottom
   android_12:
     image: assets/splash/splash.png
     image_dark: assets/splash/splash-dark.png
-    icon_background_color: "#ffffff"
-    icon_background_color_dark: "#000000"
-    android_gravity: bottom
+    color: "#FFFFFF"
+    color_dark: "#000000"
 
 flutter:
   uses-material-design: true
