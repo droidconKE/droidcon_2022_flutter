@@ -1,4 +1,3 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +14,7 @@ final router = GoRouter(
     ),
   ],
   observers: [
-    FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+    // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
   ],
 /*refreshListenable: GoRouterRefreshStream(),
       redirect: (state) {
