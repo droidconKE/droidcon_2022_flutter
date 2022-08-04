@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
-          AfrikonIcon('locked', color: Colors.red,),
+          AfrikonIcon('locked', color: Colors.red),
           Text('Home'),
         ],
       ),
