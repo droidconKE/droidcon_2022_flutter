@@ -17,6 +17,7 @@ dependencies:
     sdk: flutter
   flutter_dotenv: ^5.0.2
   flutter_native_splash: ^2.2.7
+  flutter_svg: ^1.1.2
   # flutter pub run flutter_native_splash:create
   freezed_annotation: ^2.1.0
   go_router: ^4.2.6
@@ -60,6 +61,7 @@ flutter:
   uses-material-design: true
   assets:
     - environments/
+    - assets/afrikons/
 
   # fonts:
   #   - family: Schyler

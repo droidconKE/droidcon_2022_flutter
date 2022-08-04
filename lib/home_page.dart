@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'afrikon_icon.dart';
+
 class HomePage extends StatelessWidget {
   static const routeName = 'home';
 
@@ -8,9 +10,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        child: const Text('Home'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          AfrikonIcon('locked', color: Colors.red,),
+          Text('Home'),
+        ],
       ),
     );
   }
