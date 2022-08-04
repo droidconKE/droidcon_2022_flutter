@@ -14,6 +14,7 @@ void main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding); // FIXME: Display native splash screen until Flutter is ready
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
