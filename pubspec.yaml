@@ -10,6 +10,7 @@ environment:
 dependencies:
   dio: ^4.0.6
   dio_cache_interceptor: ^3.3.0
+  drawable: ^0.1.0
   firebase_analytics: ^9.3.0
   firebase_core: ^1.20.0
   firebase_crashlytics: ^2.8.6
@@ -57,6 +58,7 @@ flutter:
 
   assets:
     - environments/
+    - assets/images/
   # fonts:
   #   - family: Schyler
   #     fonts:
