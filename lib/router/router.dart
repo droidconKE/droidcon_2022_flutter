@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'home_page.dart';
+import '../home_page.dart';
 
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
