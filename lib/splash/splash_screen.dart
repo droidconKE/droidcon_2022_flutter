@@ -9,23 +9,15 @@ class SplashScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          CupertinoSwitch(
-              value: ref.watch(systemThemeProvider),
-              onChanged: (val) {
-                ref.read(systemThemeProvider.notifier).toggle();
-              }),
-          CupertinoSwitch(
-              value: ref.watch(darkThemeProvider),
-              onChanged: (val) {
-                ref.read(darkThemeProvider.notifier).toggle();
-              })
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        ref.read(darkThemeProvider.notifier).toggle();
-      }),
+      body: Stack(children: [
+        Positioned(
+          bottom: 0,
+          left: 68,
+          right: 68,
+          child: Image.asset(
+              'assets/images/splash_image_${Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light'}.png'),
+        )
+      ]),
     );
   }
 }
