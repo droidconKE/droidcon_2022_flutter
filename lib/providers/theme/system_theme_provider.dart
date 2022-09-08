@@ -1,7 +1,7 @@
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 
 final systemThemeProvider = StateNotifierProvider<SystemThemeProvider, bool>(
-    (_) => SystemThemeProvider(false));
+    (_) => SystemThemeProvider(true));
 
 class SystemThemeProvider extends HydratedStateNotifier<bool> {
   SystemThemeProvider(super.state);
