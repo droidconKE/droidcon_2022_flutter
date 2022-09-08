@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
   routes: <GoRoute>[
