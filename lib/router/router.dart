@@ -1,18 +1,23 @@
-import 'package:droidcon_app/splash/splash_screen.dart';
+import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../home_page.dart';
 
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
   routes: <GoRoute>[
     GoRoute(
       path: '/',
-      name: HomePage.routeName,
+      name: SplashScreen.routeName,
       builder: (BuildContext context, GoRouterState state) =>
           const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/signup',
+      name: SignUpScreen.routeName,
+      builder: (BuildContext context, GoRouterState state) =>
+          const SignUpScreen(),
     ),
   ],
   observers: [
