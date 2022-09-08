@@ -7,6 +7,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hydrated_riverpod/hydrated_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
@@ -15,6 +17,9 @@ void main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      final storage = await HydratedStorage.build(
+          storageDirectory: await getApplicationDocumentsDirectory());
+      HydratedRiverpod.initialize(storage: storage);
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
