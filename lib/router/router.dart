@@ -1,3 +1,4 @@
+import 'package:droidcon_app/splash/splash_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +11,8 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       name: HomePage.routeName,
-      builder: (BuildContext context, GoRouterState state) => const HomePage(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const SplashScreen(),
     ),
   ],
   observers: [

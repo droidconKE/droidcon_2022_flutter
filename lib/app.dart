@@ -1,4 +1,4 @@
-import 'package:droidcon_app/router.dart';
+import 'package:droidcon_app/router/router.dart';
 import 'package:flutter/material.dart';
 
 class DroidconApp extends StatelessWidget {
