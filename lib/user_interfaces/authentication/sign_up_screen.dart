@@ -1,5 +1,6 @@
 import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_field.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
+import 'package:droidcon_app/user_interfaces/authentication/widgets/primary_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signup_image_background.dart';
 import 'package:droidcon_app/user_interfaces/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -87,8 +88,18 @@ class SignUpScreen extends StatelessWidget {
                       hint: 'Confirm password',
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: PrimaryButton(
+                            label: 'Sign me up'.toUpperCase(),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ))
           ],
