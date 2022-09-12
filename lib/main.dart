@@ -5,6 +5,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
@@ -14,6 +15,12 @@ import 'app.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  LicenseRegistry.addLicense(() async* {
+    final license =
+        await rootBundle.loadString('assets/google_fonts/LICENSE.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
+
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
