@@ -1,3 +1,4 @@
+import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_field.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signup_image_background.dart';
 import 'package:droidcon_app/user_interfaces/colors/colors.dart';
@@ -30,20 +31,64 @@ class SignUpScreen extends StatelessWidget {
                       Icons.arrow_back,
                       color: Colors.white,
                     ))),
+            const Positioned(
+                top: 90,
+                left: 25,
+                child: Text(
+                  "Sign up",
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                )),
             Positioned(
                 top: 180,
-                left: 0,
-                right: 0,
+                left: 40,
+                right: 40,
                 child: Column(
                   children: [
                     const SizedBox(
                       height: 50,
                     ),
                     GoogleButton(
-                      onTap: () {
-                        print('object');
-                      },
-                    )
+                      onTap: () {},
+                    ),
+                    const SizedBox(
+                      height: 37,
+                    ),
+                    const Text(
+                      '- OR -',
+                      style: TextStyle(
+                          color: AppColors.greyTextColor, fontSize: 14),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const AppTextField(
+                      name: 'username',
+                      hint: 'Username',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const AppTextField(
+                      name: 'email',
+                      hint: 'Email address',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const AppTextField(
+                      name: 'password',
+                      hint: 'Password',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const AppTextField(
+                      name: 'confirm_password',
+                      hint: 'Confirm password',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ))
           ],
