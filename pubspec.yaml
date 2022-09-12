@@ -60,6 +60,7 @@ flutter:
   assets:
     - environments/
     - assets/images/
+    - assets/svgs/
   # fonts:
   #   - family: Schyler
   #     fonts:
