@@ -1,3 +1,4 @@
+import 'package:droidcon_app/user_interfaces/authentication/widgets/signup_image_background.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -6,10 +7,9 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('SignUp'),
-      ),
-    );
+    return Scaffold(
+        body: Column(
+      children: const [SignUpSVGBackground()],
+    ));
   }
 }
