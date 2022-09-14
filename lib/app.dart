@@ -11,14 +11,16 @@ class DroidconApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       title: 'DroidconKe 2022',
-      
+
       theme: ThemeData(
-        textTheme: GoogleFonts.robotoTextTheme(),
-          brightness: Brightness.light, scaffoldBackgroundColor: Colors.white),
-          
+          textTheme: GoogleFonts.robotoTextTheme(),
+          brightness: Brightness.light,
+          scaffoldBackgroundColor: Colors.white),
+
       darkTheme: ThemeData(
-        textTheme: GoogleFonts.robotoTextTheme(),
-          brightness: Brightness.dark, scaffoldBackgroundColor: Colors.black),
+          textTheme: GoogleFonts.robotoTextTheme(),
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.black),
 
       /// This adjusts the theme dynamically  based on the users preferences
       themeMode: ref.watch(systemThemeProvider)
