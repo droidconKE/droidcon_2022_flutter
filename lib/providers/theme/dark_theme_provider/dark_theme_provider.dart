@@ -9,6 +9,14 @@ class DarkThemeProvider extends HydratedStateNotifier<bool> {
     state = !state;
   }
 
+  setDark() {
+    state = true;
+  }
+
+  setLight() {
+    state = false;
+  }
+
   @override
   bool? fromJson(Map<String, dynamic> json) {
     return json['value'];

@@ -9,6 +9,14 @@ class SystemThemeProvider extends HydratedStateNotifier<bool> {
     state = !state;
   }
 
+  setSystem() {
+    state = true;
+  }
+
+  setUser() {
+    state = false;
+  }
+
   @override
   bool? fromJson(Map<String, dynamic> json) {
     return json['value'];
