@@ -18,6 +18,12 @@ final router = GoRouter(
       builder: (BuildContext context, GoRouterState state) =>
           const SignUpScreen(),
     ),
+    GoRoute(
+      path: '/signin',
+      name: SignInScreen.routeName,
+      builder: (BuildContext context, GoRouterState state) =>
+          const SignInScreen(),
+    ),
   ],
   observers: [
     // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
