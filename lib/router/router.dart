@@ -1,4 +1,5 @@
 import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
+import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +12,12 @@ final router = GoRouter(
       name: SplashScreen.routeName,
       builder: (BuildContext context, GoRouterState state) =>
           const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/theme',
+      name: 'theme',
+      builder: (BuildContext context, GoRouterState state) =>
+          const ThemeDialog(),
     ),
     GoRoute(
       path: '/signup',
