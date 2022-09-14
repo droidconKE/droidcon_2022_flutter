@@ -3,6 +3,7 @@ import 'package:droidcon_app/user_interfaces/authentication/widgets/google_butto
 import 'package:droidcon_app/user_interfaces/authentication/widgets/primary_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signup_image_background.dart';
 import 'package:droidcon_app/user_interfaces/colors/colors.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -43,64 +44,87 @@ class SignUpScreen extends StatelessWidget {
                 top: 180,
                 left: 40,
                 right: 40,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    GoogleButton(
-                      onTap: () {},
-                    ),
-                    const SizedBox(
-                      height: 37,
-                    ),
-                    const Text(
-                      '- OR -',
-                      style: TextStyle(
-                          color: AppColors.greyTextColor, fontSize: 14),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    const AppTextField(
-                      name: 'username',
-                      hint: 'Username',
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const AppTextField(
-                      name: 'email',
-                      hint: 'Email address',
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const AppTextField(
-                      name: 'password',
-                      hint: 'Password',
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const AppTextField(
-                      name: 'confirm_password',
-                      hint: 'Confirm password',
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: PrimaryButton(
-                            label: 'Sign me up'.toUpperCase(),
-                            onPressed: () {},
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      GoogleButton(
+                        onTap: () {},
+                        label: 'Sign up with Google',
+                      ),
+                      const SizedBox(
+                        height: 37,
+                      ),
+                      const Text(
+                        '- OR -',
+                        style: TextStyle(
+                            color: AppColors.greyTextColor, fontSize: 14),
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      const AppTextField(
+                        name: 'username',
+                        hint: 'Username',
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const AppTextField(
+                        name: 'email',
+                        hint: 'Email address',
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const AppTextField(
+                        name: 'password',
+                        hint: 'Password',
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const AppTextField(
+                        name: 'confirm_password',
+                        hint: 'Confirm password',
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: PrimaryButton(
+                              label: 'Sign me up'.toUpperCase(),
+                              onPressed: () {},
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 45,
+                      ),
+                      const Text(
+                        'Already have an account?',
+                        style: TextStyle(color: AppColors.greyTextColor),
+                      ),
+                      const SizedBox(
+                        height: 13,
+                      ),
+                      Text.rich(TextSpan(
+                          text: 'Sign in',
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              GoRouter.of(context).go('/signin');
+                            },
+                          style: const TextStyle(
+                              color: AppColors.orangeDroidconColor,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline)))
+                    ],
+                  ),
                 ))
           ],
         ));
