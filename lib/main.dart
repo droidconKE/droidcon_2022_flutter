@@ -5,16 +5,28 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hydrated_riverpod/hydrated_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  LicenseRegistry.addLicense(() async* {
+    final license =
+        await rootBundle.loadString('assets/google_fonts/LICENSE.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
+
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding); // FIXME: Display native splash screen until Flutter is ready
+      final storage = await HydratedStorage.build(
+          storageDirectory: await getApplicationDocumentsDirectory());
+      HydratedRiverpod.initialize(storage: storage);
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
@@ -33,7 +45,7 @@ void main() async {
         return ErrorWidget(error.exception);
       };
 
-      runApp(const DroidconApp());
+      runApp(const ProviderScope(child: DroidconApp()));
     },
     (exception, stackTrace) {
       FirebaseCrashlytics.instance.recordError(exception, stackTrace);
