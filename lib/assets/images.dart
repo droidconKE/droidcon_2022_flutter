@@ -7,6 +7,7 @@ class AssetImages {
   static const kotlinKeLogo = 'assets/images/kotlin_ke_logo.png';
   static const tiskosLogo = 'assets/images/tiskos_logo.png';
   static const droidconLogo = 'assets/images/droidcon_logo.png';
+  static const droidconLogoWhite = 'assets/images/droidcon_logo_white.png';
   static const andelaLogo = 'assets/images/andela_logo.png';
   static const appsLabLogo = 'assets/images/apps_lab_logo.png';
   static const android254Logo = 'assets/images/android_254_logo.png';
@@ -16,4 +17,10 @@ class AssetImages {
   static const aboutIcon = 'assets/images/about_icon.png';
   static const lockIcon = 'assets/images/lock_icon.png';
   static const playIcon = 'assets/images/play_icon.png';
+
+  static const smileyIcon = 'assets/images/smiley.png';
+  static const profilePhoto = 'assets/images/profile_photo.png';
+  static const sendIcon = 'assets/images/send_icon.png';
+  static const session1 = 'assets/images/session1.png';
+  static const session2 = 'assets/images/session2.png';
 }
