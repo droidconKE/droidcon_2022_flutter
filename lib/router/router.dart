@@ -1,3 +1,4 @@
+import 'package:droidcon_app/user_interfaces/dashboard/index_screen.dart';
 import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
 import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/foundation.dart';
@@ -31,6 +32,11 @@ final router = GoRouter(
       builder: (BuildContext context, GoRouterState state) =>
           const SignInScreen(),
     ),
+    GoRoute(
+      path: IndexScreen.routeName,
+    name: 'index',
+    builder: ((context, state) => IndexScreen())
+    )
   ],
   observers: [
     // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),

@@ -1,5 +1,7 @@
 import 'package:droidcon_app/providers/providers.dart';
 import 'package:droidcon_app/router/router.dart';
+import 'package:droidcon_app/styles/dark_theme.dart';
+import 'package:droidcon_app/styles/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,15 +14,9 @@ class DroidconApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'DroidconKe 2022',
 
-      theme: ThemeData(
-          textTheme: GoogleFonts.robotoTextTheme(),
-          brightness: Brightness.light,
-          scaffoldBackgroundColor: Colors.white),
-
-      darkTheme: ThemeData(
-          textTheme: GoogleFonts.robotoTextTheme(),
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: Colors.black),
+      theme: lightTheme,
+debugShowCheckedModeBanner: false,
+      darkTheme: darkTheme,
 
       /// This adjusts the theme dynamically  based on the users preferences
       themeMode: ref.watch(systemThemeProvider)
