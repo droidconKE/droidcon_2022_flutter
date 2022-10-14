@@ -33,10 +33,18 @@ final router = GoRouter(
           const SignInScreen(),
     ),
     GoRoute(
-      path: IndexScreen.routeName,
-    name: 'index',
-    builder: ((context, state) => IndexScreen())
-    )
+        path: IndexScreen.routeName,
+        name: 'index',
+        builder: ((context, state) {
+          bool isLoggedIn = false;
+          if (state.extra != null) {
+            var data = state.extra as Map;
+            isLoggedIn = data['logged_in'];
+          }
+          return IndexScreen(
+            isLoggedIn: isLoggedIn,
+          );
+        }))
   ],
   observers: [
     // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),

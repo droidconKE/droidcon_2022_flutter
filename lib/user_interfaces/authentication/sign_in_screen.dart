@@ -54,7 +54,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                       GoogleButton(
                         onTap: () {
-                          GoRouter.of(context).replace(IndexScreen.routeName);
+                          GoRouter.of(context).replace(IndexScreen.routeName,extra: {'logged_in':true});
                         },
                         label: 'Sign in with Google',
                       ),
@@ -90,7 +90,8 @@ class SignInScreen extends StatelessWidget {
                               label: 'Sign in'.toUpperCase(),
                               onPressed: () {
                                 GoRouter.of(context)
-                                    .replace(IndexScreen.routeName);
+                                    .replace(IndexScreen.routeName,
+                                    extra: {'logged_in': true});
                               },
                             ),
                           ),

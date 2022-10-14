@@ -55,8 +55,8 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       GoogleButton(
                         onTap: () {
-                                                    GoRouter.of(context).replace(IndexScreen.routeName);
-
+                          GoRouter.of(context).replace(IndexScreen.routeName,
+                              extra: {'logged_in': false});
                         },
                         label: 'Sign up with Google',
                       ),
@@ -104,7 +104,11 @@ class SignUpScreen extends StatelessWidget {
                           Expanded(
                             child: PrimaryButton(
                               label: 'Sign me up'.toUpperCase(),
-                              onPressed: () {},
+                              onPressed: () {
+                                GoRouter.of(context).replace(
+                                    IndexScreen.routeName,
+                                    extra: {'logged_in': false});
+                              },
                             ),
                           ),
                         ],
