@@ -45,6 +45,7 @@ class SignInScreen extends StatelessWidget {
                 top: 180,
                 left: 40,
                 right: 40,
+                bottom: 0,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
