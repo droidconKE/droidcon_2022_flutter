@@ -13,7 +13,7 @@ class HomeProvider extends ChangeNotifier {
 
   void initController() {
     videoPlayerController = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',)
       ..initialize().then((_) {
         videoPlayerController?.play();
         videoPlayerController?.setLooping(true);
@@ -22,6 +22,11 @@ class HomeProvider extends ChangeNotifier {
 
   void muteUnmute(double volume) {
     videoPlayerController?.setVolume(volume);
+    notifyListeners();
+  }
+
+  void pausePlay(bool play) {
+    play ? videoPlayerController?.play() : videoPlayerController?.pause();
     notifyListeners();
   }
 

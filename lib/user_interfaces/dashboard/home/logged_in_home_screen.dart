@@ -7,7 +7,7 @@ import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/sponsors_car
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:video_player/video_player.dart';
-
+import 'package:visibility_detector/visibility_detector.dart';
 import '../../../models/speaker_model.dart';
 
 class LoggedInHomeScreen extends ConsumerWidget {
@@ -47,7 +47,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final homeControllerProvider = ref.watch(homeProvider);
-   final videoPlayerController = homeControllerProvider.videoPlayerController;
+    final videoPlayerController = homeControllerProvider.videoPlayerController;
 
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     Size size = MediaQuery.of(context).size;
@@ -96,7 +96,6 @@ class LoggedInHomeScreen extends ConsumerWidget {
                                         ? Colors.white
                                         : AppColors.blackColor),
                           ),
-                          
                           ImageIcon(
                             AssetImage(
                               AssetImages.sendIcon,
@@ -118,52 +117,61 @@ class LoggedInHomeScreen extends ConsumerWidget {
               ),
               const SizedBox(
                 height: 15,
-              ),  videoPlayerController != null &&                           !videoPlayerController.value.isInitialized
-
-                  ? Container(
+              ),
+              videoPlayerController != null &&
+                      videoPlayerController.value.isInitialized
+                  ? VisibilityDetector(
+                      key: UniqueKey(),
+                      onVisibilityChanged: ((info) {
+                        info.visibleFraction > 0.4
+                            ? homeControllerProvider.pausePlay(true)
+                            : homeControllerProvider.pausePlay(false);
+                      }),
+                      child: Container(
+                          height: 180,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: horizontalPadding),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: VideoPlayer(videoPlayerController)),
+                              Positioned(
+                                right: 15,
+                                top: 7,
+                                child: InkWell(
+                                  onTap: () {
+                                    videoPlayerController.value.volume == 0
+                                        ? homeControllerProvider.muteUnmute(1.0)
+                                        : homeControllerProvider
+                                            .muteUnmute(0.0);
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        AppColors.blackColor.withOpacity(0.5),
+                                    child: Icon(
+                                      videoPlayerController.value.volume == 0
+                                          ? Icons.volume_off
+                                          : Icons.volume_up,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )),
+                    )
+                  : Container(
                       height: 180,
                       margin:
                           EdgeInsets.symmetric(horizontal: horizontalPadding),
-                      child: Stack(
-                        children: [
-                          ClipRRect (
-                           borderRadius: BorderRadius.circular(10), 
-                            child: VideoPlayer(videoPlayerController)),
-                          Positioned(
-                            right: 15,
-                            top: 7,
-                            child: InkWell(
-                              onTap: () {
-                                videoPlayerController.value.volume == 0
-                                    ? homeControllerProvider.muteUnmute(1.0)
-                                    : homeControllerProvider.muteUnmute(0.0);
-                              },
-                              child: CircleAvatar(
-                                backgroundColor:
-                                    AppColors.blackColor.withOpacity(0.5),
-                                child: Icon(
-                                  videoPlayerController.value.volume == 0
-                                      ? Icons.volume_off
-                                      : Icons.volume_up,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ))
-                  : 
-            Container(
-              height: 180,
-              margin:
-                          EdgeInsets.symmetric(horizontal: horizontalPadding),
-              width: double.infinity,
-                    child: Center(child: CircularProgressIndicator()),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
-                       borderRadius: BorderRadius.circular(10), 
+                      width: double.infinity,
+                      child: Center(child: CircularProgressIndicator()),
+                      decoration: BoxDecoration(
+                        color:isDark ? Colors.white.withOpacity(0.5) : AppColors.blackColor.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                  ),
               const SizedBox(
                 height: 15,
               ),
@@ -196,8 +204,8 @@ class LoggedInHomeScreen extends ConsumerWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: isDark
-                              ? AppColors.lightGrayColor.withOpacity(0.11)
-                              : AppColors.blueColor.withOpacity(0.11)),
+                                ? AppColors.lightGrayColor.withOpacity(0.11)
+                                : AppColors.blueColor.withOpacity(0.11)),
                         child: Text(
                           '+45',
                           style: Theme.of(context)
@@ -221,7 +229,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _sessions.length,
                     shrinkWrap: true,
-                    padding:  EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     itemBuilder: ((context, index) {
                       SessionModel session = _sessions[index];
                       return Container(
@@ -305,9 +313,9 @@ class LoggedInHomeScreen extends ConsumerWidget {
                             EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color:isDark
-                              ? AppColors.lightGrayColor.withOpacity(0.11)
-                              : AppColors.blueColor.withOpacity(0.11)),
+                            color: isDark
+                                ? AppColors.lightGrayColor.withOpacity(0.11)
+                                : AppColors.blueColor.withOpacity(0.11)),
                         child: Text(
                           '+45',
                           style: Theme.of(context)
@@ -331,8 +339,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _speakers.length,
                     shrinkWrap: true,
-                                        padding:  EdgeInsets.symmetric(horizontal: 10),
-
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     itemBuilder: ((context, index) {
                       SpeakerModel speaker = _speakers[index];
                       return Column(
