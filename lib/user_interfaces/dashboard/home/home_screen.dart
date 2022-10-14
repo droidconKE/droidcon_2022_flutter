@@ -3,6 +3,8 @@ import 'package:droidcon_app/user_interfaces/colors/colors.dart';
 import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/organizers_card.dart';
 import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/sponsors_card.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+
 
 class HomeScreen extends StatelessWidget {
 
@@ -72,7 +74,8 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                   children: [
                     Image.asset(
                       AssetImages.cfsBanner,
-                      scale: 2,
+                      width: 20.w,
+                      height: 10.h,
                     ),
                     Spacer(),
                     Column(
@@ -86,7 +89,7 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                               ?.copyWith(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 17),
+                                  fontSize: 17.sp),
                         ),
                         Text(
                           'Apply to be a speaker',
@@ -96,7 +99,7 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                               ?.copyWith(
                                   fontWeight: FontWeight.normal,
                                   color: AppColors.blackColor,
-                                  fontSize: 10),
+                                  fontSize: 10.sp),
                         ),
                       ],
                     ),

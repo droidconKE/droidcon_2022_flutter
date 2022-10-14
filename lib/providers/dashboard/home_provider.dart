@@ -13,10 +13,11 @@ class HomeProvider extends ChangeNotifier {
 
   void initController() {
     videoPlayerController = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',)
-      ..initialize().then((_) {
+      'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+    )..initialize().then((_) {
         videoPlayerController?.play();
         videoPlayerController?.setLooping(true);
+        notifyListeners();
       });
   }
 

@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import '../../../models/speaker_model.dart';
+import 'package:sizer/sizer.dart';
+
 
 class LoggedInHomeScreen extends ConsumerWidget {
   final List<SpeakerModel> _speakers = [
@@ -72,9 +74,9 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     ),
                     const Spacer(),
                     Container(
-                      width: 130,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 8),
+                      width: 30.w,
+                      padding:  EdgeInsets.symmetric(
+                          horizontal: 2.w, vertical: 1.h),
                       decoration: BoxDecoration(
                           color: AppColors.tealColor.withOpacity(0.21),
                           borderRadius: BorderRadius.circular(10)),
@@ -106,7 +108,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 12,
+                      width: 2.w,
                     ),
                     CircleAvatar(
                       radius: 15,
@@ -334,7 +336,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                 height: 15,
               ),
               SizedBox(
-                height: size.height / 7,
+                height: 120,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _speakers.length,
