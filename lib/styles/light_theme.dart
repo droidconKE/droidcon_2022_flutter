@@ -17,6 +17,6 @@ final lightTheme = ThemeData(
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: const IconThemeData(color: AppColors.blueColor),
       unselectedIconTheme: const IconThemeData(color: AppColors.blackColor),
-      selectedLabelStyle: GoogleFonts.roboto(color: AppColors.orangeColor),
-      unselectedLabelStyle: GoogleFonts.roboto(color: AppColors.blackColor),
+      selectedItemColor: AppColors.orangeColor,
+      unselectedItemColor: Colors.white
     ));

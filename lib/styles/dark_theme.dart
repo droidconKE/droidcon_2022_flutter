@@ -18,6 +18,6 @@ final darkTheme = ThemeData(
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(color: AppColors.tealColor),
       unselectedIconTheme: IconThemeData(color: Colors.white),
-      selectedLabelStyle: GoogleFonts.roboto(color: AppColors.orangeColor),
-      unselectedLabelStyle: GoogleFonts.roboto(color: Colors.white),
+      selectedItemColor: AppColors.orangeColor,
+      unselectedItemColor: Colors.white
     ));
