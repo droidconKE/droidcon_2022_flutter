@@ -7,4 +7,5 @@ class AppColors {
   static const Color greyDarkThemeBackground = Color(0xff20201E);
   static const Color greyTextColor = Color(0xff707070);
   static const Color lightGreyTextColor = Color(0xffC3C3C3);
+  static const Color blueGreenDroidconColor = Color(0xff00E2C3);
 }

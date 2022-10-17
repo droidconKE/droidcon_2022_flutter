@@ -17,7 +17,7 @@ class ThemeDialog extends ConsumerWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -110,14 +110,23 @@ class ThemeWidget extends StatelessWidget {
                 top: 0,
                 bottom: 0,
                 duration: const Duration(milliseconds: 500),
-                child: AnimatedRotation(
-                  duration: const Duration(milliseconds: 1000),
-                  curve: Curves.easeIn,
-                  turns:
-                      Theme.of(context).brightness == Brightness.dark ? 0.5 : 0,
-                  child: Image.asset(
-                    'assets/images/signin_background_${Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light'}.png',
-                    fit: BoxFit.fitWidth,
+                child: AnimatedCrossFade(
+                  duration: const Duration(milliseconds: 500),
+                  firstCurve: Curves.easeIn,
+                  secondCurve: Curves.easeIn,
+                  crossFadeState:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? CrossFadeState.showSecond
+                          : CrossFadeState.showFirst,
+                  firstChild: Image.asset(
+                    'assets/images/signin_background_light.png',
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
+                  secondChild: Image.asset(
+                    'assets/images/signin_background_dark.png',
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
