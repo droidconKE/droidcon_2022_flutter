@@ -7,6 +7,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../dashboard/index_screen.dart';
+
 class SignUpScreen extends StatelessWidget {
   static String routeName = 'signup';
   const SignUpScreen({Key? key}) : super(key: key);
@@ -44,6 +46,7 @@ class SignUpScreen extends StatelessWidget {
                 top: 180,
                 left: 40,
                 right: 40,
+                bottom: 0,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -51,7 +54,10 @@ class SignUpScreen extends StatelessWidget {
                         height: 50,
                       ),
                       GoogleButton(
-                        onTap: () {},
+                        onTap: () {
+                          GoRouter.of(context).replace(IndexScreen.routeName,
+                              extra: {'logged_in': false});
+                        },
                         label: 'Sign up with Google',
                       ),
                       const SizedBox(
@@ -98,7 +104,11 @@ class SignUpScreen extends StatelessWidget {
                           Expanded(
                             child: PrimaryButton(
                               label: 'Sign me up'.toUpperCase(),
-                              onPressed: () {},
+                              onPressed: () {
+                                GoRouter.of(context).replace(
+                                    IndexScreen.routeName,
+                                    extra: {'logged_in': false});
+                              },
                             ),
                           ),
                         ],
