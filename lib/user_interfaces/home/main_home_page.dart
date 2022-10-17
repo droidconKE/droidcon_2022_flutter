@@ -25,9 +25,6 @@ class MainHomePage extends ConsumerWidget {
       HomePage(),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Home Page'),
-      ),
       body: screens[ref.watch(bottomNavigationProvider)],
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
