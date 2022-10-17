@@ -1,3 +1,4 @@
+import 'package:droidcon_app/user_interfaces/home/main_home_page.dart';
 import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
 import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/foundation.dart';
@@ -30,6 +31,12 @@ final router = GoRouter(
       name: SignInScreen.routeName,
       builder: (BuildContext context, GoRouterState state) =>
           const SignInScreen(),
+    ),
+    GoRoute(
+      path: '/main-home',
+      name: MainHomePage.routeName,
+      builder: (BuildContext context, GoRouterState state) =>
+          const MainHomePage(),
     ),
   ],
   observers: [

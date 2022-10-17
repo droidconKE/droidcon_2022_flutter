@@ -84,7 +84,9 @@ class SignInScreen extends StatelessWidget {
                           Expanded(
                             child: PrimaryButton(
                               label: 'Sign in'.toUpperCase(),
-                              onPressed: () {},
+                              onPressed: () {
+                                GoRouter.of(context).push('/main-home');
+                              },
                             ),
                           ),
                         ],
