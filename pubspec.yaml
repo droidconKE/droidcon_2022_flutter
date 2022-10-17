@@ -69,6 +69,7 @@ flutter:
     - environments/
     - assets/images/
     - assets/svgs/
+    - assets/svgs/bottom_nav_bar/
     - assets/google_fonts/
   # fonts:
   #   - family: Schyler
