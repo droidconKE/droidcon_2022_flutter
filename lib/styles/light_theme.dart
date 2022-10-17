@@ -10,13 +10,11 @@ final lightTheme = ThemeData(
       elevation: 0,
       color: Colors.white,
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: AppColors.orangeColor
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      type: BottomNavigationBarType.fixed,
-      selectedIconTheme: const IconThemeData(color: AppColors.blueColor),
-      unselectedIconTheme: const IconThemeData(color: AppColors.blackColor),
-      selectedItemColor: AppColors.orangeColor,
-      unselectedItemColor: Colors.white
-    ));
+    progressIndicatorTheme:
+        const ProgressIndicatorThemeData(color: AppColors.orangeColor),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(color: AppColors.blueColor),
+        unselectedIconTheme: IconThemeData(color: AppColors.blackColor),
+        selectedItemColor: AppColors.orangeColor,
+        unselectedItemColor: Colors.white));

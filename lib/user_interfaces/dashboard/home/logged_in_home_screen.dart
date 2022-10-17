@@ -11,7 +11,6 @@ import 'package:visibility_detector/visibility_detector.dart';
 import '../../../models/speaker_model.dart';
 import 'package:sizer/sizer.dart';
 
-
 class LoggedInHomeScreen extends ConsumerWidget {
   final List<SpeakerModel> _speakers = [
     SpeakerModel(
@@ -44,7 +43,9 @@ class LoggedInHomeScreen extends ConsumerWidget {
         sessionTitle: 'Transforming Farmers Lves Using Android in Kenya',
         sessionBanner: AssetImages.session2),
   ];
-  double horizontalPadding = 20.0;
+  final double horizontalPadding = 20.0;
+
+  LoggedInHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -52,7 +53,6 @@ class LoggedInHomeScreen extends ConsumerWidget {
     final videoPlayerController = homeControllerProvider.videoPlayerController;
 
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -75,15 +75,15 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     const Spacer(),
                     Container(
                       width: 30.w,
-                      padding:  EdgeInsets.symmetric(
-                          horizontal: 2.w, vertical: 1.h),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
                       decoration: BoxDecoration(
                           color: AppColors.tealColor.withOpacity(0.21),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          ImageIcon(
+                          const ImageIcon(
                             AssetImage(AssetImages.smileyIcon),
                             size: 12,
                           ),
@@ -98,7 +98,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                                         ? Colors.white
                                         : AppColors.blackColor),
                           ),
-                          ImageIcon(
+                          const ImageIcon(
                             AssetImage(
                               AssetImages.sendIcon,
                             ),
@@ -168,11 +168,13 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       margin:
                           EdgeInsets.symmetric(horizontal: horizontalPadding),
                       width: double.infinity,
-                      child: Center(child: CircularProgressIndicator()),
                       decoration: BoxDecoration(
-                        color:isDark ? Colors.white.withOpacity(0.5) : AppColors.blackColor.withOpacity(0.5),
+                        color: isDark
+                            ? Colors.white.withOpacity(0.5)
+                            : AppColors.blackColor.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
+                      child: const Center(child: CircularProgressIndicator()),
                     ),
               const SizedBox(
                 height: 15,
@@ -201,8 +203,8 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       width: 4,
                     ),
                     Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: isDark
@@ -231,12 +233,12 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _sessions.length,
                     shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     itemBuilder: ((context, index) {
                       SessionModel session = _sessions[index];
                       return Container(
                         width: 250,
-                        margin: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: isDark
@@ -311,8 +313,8 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       width: 4,
                     ),
                     Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: isDark
@@ -341,13 +343,13 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _speakers.length,
                     shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     itemBuilder: ((context, index) {
                       SpeakerModel speaker = _speakers[index];
                       return Column(
                         children: [
                           Container(
-                              margin: EdgeInsets.all(10),
+                              margin: const EdgeInsets.all(10),
                               height: 80,
                               width: 80,
                               decoration: BoxDecoration(
@@ -375,14 +377,14 @@ class LoggedInHomeScreen extends ConsumerWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: SponsorsCard(),
+                child: const SponsorsCard(),
               ),
               const SizedBox(
                 height: 24,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: OrganizersCard(),
+                child: const OrganizersCard(),
               ),
               const SizedBox(
                 height: 24,

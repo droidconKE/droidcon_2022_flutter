@@ -4,7 +4,8 @@ import '../../../../assets/images.dart';
 import '../../../colors/colors.dart';
 
 class OrganizersCard extends StatelessWidget {
-    List<String> _organizers = [
+  const OrganizersCard({Key? key}) : super(key: key);
+  final List<String> _organizers = const [
     AssetImages.android254Logo,
     AssetImages.kotlinLogo,
     AssetImages.kotlinKeLogo,
@@ -12,13 +13,13 @@ class OrganizersCard extends StatelessWidget {
     AssetImages.earlyCampLogo,
     AssetImages.tiskosLogo,
   ];
+
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    Size size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: isDark ? Colors.black : AppColors.lightGrayColor),
@@ -29,7 +30,7 @@ class OrganizersCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: isDark ? Colors.white : AppColors.blueColor,
                   fontSize: 18)),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Wrap(

@@ -5,46 +5,45 @@ import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/sponsors_car
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-
 class HomeScreen extends StatelessWidget {
-
-
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-               SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-Image.asset(isDark?AssetImages.droidconLogoWhite:
-            AssetImages.droidconLogo,
-            scale: 2,
-          ),
-           Container(
-                height: 30,
-                width: 30,
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: AppColors.tealColor),
-                child: ImageIcon(
-                  
-                  AssetImage(
-                    AssetImages.lockIcon,
-                  ),color: Colors.white,
-                ))
+                  Image.asset(
+                    isDark
+                        ? AssetImages.droidconLogoWhite
+                        : AssetImages.droidconLogo,
+                    scale: 2,
+                  ),
+                  Container(
+                      height: 30,
+                      width: 30,
+                      padding: const EdgeInsets.all(8),
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: AppColors.tealColor),
+                      child: const ImageIcon(
+                        AssetImage(
+                          AssetImages.lockIcon,
+                        ),
+                        color: Colors.white,
+                      ))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Text(
@@ -54,7 +53,7 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                     color: isDark ? Colors.white : AppColors.blackColor,
                     fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               ClipRRect(
@@ -62,11 +61,11 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                   child: Image.asset(
                     AssetImages.droidconBanner,
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: AppColors.tealColor,
                     borderRadius: BorderRadius.circular(10)),
@@ -77,7 +76,7 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                       width: 20.w,
                       height: 10.h,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -103,24 +102,24 @@ Image.asset(isDark?AssetImages.droidconLogoWhite:
                         ),
                       ],
                     ),
-                    Spacer(),
-                    ImageIcon(
+                    const Spacer(),
+                    const ImageIcon(
                       AssetImage(AssetImages.playIcon),
                       color: Colors.white,
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
-              SponsorsCard(),
-              SizedBox(
+              const SponsorsCard(),
+              const SizedBox(
                 height: 24,
               ),
-             OrganizersCard(),
-              SizedBox(
+              const OrganizersCard(),
+              const SizedBox(
                 height: 24,
               ),
             ],
