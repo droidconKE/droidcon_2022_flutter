@@ -1,7 +1,10 @@
 import 'package:droidcon_app/home_page.dart';
 import 'package:droidcon_app/providers/bottom_navigation/bottom_navigation_provider.dart';
 import 'package:droidcon_app/user_interfaces/colors/colors.dart';
+import 'package:droidcon_app/user_interfaces/dashboard/about/about_page.dart';
+import 'package:droidcon_app/user_interfaces/dashboard/feed/feed_page.dart';
 import 'package:droidcon_app/user_interfaces/dashboard/home/home_screen.dart';
+import 'package:droidcon_app/user_interfaces/dashboard/sessions/sessions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,9 +23,9 @@ class MainHomePage extends ConsumerWidget {
     ];
     List<Widget> screens = const [
       HomeScreen(),
-      HomePage(),
-      HomePage(),
-      HomePage(),
+      FeedPage(),
+      SessionsPage(),
+      AboutPage()
     ];
     return Scaffold(
       body: screens[ref.watch(bottomNavigationProvider)],
