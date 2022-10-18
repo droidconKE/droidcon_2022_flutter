@@ -2,11 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:droidcon_app/utils/utils.dart';
 
 class ApiService {
-  RestClient restClient = RestClient();
+  static RestClient restClient = RestClient();
 
   /// This method gets the data from the API
   /// Typically returns a dynamic object(usually a [Map<String, dynamic>] or a [List<dynamic>])
-  Future<dynamic> getData(
+  static Future<dynamic> getData(
       {required String path,
       Options? options,
       Map<String, dynamic>? queries}) async {
@@ -17,7 +17,7 @@ class ApiService {
 
   /// This method posts the data to the API
   /// Typically returns a dynamic object
-  Future<dynamic> postData(
+  static Future<dynamic> postData(
       {required String path,
       required data,
       Options? options,
