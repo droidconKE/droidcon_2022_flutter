@@ -23,6 +23,7 @@ dependencies:
   flutter_svg: ^1.1.5
   form_builder_validators: ^8.3.0
   freezed_annotation: ^2.1.0
+  get_it: ^7.2.0
   go_router: ^4.2.6
   google_fonts: ^3.0.1
   hydrated_riverpod: ^0.0.3
