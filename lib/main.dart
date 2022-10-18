@@ -24,9 +24,6 @@ void main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
-  /// register the [RestClient] in as a singleton
-  GetIt.I.registerSingleton<RestClient>(RestClient());
-  GetIt.I.allowReassignment = true;
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -46,6 +43,9 @@ void main() async {
           fileName: 'environments/${kDebugMode ? 'debug.env' : '.env'}');
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
+      /// register the [RestClient] in as a singleton
+      GetIt.I.registerSingleton<RestClient>(RestClient());
+      GetIt.I.allowReassignment = true;
       ErrorWidget.builder = (FlutterErrorDetails error) {
         Zone.current.handleUncaughtError(error.exception, error.stack!);
         return ErrorWidget(error.exception);
