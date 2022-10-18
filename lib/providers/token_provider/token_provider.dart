@@ -1,5 +1,9 @@
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 
+final tokenProvider = StateNotifierProvider<TokenProvider, String?>((ref) {
+  return TokenProvider();
+});
+
 class TokenProvider extends HydratedStateNotifier<String> {
   TokenProvider() : super('');
 
