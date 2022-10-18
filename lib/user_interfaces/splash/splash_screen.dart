@@ -1,6 +1,8 @@
+import 'package:droidcon_app/providers/token_provider/token_provider.dart';
 import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -15,7 +17,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
+    // register the token provider in getit here
+    TokenProvider tProvider = ref.read(tokenProvider.notifier);
+    GetIt.I.registerSingleton<TokenProvider>(tProvider);
     Future.delayed(const Duration(seconds: 2)).then((value) async {
       await showDialog(
           context: context,
