@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:droidcon_app/utils/rest_client.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_performance/firebase_performance.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -15,12 +17,15 @@ import 'app.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
     final license =
         await rootBundle.loadString('assets/google_fonts/LICENSE.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
+  /// register the [RestClient] in as a singleton
+  GetIt.I.registerSingleton<RestClient>(RestClient());
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
