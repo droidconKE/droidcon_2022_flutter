@@ -10,9 +10,15 @@ class ApiService {
       {required String path,
       Options? options,
       Map<String, dynamic>? queries}) async {
-    var response = await restClient.dio!.get('${restClient.baseUrl!}/$path',
-        options: options, queryParameters: queries);
-    return response.data;
+    try {
+      var response = await restClient.dio!.get('${restClient.baseUrl!}/$path',
+          options: options, queryParameters: queries);
+      return response.data;
+    } on DioError catch (e) {
+      throw e.response!.data['message'];
+    } catch (e) {
+      throw 'An error has occured';
+    }
   }
 
   /// This method posts the data to the API
@@ -22,8 +28,14 @@ class ApiService {
       required data,
       Options? options,
       Map<String, dynamic>? queries}) async {
-    var response = await restClient.dio!.post('${restClient.baseUrl!}/$path',
-        data: data, options: options, queryParameters: queries);
-    return response.data;
+    try {
+      var response = await restClient.dio!.post('${restClient.baseUrl!}/$path',
+          data: data, options: options, queryParameters: queries);
+      return response.data;
+    } on DioError catch (e) {
+      throw e.response!.data['message'];
+    } catch (e) {
+      throw 'An error has occured';
+    }
   }
 }
