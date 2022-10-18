@@ -26,6 +26,7 @@ void main() async {
 
   /// register the [RestClient] in as a singleton
   GetIt.I.registerSingleton<RestClient>(RestClient());
+  GetIt.I.allowReassignment = true;
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
