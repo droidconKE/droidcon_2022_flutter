@@ -23,6 +23,9 @@ void main() async {
         await rootBundle.loadString('assets/google_fonts/LICENSE.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await runZonedGuarded(
     () async {
