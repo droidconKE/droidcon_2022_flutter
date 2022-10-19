@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "275140757840-qq4cktnakrquqmeieiecgctgsooheuso.apps.googleusercontent.com",
+              "client_id": "275140757840-ajfq00o5ph1if4ggkkjshr50huk5c7n5.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.droidconke.flutterdesktop"
+                "bundle_id": "ke.co.droidcon22flutter.droidcon2022Flutter"
               }
             }
           ]
@@ -43,9 +43,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:275140757840:android:a63949604ddf903d39c455",
+        "mobilesdk_app_id": "1:275140757840:android:0d31801ac978a5f539c455",
         "android_client_info": {
-          "package_name": "ke.co.droidcon22flutter"
+          "package_name": "ke.co.droidcon22flutter.droidcon_2022_flutter"
         }
       },
       "oauth_client": [
@@ -67,10 +67,10 @@
               "client_type": 3
             },
             {
-              "client_id": "275140757840-qq4cktnakrquqmeieiecgctgsooheuso.apps.googleusercontent.com",
+              "client_id": "275140757840-ajfq00o5ph1if4ggkkjshr50huk5c7n5.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.droidconke.flutterdesktop"
+                "bundle_id": "ke.co.droidcon22flutter.droidcon2022Flutter"
               }
             }
           ]
