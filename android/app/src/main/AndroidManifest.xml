@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ke.co.droidcon.droidconKE2022">
+    package="ke.co.droidcon22flutter">
    <application
         android:label="DroidconKE"
         android:name="${applicationName}"
