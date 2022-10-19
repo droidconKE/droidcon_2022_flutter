@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,22 +43,43 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA0PNPHVtws0azSmwQ_kDJ5h_US0fm74C8',
+    appId: '1:275140757840:web:2f0cd62b83d228a439c455',
+    messagingSenderId: '275140757840',
+    projectId: 'droidconke2022-360211',
+    authDomain: 'droidconke2022-360211.firebaseapp.com',
+    storageBucket: 'droidconke2022-360211.appspot.com',
+    measurementId: 'G-TN712ME62K',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDPFW3TF3-OgHPh6VytoiVSkEGTUwT_4FM',
-    appId: '1:795674662357:android:f37053b4dc99ca4ba0d95c',
-    messagingSenderId: '795674662357',
-    projectId: 'droidconke2022',
-    storageBucket: 'droidconke2022.appspot.com',
+    apiKey: 'AIzaSyCVz-cg5jJkegcqrJ00jxbOvU63Hq1N7Sc',
+    appId: '1:275140757840:android:a63949604ddf903d39c455',
+    messagingSenderId: '275140757840',
+    projectId: 'droidconke2022-360211',
+    storageBucket: 'droidconke2022-360211.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCioJSAiw4ubiol4ZhXg_fBfPBdCHKoePg',
-    appId: '1:795674662357:ios:ea2df745da8160c9a0d95c',
-    messagingSenderId: '795674662357',
-    projectId: 'droidconke2022',
-    storageBucket: 'droidconke2022.appspot.com',
-    iosClientId:
-        '795674662357-651ijj5uk5k4njpufishu43g4moe9r2g.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDimqrWS8roeCTHbPzRlfJZfOnVrvwFiNE',
+    appId: '1:275140757840:ios:7825dc84cfd8b6ce39c455',
+    messagingSenderId: '275140757840',
+    projectId: 'droidconke2022-360211',
+    storageBucket: 'droidconke2022-360211.appspot.com',
+    androidClientId: '275140757840-v5cuku8d4ihtgtmaqpr8objpdilgl2c9.apps.googleusercontent.com',
+    iosClientId: '275140757840-rc63beoie2c7avig7hu6b6kll0t6q6vb.apps.googleusercontent.com',
     iosBundleId: 'com.droidConKe.flutterApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDimqrWS8roeCTHbPzRlfJZfOnVrvwFiNE',
+    appId: '1:275140757840:ios:3f34a468b857237739c455',
+    messagingSenderId: '275140757840',
+    projectId: 'droidconke2022-360211',
+    storageBucket: 'droidconke2022-360211.appspot.com',
+    androidClientId: '275140757840-v5cuku8d4ihtgtmaqpr8objpdilgl2c9.apps.googleusercontent.com',
+    iosClientId: '275140757840-ajfq00o5ph1if4ggkkjshr50huk5c7n5.apps.googleusercontent.com',
+    iosBundleId: 'ke.co.droidcon22flutter.droidcon2022Flutter',
   );
 }
