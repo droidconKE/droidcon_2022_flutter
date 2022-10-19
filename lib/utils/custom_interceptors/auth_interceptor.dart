@@ -15,6 +15,11 @@ class AuthInterceptor extends Interceptor {
     if (token.isNotEmpty) {
       options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
     }
+    options.headers.addAll({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Api-Authorization-Key': 'droidconKe-2020',
+    });
     handler.next(options);
   }
 }
