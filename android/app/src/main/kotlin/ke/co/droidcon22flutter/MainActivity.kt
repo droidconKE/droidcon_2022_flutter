@@ -1,4 +1,4 @@
-package ke.co.droidcon.droidconKE2022
+package ke.co.droidcon22flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

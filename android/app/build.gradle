@@ -21,20 +21,20 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
+apply plugin: 'ke.co.droidcon22flutter.android.application'
 // START: FlutterFire Configuration
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.firebase-perf'
-apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'ke.co.droidcon22flutter.google.gms.google-services'
+apply plugin: 'ke.co.droidcon22flutter.google.firebase.firebase-perf'
+apply plugin: 'ke.co.droidcon22flutter.google.firebase.crashlytics'
 // END: FlutterFire Configuration
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    ke.co.droidcon22flutterpileSdkVersion flutter.ke.co.droidcon22flutterpileSdkVersion
     ndkVersion flutter.ndkVersion
 
-    compileOptions {
+    ke.co.droidcon22flutterpileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -48,8 +48,8 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "ke.co.droidcon.droidconKE2022"
+        // TODO: Specify your own unique Application ID (https://developer.android.ke.co.droidcon22flutter/studio/build/application-id.html).
+        applicationId "ke.co.droidcon22flutter"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 19
