@@ -45,17 +45,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyA0PNPHVtws0azSmwQ_kDJ5h_US0fm74C8',
-    appId: '1:275140757840:web:2f0cd62b83d228a439c455',
+    appId: '1:275140757840:web:7d2e9ae9ca5233df39c455',
     messagingSenderId: '275140757840',
     projectId: 'droidconke2022-360211',
     authDomain: 'droidconke2022-360211.firebaseapp.com',
     storageBucket: 'droidconke2022-360211.appspot.com',
-    measurementId: 'G-TN712ME62K',
+    measurementId: 'G-QS614WLC91',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCVz-cg5jJkegcqrJ00jxbOvU63Hq1N7Sc',
-    appId: '1:275140757840:android:a63949604ddf903d39c455',
+    appId: '1:275140757840:android:0d31801ac978a5f539c455',
     messagingSenderId: '275140757840',
     projectId: 'droidconke2022-360211',
     storageBucket: 'droidconke2022-360211.appspot.com',
@@ -63,22 +63,22 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDimqrWS8roeCTHbPzRlfJZfOnVrvwFiNE',
-    appId: '1:275140757840:ios:7825dc84cfd8b6ce39c455',
+    appId: '1:275140757840:ios:4d639aad33b7a9b839c455',
     messagingSenderId: '275140757840',
     projectId: 'droidconke2022-360211',
     storageBucket: 'droidconke2022-360211.appspot.com',
-    androidClientId: '275140757840-v5cuku8d4ihtgtmaqpr8objpdilgl2c9.apps.googleusercontent.com',
+    androidClientId: '275140757840-bvmv1qksiqieolg9dggmmt3nhejalkda.apps.googleusercontent.com',
     iosClientId: '275140757840-rc63beoie2c7avig7hu6b6kll0t6q6vb.apps.googleusercontent.com',
     iosBundleId: 'com.droidConKe.flutterApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyDimqrWS8roeCTHbPzRlfJZfOnVrvwFiNE',
-    appId: '1:275140757840:ios:3f34a468b857237739c455',
+    appId: '1:275140757840:ios:c0838730d1bb39ff39c455',
     messagingSenderId: '275140757840',
     projectId: 'droidconke2022-360211',
     storageBucket: 'droidconke2022-360211.appspot.com',
-    androidClientId: '275140757840-v5cuku8d4ihtgtmaqpr8objpdilgl2c9.apps.googleusercontent.com',
+    androidClientId: '275140757840-bvmv1qksiqieolg9dggmmt3nhejalkda.apps.googleusercontent.com',
     iosClientId: '275140757840-ajfq00o5ph1if4ggkkjshr50huk5c7n5.apps.googleusercontent.com',
     iosBundleId: 'ke.co.droidcon22flutter.droidcon2022Flutter',
   );
