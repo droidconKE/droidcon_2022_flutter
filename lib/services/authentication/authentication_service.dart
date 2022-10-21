@@ -3,6 +3,7 @@ import 'package:droidcon_app/services/api_service/api_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationService {
+  /// Login with Google
   static Future<LoginResponse> loginWithGoogle() async {
     // First authenticate the user with google auth
     GoogleSignIn googleSignIn = GoogleSignIn(
@@ -18,8 +19,8 @@ class AuthenticationService {
         path: 'social_login/google',
         data: {'access_token': googleAuth?.accessToken});
         return LoginResponse.fromJson(response);
-    }on String catch(e){
-      throw e;
+    }on String {
+      rethrow;
     }
   }
 }
