@@ -1,19 +1,37 @@
+import 'package:droidcon_app/models/login_response/login_response.dart';
+import 'package:droidcon_app/providers/login_with_google/login_with_google_provider.dart';
+import 'package:droidcon_app/providers/token_provider/token_provider.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_field.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
 import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signin_image_background.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../styles/colors/colors.dart';
+import '../../providers/login_with_google/state/login_with_google_state.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends ConsumerWidget {
   static String routeName = 'signin';
   const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<LoginWithGoogleState>(loginWithGoogleProvider, (previous, next) {
+      next.maybeWhen(
+        orElse: () {},
+        success: (LoginResponse response) {
+          /// Save the token
+          ref.read(tokenProvider.notifier).setToken(response.token!);
+
+          /// Navigate to home
+          GoRouter.of(context).replace('/main-home');
+        },
+      );
+    });
+
     return Scaffold(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
             ? AppColors.greyDarkThemeBackground
@@ -52,12 +70,19 @@ class SignInScreen extends StatelessWidget {
                       const SizedBox(
                         height: 50,
                       ),
-                      GoogleButton(
-                        onTap: () {
-                          GoRouter.of(context).replace('/main-home');
-                        },
-                        label: 'Sign in with Google',
-                      ),
+                      ref.watch(loginWithGoogleProvider).maybeWhen(
+                          loading: () => const CircularProgressIndicator(
+                              color: AppColors.orangeDroidconColor),
+                          orElse: () {
+                            return GoogleButton(
+                              onTap: () {
+                                ref
+                                    .read(loginWithGoogleProvider.notifier)
+                                    .loginWithGoogle();
+                              },
+                              label: 'Sign in with Google',
+                            );
+                          }),
                       const SizedBox(
                         height: 37,
                       ),
