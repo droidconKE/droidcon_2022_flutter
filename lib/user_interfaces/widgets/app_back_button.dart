@@ -1,4 +1,4 @@
-import 'package:droidcon_app/afrikon_icon.dart';
+import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 
 class AppBackButton extends StatelessWidget {
