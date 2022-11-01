@@ -1,7 +1,3 @@
-
-
-
-
 class SessionModel {
   String sessionBanner;
   String sessionTitle;

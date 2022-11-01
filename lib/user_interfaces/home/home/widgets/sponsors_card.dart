@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../assets/images.dart';
-import '../../../colors/colors.dart';
+import '../../../../styles/colors/colors.dart';
+
 
 class SponsorsCard extends StatelessWidget {
-  List<String> _sponsors = [
+  const SponsorsCard({Key? key}) : super(key: key);
+  final List<String> _sponsors = const [
     AssetImages.andelaLogo,
     AssetImages.hoverLogo,
     AssetImages.jetbrainsLogo
@@ -17,24 +18,24 @@ class SponsorsCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: size.height / 4,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: isDark ? Colors.black : AppColors.lightGrayColor),
       child: Column(
         children: [
-          Spacer(),
+          const Spacer(),
           Text('Sponsors',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: isDark ? Colors.white : AppColors.blueColor,
                   fontSize: 18)),
-          Spacer(),
+          const Spacer(),
           Image.asset(
             AssetImages.googleLogo,
             scale: 2,
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(
@@ -44,7 +45,7 @@ class SponsorsCard extends StatelessWidget {
                       scale: 2,
                     )),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

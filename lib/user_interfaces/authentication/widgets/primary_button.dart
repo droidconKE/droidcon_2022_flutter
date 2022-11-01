@@ -1,10 +1,12 @@
-import 'package:droidcon_app/user_interfaces/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../../styles/colors/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String label;
   final void Function()? onPressed;
+
   const PrimaryButton({Key? key, required this.label, this.onPressed})
       : super(key: key);
 

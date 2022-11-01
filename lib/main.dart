@@ -27,7 +27,6 @@ void main() async {
       final storage = await HydratedStorage.build(
           storageDirectory: await getApplicationDocumentsDirectory());
       HydratedRiverpod.initialize(storage: storage);
-      // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding); // FIXME: Display native splash screen until Flutter is ready
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );

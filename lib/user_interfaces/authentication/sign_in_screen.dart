@@ -2,11 +2,11 @@ import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_fie
 import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/primary_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signin_image_background.dart';
-import 'package:droidcon_app/user_interfaces/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/dashboard/index_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../styles/colors/colors.dart';
 
 class SignInScreen extends StatelessWidget {
   static String routeName = 'signin';
@@ -54,7 +54,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                       GoogleButton(
                         onTap: () {
-                          GoRouter.of(context).replace(IndexScreen.routeName,extra: {'logged_in':true});
+                          GoRouter.of(context).replace('/main-home');
                         },
                         label: 'Sign in with Google',
                       ),
@@ -89,9 +89,7 @@ class SignInScreen extends StatelessWidget {
                             child: PrimaryButton(
                               label: 'Sign in'.toUpperCase(),
                               onPressed: () {
-                                GoRouter.of(context)
-                                    .replace(IndexScreen.routeName,
-                                    extra: {'logged_in': true});
+                                GoRouter.of(context).push('/main-home');
                               },
                             ),
                           ),

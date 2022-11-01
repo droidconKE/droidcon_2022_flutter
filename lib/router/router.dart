@@ -1,4 +1,4 @@
-import 'package:droidcon_app/user_interfaces/dashboard/index_screen.dart';
+import 'package:droidcon_app/user_interfaces/home/main_home_page.dart';
 import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
 import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/foundation.dart';
@@ -33,18 +33,11 @@ final router = GoRouter(
           const SignInScreen(),
     ),
     GoRoute(
-        path: IndexScreen.routeName,
-        name: 'index',
-        builder: ((context, state) {
-          bool isLoggedIn = false;
-          if (state.extra != null) {
-            var data = state.extra as Map;
-            isLoggedIn = data['logged_in'];
-          }
-          return IndexScreen(
-            isLoggedIn: isLoggedIn,
-          );
-        }))
+      path: '/main-home',
+      name: MainHomePage.routeName,
+      builder: (BuildContext context, GoRouterState state) =>
+          const MainHomePage(),
+    ),
   ],
   observers: [
     // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
