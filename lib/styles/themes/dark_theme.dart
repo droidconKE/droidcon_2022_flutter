@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../user_interfaces/colors/colors.dart';
+import '../colors/colors.dart';
 
 final darkTheme = ThemeData(
     textTheme: GoogleFonts.robotoTextTheme(),

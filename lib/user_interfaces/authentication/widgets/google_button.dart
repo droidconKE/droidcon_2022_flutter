@@ -1,7 +1,8 @@
-import 'package:droidcon_app/user_interfaces/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../styles/colors/colors.dart';
 
 class GoogleButton extends StatelessWidget {
   final void Function()? onTap;

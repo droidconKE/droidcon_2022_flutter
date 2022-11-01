@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../assets/images.dart';
-import '../../../colors/colors.dart';
+import '../../../../styles/colors/colors.dart';
+
 
 class OrganizersCard extends StatelessWidget {
   const OrganizersCard({Key? key}) : super(key: key);

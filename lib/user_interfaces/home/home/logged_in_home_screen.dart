@@ -1,15 +1,16 @@
 import 'package:droidcon_app/assets/images.dart';
 import 'package:droidcon_app/models/session_model.dart';
-import 'package:droidcon_app/providers/dashboard/home_provider.dart';
-import 'package:droidcon_app/user_interfaces/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/organizers_card.dart';
-import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/sponsors_card.dart';
+import 'package:droidcon_app/user_interfaces/home/home/widgets/organizers_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sizer/sizer.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+
 import '../../../models/speaker_model.dart';
-import 'package:sizer/sizer.dart';
+import '../../../providers/home/home_provider.dart';
+import '../../../styles/colors/colors.dart';
+import 'widgets/sponsors_card.dart';
 
 class LoggedInHomeScreen extends ConsumerWidget {
   final List<SpeakerModel> _speakers = [
@@ -58,9 +59,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Row(
@@ -99,17 +98,13 @@ class LoggedInHomeScreen extends ConsumerWidget {
                                         : AppColors.blackColor),
                           ),
                           const ImageIcon(
-                            AssetImage(
-                              AssetImages.sendIcon,
-                            ),
+                            AssetImage(AssetImages.sendIcon),
                             size: 12,
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: 2.w,
-                    ),
+                    SizedBox(width: 2.w),
                     CircleAvatar(
                       radius: 15,
                       child: Image.asset(AssetImages.profilePhoto),
@@ -117,9 +112,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               videoPlayerController != null &&
                       videoPlayerController.value.isInitialized
                   ? VisibilityDetector(
@@ -132,7 +125,8 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       child: Container(
                           height: 180,
                           margin: EdgeInsets.symmetric(
-                              horizontal: horizontalPadding),
+                            horizontal: horizontalPadding,
+                          ),
                           child: Stack(
                             children: [
                               ClipRRect(
@@ -176,9 +170,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       ),
                       child: const Center(child: CircularProgressIndicator()),
                     ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Row(
@@ -199,96 +191,89 @@ class LoggedInHomeScreen extends ConsumerWidget {
                               : AppColors.blueColor,
                           fontSize: 12),
                     ),
-                    const SizedBox(
-                      width: 4,
-                    ),
+                    const SizedBox(width: 4),
                     Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: isDark
-                                ? AppColors.lightGrayColor.withOpacity(0.11)
-                                : AppColors.blueColor.withOpacity(0.11)),
-                        child: Text(
-                          '+45',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                  color: isDark
-                                      ? AppColors.lightGrayColor
-                                      : AppColors.blueColor,
-                                  fontSize: 10),
-                        ))
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: isDark
+                              ? AppColors.lightGrayColor.withOpacity(0.11)
+                              : AppColors.blueColor.withOpacity(0.11)),
+                      child: Text(
+                        '+45',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                color: isDark
+                                    ? AppColors.lightGrayColor
+                                    : AppColors.blueColor,
+                                fontSize: 10),
+                      ),
+                    )
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               SizedBox(
                 height: 220,
                 child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _sessions.length,
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    itemBuilder: ((context, index) {
-                      SessionModel session = _sessions[index];
-                      return Container(
-                        width: 250,
-                        margin: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: isDark
-                                ? Colors.black
-                                : AppColors.lightGrayColor),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset(
-                              session.sessionBanner,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _sessions.length,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  itemBuilder: (context, index) {
+                    SessionModel session = _sessions[index];
+                    return Container(
+                      width: 250,
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color:
+                              isDark ? Colors.black : AppColors.lightGrayColor),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset(
+                            session.sessionBanner,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              session.sessionTitle,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: isDark
+                                          ? Colors.white
+                                          : AppColors.blackColor,
+                                      fontSize: 14),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Text(
-                                session.sessionTitle,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: isDark
-                                            ? Colors.white
-                                            : AppColors.blackColor,
-                                        fontSize: 14),
-                              ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              '@ ${session.sessionTime} | ${session.roomNo}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                      color: AppColors.greyTextColor,
+                                      fontSize: 11),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Text(
-                                '@ ${session.sessionTime} | ${session.roomNo}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                        color: AppColors.greyTextColor,
-                                        fontSize: 11),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 2,
-                            ),
-                          ],
-                        ),
-                      );
-                    })),
+                          ),
+                          const SizedBox(height: 2),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Row(
@@ -309,34 +294,31 @@ class LoggedInHomeScreen extends ConsumerWidget {
                               : AppColors.blueColor,
                           fontSize: 12),
                     ),
-                    const SizedBox(
-                      width: 4,
-                    ),
+                    const SizedBox(width: 4),
                     Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: isDark
-                                ? AppColors.lightGrayColor.withOpacity(0.11)
-                                : AppColors.blueColor.withOpacity(0.11)),
-                        child: Text(
-                          '+45',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                  color: isDark
-                                      ? AppColors.lightGrayColor
-                                      : AppColors.blueColor,
-                                  fontSize: 10),
-                        ))
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: isDark
+                              ? AppColors.lightGrayColor.withOpacity(0.11)
+                              : AppColors.blueColor.withOpacity(0.11)),
+                      child: Text(
+                        '+45',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                color: isDark
+                                    ? AppColors.lightGrayColor
+                                    : AppColors.blueColor,
+                                fontSize: 10),
+                      ),
+                    )
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               SizedBox(
                 height: 120,
                 child: ListView.builder(
@@ -372,23 +354,17 @@ class LoggedInHomeScreen extends ConsumerWidget {
                       );
                     })),
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: const SponsorsCard(),
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: const OrganizersCard(),
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),

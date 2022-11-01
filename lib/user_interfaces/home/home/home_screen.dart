@@ -1,9 +1,10 @@
 import 'package:droidcon_app/assets/images.dart';
-import 'package:droidcon_app/user_interfaces/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/organizers_card.dart';
-import 'package:droidcon_app/user_interfaces/dashboard/home/widgets/sponsors_card.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../styles/colors/colors.dart';
+import 'widgets/organizers_card.dart';
+import 'widgets/sponsors_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,9 +18,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -30,22 +29,19 @@ class HomeScreen extends StatelessWidget {
                     scale: 2,
                   ),
                   Container(
-                      height: 30,
-                      width: 30,
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: AppColors.tealColor),
-                      child: const ImageIcon(
-                        AssetImage(
-                          AssetImages.lockIcon,
-                        ),
-                        color: Colors.white,
-                      ))
+                    height: 30,
+                    width: 30,
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle, color: AppColors.tealColor),
+                    child: const ImageIcon(
+                      AssetImage(AssetImages.lockIcon),
+                      color: Colors.white,
+                    ),
+                  )
                 ],
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               Text(
                 'Welcome to the largest Focused Android Developer community in Africa',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -53,17 +49,14 @@ class HomeScreen extends StatelessWidget {
                     color: isDark ? Colors.white : AppColors.blackColor,
                     fontSize: 16),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    AssetImages.droidconBanner,
-                  )),
-              const SizedBox(
-                height: 24,
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  AssetImages.droidconBanner,
+                ),
               ),
+              const SizedBox(height: 24),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -111,17 +104,11 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               const SponsorsCard(),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               const OrganizersCard(),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),

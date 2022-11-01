@@ -1,6 +1,7 @@
-import 'package:droidcon_app/user_interfaces/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
+import '../../../styles/colors/colors.dart';
 
 class AppTextField extends StatelessWidget {
   final String name;

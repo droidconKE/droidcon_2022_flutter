@@ -1,10 +1,11 @@
 import 'package:droidcon_app/providers/providers.dart';
 import 'package:droidcon_app/router/router.dart';
-import 'package:droidcon_app/styles/dark_theme.dart';
-import 'package:droidcon_app/styles/light_theme.dart';
+import 'package:droidcon_app/styles/themes/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
+
+import 'styles/themes/light_theme.dart';
 
 class DroidconApp extends ConsumerWidget {
   const DroidconApp({Key? key}) : super(key: key);

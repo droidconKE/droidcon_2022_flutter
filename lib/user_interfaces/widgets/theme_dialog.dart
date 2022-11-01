@@ -21,7 +21,7 @@ class ThemeDialog extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'What is your prefered theme?',
+                  'What is your preferred theme?',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
