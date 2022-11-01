@@ -1,5 +1,5 @@
 import 'package:droidcon_app/providers/providers.dart';
-import 'package:droidcon_app/user_interfaces/authentication/widgets/primary_button.dart';
+import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,6 +1,6 @@
 import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_field.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
-import 'package:droidcon_app/user_interfaces/authentication/widgets/primary_button.dart';
+import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signin_image_background.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

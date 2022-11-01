@@ -7,6 +7,7 @@ class SignUpSVGBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       'assets/images/signup_background_${Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light'}.png',
+    fit: BoxFit.cover,
     );
   }
 }
