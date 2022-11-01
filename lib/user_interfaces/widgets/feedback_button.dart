@@ -1,4 +1,4 @@
-import 'package:droidcon_app/afrikon_icon.dart';
+import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

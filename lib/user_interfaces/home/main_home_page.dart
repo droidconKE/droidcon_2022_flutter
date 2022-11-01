@@ -1,4 +1,4 @@
-import 'package:droidcon_app/afrikon_icon.dart';
+import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
