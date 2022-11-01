@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../user_interfaces/feedback/feedback_screen.dart';
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
   routes: <GoRoute>[
@@ -37,6 +38,11 @@ final router = GoRouter(
       name: MainHomePage.routeName,
       builder: (BuildContext context, GoRouterState state) =>
           const MainHomePage(),
+    ),
+    GoRoute(
+      path: '/feedback',
+      name: FeedbackScreen.routeName,
+      builder: (BuildContext context, GoRouterState state) => const FeedbackScreen(),
     ),
   ],
   observers: [

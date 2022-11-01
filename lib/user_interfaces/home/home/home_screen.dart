@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../styles/colors/colors.dart';
-import 'widgets/organizers_card.dart';
+import '../../widgets/feedback_button.dart';
+import '../../widgets/user_profile_avatar.dart';
+import '../../widgets/organizers_card.dart';
 import 'widgets/sponsors_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,34 +15,28 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            Image.asset(
+              Theme.of(context).brightness == Brightness.dark
+                  ? AssetImages.droidconLogoWhite
+                  : AssetImages.droidconLogo,
+              scale: 2,
+            ),
+            const Spacer(),
+            const FeedbackButton(),
+            const SizedBox(width: 15),
+            const UserProfileAvatar(),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    isDark
-                        ? AssetImages.droidconLogoWhite
-                        : AssetImages.droidconLogo,
-                    scale: 2,
-                  ),
-                  Container(
-                    height: 30,
-                    width: 30,
-                    padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: AppColors.tealColor),
-                    child: const ImageIcon(
-                      AssetImage(AssetImages.lockIcon),
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
               const SizedBox(height: 15),
               Text(
                 'Welcome to the largest Focused Android Developer community in Africa',
@@ -52,16 +48,15 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 15),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  AssetImages.droidconBanner,
-                ),
+                child: Image.asset(AssetImages.droidconBanner),
               ),
               const SizedBox(height: 24),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: AppColors.tealColor,
-                    borderRadius: BorderRadius.circular(10)),
+                  color: AppColors.tealColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Row(
                   children: [
                     Image.asset(
