@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../assets/images.dart';
-import '../../../../styles/colors/colors.dart';
+import '../../assets/images.dart';
+import '../../styles/colors/colors.dart';
 
 
 class OrganizersCard extends StatelessWidget {
