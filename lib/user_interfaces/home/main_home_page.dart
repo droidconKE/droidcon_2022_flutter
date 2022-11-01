@@ -1,6 +1,6 @@
+import 'package:droidcon_app/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../providers/bottom_navigation/bottom_navigation_provider.dart';
 import '../../styles/colors/colors.dart';
@@ -11,15 +11,16 @@ import 'sessions/sessions_page.dart';
 
 class MainHomePage extends ConsumerWidget {
   static const routeName = 'main-home';
+
   const MainHomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bottomNavBarItems = [
-      {'title': 'Home'},
-      {'title': 'Feed'},
-      {'title': 'Sessions'},
-      {'title': 'About'}
+      {'title': 'Home', 'icon': 'home'},
+      {'title': 'Feed', 'icon': 'bell'},
+      {'title': 'Sessions', 'icon': 'time'},
+      {'title': 'About', 'icon': 'flower'}
     ];
     List<Widget> screens = const [
       HomeScreen(),
@@ -41,15 +42,15 @@ class MainHomePage extends ConsumerWidget {
               : AppColors.greyTextColor,
           unselectedLabelStyle: const TextStyle(fontSize: 9),
           selectedLabelStyle: const TextStyle(fontSize: 9),
-          items: bottomNavBarItems.map((e) {
+          items: bottomNavBarItems.map((navBarItem) {
             bool isActive = ref.watch(bottomNavigationProvider) ==
-                bottomNavBarItems.indexOf(e);
+                bottomNavBarItems.indexOf(navBarItem);
             bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
             return BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.asset(
-                    'assets/svgs/bottom_nav_bar/${e['title']!.toLowerCase()}.svg',
+                  child: AfrikonIcon(
+                    navBarItem['icon']!,
                     color: isActive
                         ? isDarkTheme
                             ? AppColors.blueGreenDroidconColor
@@ -59,7 +60,7 @@ class MainHomePage extends ConsumerWidget {
                             : AppColors.greyTextColor,
                   ),
                 ),
-                label: e['title']);
+                label: navBarItem['title']);
           }).toList()),
     );
   }
