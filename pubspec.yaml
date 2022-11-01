@@ -7,6 +7,7 @@ environment:
   sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
+  cached_network_image: ^3.2.2
   dio: ^4.0.6
   dio_cache_interceptor: ^3.3.1
   drawable: ^0.1.0
@@ -73,7 +74,6 @@ flutter:
     - environments/
     - assets/images/
     - assets/svgs/
-    - assets/svgs/bottom_nav_bar/
     - assets/google_fonts/
     - assets/afrikons/
   # fonts:

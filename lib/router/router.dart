@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../user_interfaces/feedback/feedback_screen.dart';
+import '../user_interfaces/home/about/team_member_bio_screen.dart';
+
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
   routes: <GoRoute>[
@@ -43,6 +45,11 @@ final router = GoRouter(
       path: '/feedback',
       name: FeedbackScreen.routeName,
       builder: (BuildContext context, GoRouterState state) => const FeedbackScreen(),
+    ),
+    GoRoute(
+      path: '/team-member-bio',
+      name: TeamMemberBioScreen.routeName,
+      builder: (BuildContext context, GoRouterState state) => const TeamMemberBioScreen(),
     ),
   ],
   observers: [

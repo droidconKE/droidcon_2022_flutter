@@ -1,6 +1,6 @@
 import 'package:droidcon_app/assets/images.dart';
 import 'package:droidcon_app/models/session_model.dart';
-import 'package:droidcon_app/user_interfaces/home/home/widgets/organizers_card.dart';
+import 'package:droidcon_app/user_interfaces/widgets/organizers_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';

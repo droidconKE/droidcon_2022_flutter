@@ -23,4 +23,5 @@ class AssetImages {
   static const sendIcon = 'assets/images/send_icon.png';
   static const session1 = 'assets/images/session1.png';
   static const session2 = 'assets/images/session2.png';
+  static const teamPhoto = 'assets/images/team.png';
 }
