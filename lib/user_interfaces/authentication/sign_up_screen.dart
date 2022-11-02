@@ -53,7 +53,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       GoogleButton(
                         onTap: () {
-                          GoRouter.of(context).replace('/main-home');
+                          
                         },
                         label: 'Sign up with Google',
                       ),

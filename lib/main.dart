@@ -42,8 +42,7 @@ void main() async {
         await FirebasePerformance.instance
             .setPerformanceCollectionEnabled(false);
       }
-      await dotenv.load(
-          fileName: 'environments/${kDebugMode ? 'debug.env' : '.env'}');
+      await dotenv.load(fileName: 'environments/.env');
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
       /// register the [RestClient] in as a singleton
