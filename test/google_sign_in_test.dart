@@ -28,4 +28,31 @@ void main() {
     verify(listener(null, LoginWithGoogleState.initial())).called(1);
     verifyNoMoreInteractions(listener);
   });
+
+  /// Testing that google sign in provider
+  test('The login with google state changes when the user logs in', () async {
+    final container = ProviderContainer();
+
+    addTearDown(container.dispose);
+    final listener = Listener();
+
+    container.listen<LoginWithGoogleState>(
+      loginWithGoogleProvider,
+      listener,
+      fireImmediately: true,
+    );
+
+    // The initial state is the initial state
+    verify(listener(null, LoginWithGoogleState.initial())).called(1);
+    verifyNoMoreInteractions(listener);
+
+    // We change the state to loading
+    container.read(loginWithGoogleProvider.notifier).loginWithGoogle();
+
+    // The listener was called again with the loading state
+    verify(listener(
+            LoginWithGoogleState.initial(), LoginWithGoogleState.loading()))
+        .called(1);
+    verifyNoMoreInteractions(listener);
+  });
 }
