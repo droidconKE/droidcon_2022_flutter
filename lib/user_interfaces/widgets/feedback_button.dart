@@ -1,5 +1,5 @@
-import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
+import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,25 +19,21 @@ class FeedbackButton extends StatelessWidget {
         width: 127,
         decoration: BoxDecoration(
           color: AppColors.tealColor.withOpacity(.21),
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const [
             AfrikonIcon(
-              'smiley-outline',
-              height: 12,
-              color: AppColors.blueColor,
+                'smiley-outline',
+                height: 12,
+                color: AppColors.blackColor
             ),
             Text(
               'Feedback',
               style: TextStyle(color: AppColors.blackColor, fontSize: 12),
             ),
-            AfrikonIcon(
-              'send',
-              height: 12,
-              color: AppColors.tealColor,
-            ),
+            AfrikonIcon('send', height: 12, color: AppColors.tealColor),
           ],
         ),
       ),
