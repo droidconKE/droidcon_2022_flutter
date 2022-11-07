@@ -17,10 +17,9 @@ jobs:
     - name: Checkout files
       uses: actions/checkout@v1
     
-    - name: Setup flutter
-      uses: subosito/flutter-action@v1
+    - uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.0.1'   
+        channel: stable
 
     - name: Flutter Clean
       run: flutter clean
