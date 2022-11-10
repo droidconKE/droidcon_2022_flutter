@@ -27,10 +27,14 @@ mixin _$Session {
   String get sessionFormat => throw _privateConstructorUsedError;
   @JsonKey(name: 'session_level')
   String get sessionLevel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_keynote')
+  bool? get isKeynote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'session_image')
+  String? get sessionImage => throw _privateConstructorUsedError;
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get borderColor => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_serviceSession')
-  bool get isServiceSession => throw _privateConstructorUsedError;
+  bool? get isServiceSession => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_date_time')
   String? get startDateTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_time')
@@ -40,7 +44,7 @@ mixin _$Session {
   @JsonKey(name: 'end_time')
   String? get endTime => throw _privateConstructorUsedError;
   List<Speaker> get speakers => throw _privateConstructorUsedError;
-  List<Room> get rooms => throw _privateConstructorUsedError;
+  List<Room>? get rooms => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,15 +62,17 @@ abstract class $SessionCopyWith<$Res> {
       String slug,
       @JsonKey(name: 'session_format') String sessionFormat,
       @JsonKey(name: 'session_level') String sessionLevel,
+      @JsonKey(name: 'is_keynote') bool? isKeynote,
+      @JsonKey(name: 'session_image') String? sessionImage,
       String? backgroundColor,
       String? borderColor,
-      @JsonKey(name: 'is_serviceSession') bool isServiceSession,
+      @JsonKey(name: 'is_serviceSession') bool? isServiceSession,
       @JsonKey(name: 'start_date_time') String? startDateTime,
       @JsonKey(name: 'start_time') String? startTime,
       @JsonKey(name: 'end_date_time') String? endDateTime,
       @JsonKey(name: 'end_time') String? endTime,
       List<Speaker> speakers,
-      List<Room> rooms});
+      List<Room>? rooms});
 }
 
 /// @nodoc
@@ -87,15 +93,17 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? slug = null,
     Object? sessionFormat = null,
     Object? sessionLevel = null,
+    Object? isKeynote = freezed,
+    Object? sessionImage = freezed,
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
-    Object? isServiceSession = null,
+    Object? isServiceSession = freezed,
     Object? startDateTime = freezed,
     Object? startTime = freezed,
     Object? endDateTime = freezed,
     Object? endTime = freezed,
     Object? speakers = null,
-    Object? rooms = null,
+    Object? rooms = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -118,6 +126,14 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.sessionLevel
           : sessionLevel // ignore: cast_nullable_to_non_nullable
               as String,
+      isKeynote: freezed == isKeynote
+          ? _value.isKeynote
+          : isKeynote // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      sessionImage: freezed == sessionImage
+          ? _value.sessionImage
+          : sessionImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -126,10 +142,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      isServiceSession: null == isServiceSession
+      isServiceSession: freezed == isServiceSession
           ? _value.isServiceSession
           : isServiceSession // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       startDateTime: freezed == startDateTime
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
@@ -150,10 +166,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.speakers
           : speakers // ignore: cast_nullable_to_non_nullable
               as List<Speaker>,
-      rooms: null == rooms
+      rooms: freezed == rooms
           ? _value.rooms
           : rooms // ignore: cast_nullable_to_non_nullable
-              as List<Room>,
+              as List<Room>?,
     ) as $Val);
   }
 }
@@ -171,15 +187,17 @@ abstract class _$$_SessionCopyWith<$Res> implements $SessionCopyWith<$Res> {
       String slug,
       @JsonKey(name: 'session_format') String sessionFormat,
       @JsonKey(name: 'session_level') String sessionLevel,
+      @JsonKey(name: 'is_keynote') bool? isKeynote,
+      @JsonKey(name: 'session_image') String? sessionImage,
       String? backgroundColor,
       String? borderColor,
-      @JsonKey(name: 'is_serviceSession') bool isServiceSession,
+      @JsonKey(name: 'is_serviceSession') bool? isServiceSession,
       @JsonKey(name: 'start_date_time') String? startDateTime,
       @JsonKey(name: 'start_time') String? startTime,
       @JsonKey(name: 'end_date_time') String? endDateTime,
       @JsonKey(name: 'end_time') String? endTime,
       List<Speaker> speakers,
-      List<Room> rooms});
+      List<Room>? rooms});
 }
 
 /// @nodoc
@@ -197,15 +215,17 @@ class __$$_SessionCopyWithImpl<$Res>
     Object? slug = null,
     Object? sessionFormat = null,
     Object? sessionLevel = null,
+    Object? isKeynote = freezed,
+    Object? sessionImage = freezed,
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
-    Object? isServiceSession = null,
+    Object? isServiceSession = freezed,
     Object? startDateTime = freezed,
     Object? startTime = freezed,
     Object? endDateTime = freezed,
     Object? endTime = freezed,
     Object? speakers = null,
-    Object? rooms = null,
+    Object? rooms = freezed,
   }) {
     return _then(_$_Session(
       title: null == title
@@ -228,6 +248,14 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value.sessionLevel
           : sessionLevel // ignore: cast_nullable_to_non_nullable
               as String,
+      isKeynote: freezed == isKeynote
+          ? _value.isKeynote
+          : isKeynote // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      sessionImage: freezed == sessionImage
+          ? _value.sessionImage
+          : sessionImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -236,10 +264,10 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      isServiceSession: null == isServiceSession
+      isServiceSession: freezed == isServiceSession
           ? _value.isServiceSession
           : isServiceSession // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       startDateTime: freezed == startDateTime
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
@@ -260,10 +288,10 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
               as List<Speaker>,
-      rooms: null == rooms
+      rooms: freezed == rooms
           ? _value._rooms
           : rooms // ignore: cast_nullable_to_non_nullable
-              as List<Room>,
+              as List<Room>?,
     ));
   }
 }
@@ -277,15 +305,17 @@ class _$_Session extends _Session {
       required this.slug,
       @JsonKey(name: 'session_format') required this.sessionFormat,
       @JsonKey(name: 'session_level') required this.sessionLevel,
+      @JsonKey(name: 'is_keynote') this.isKeynote,
+      @JsonKey(name: 'session_image') this.sessionImage,
       this.backgroundColor,
       this.borderColor,
-      @JsonKey(name: 'is_serviceSession') required this.isServiceSession,
+      @JsonKey(name: 'is_serviceSession') this.isServiceSession,
       @JsonKey(name: 'start_date_time') this.startDateTime,
       @JsonKey(name: 'start_time') this.startTime,
       @JsonKey(name: 'end_date_time') this.endDateTime,
       @JsonKey(name: 'end_time') this.endTime,
       required final List<Speaker> speakers,
-      required final List<Room> rooms})
+      final List<Room>? rooms})
       : _speakers = speakers,
         _rooms = rooms,
         super._();
@@ -306,12 +336,18 @@ class _$_Session extends _Session {
   @JsonKey(name: 'session_level')
   final String sessionLevel;
   @override
+  @JsonKey(name: 'is_keynote')
+  final bool? isKeynote;
+  @override
+  @JsonKey(name: 'session_image')
+  final String? sessionImage;
+  @override
   final String? backgroundColor;
   @override
   final String? borderColor;
   @override
   @JsonKey(name: 'is_serviceSession')
-  final bool isServiceSession;
+  final bool? isServiceSession;
   @override
   @JsonKey(name: 'start_date_time')
   final String? startDateTime;
@@ -331,16 +367,18 @@ class _$_Session extends _Session {
     return EqualUnmodifiableListView(_speakers);
   }
 
-  final List<Room> _rooms;
+  final List<Room>? _rooms;
   @override
-  List<Room> get rooms {
+  List<Room>? get rooms {
+    final value = _rooms;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rooms);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'Session(title: $title, description: $description, slug: $slug, sessionFormat: $sessionFormat, sessionLevel: $sessionLevel, backgroundColor: $backgroundColor, borderColor: $borderColor, isServiceSession: $isServiceSession, startDateTime: $startDateTime, startTime: $startTime, endDateTime: $endDateTime, endTime: $endTime, speakers: $speakers, rooms: $rooms)';
+    return 'Session(title: $title, description: $description, slug: $slug, sessionFormat: $sessionFormat, sessionLevel: $sessionLevel, isKeynote: $isKeynote, sessionImage: $sessionImage, backgroundColor: $backgroundColor, borderColor: $borderColor, isServiceSession: $isServiceSession, startDateTime: $startDateTime, startTime: $startTime, endDateTime: $endDateTime, endTime: $endTime, speakers: $speakers, rooms: $rooms)';
   }
 
   @override
@@ -356,6 +394,10 @@ class _$_Session extends _Session {
                 other.sessionFormat == sessionFormat) &&
             (identical(other.sessionLevel, sessionLevel) ||
                 other.sessionLevel == sessionLevel) &&
+            (identical(other.isKeynote, isKeynote) ||
+                other.isKeynote == isKeynote) &&
+            (identical(other.sessionImage, sessionImage) ||
+                other.sessionImage == sessionImage) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.borderColor, borderColor) ||
@@ -382,6 +424,8 @@ class _$_Session extends _Session {
       slug,
       sessionFormat,
       sessionLevel,
+      isKeynote,
+      sessionImage,
       backgroundColor,
       borderColor,
       isServiceSession,
@@ -413,15 +457,17 @@ abstract class _Session extends Session {
       required final String slug,
       @JsonKey(name: 'session_format') required final String sessionFormat,
       @JsonKey(name: 'session_level') required final String sessionLevel,
+      @JsonKey(name: 'is_keynote') final bool? isKeynote,
+      @JsonKey(name: 'session_image') final String? sessionImage,
       final String? backgroundColor,
       final String? borderColor,
-      @JsonKey(name: 'is_serviceSession') required final bool isServiceSession,
+      @JsonKey(name: 'is_serviceSession') final bool? isServiceSession,
       @JsonKey(name: 'start_date_time') final String? startDateTime,
       @JsonKey(name: 'start_time') final String? startTime,
       @JsonKey(name: 'end_date_time') final String? endDateTime,
       @JsonKey(name: 'end_time') final String? endTime,
       required final List<Speaker> speakers,
-      required final List<Room> rooms}) = _$_Session;
+      final List<Room>? rooms}) = _$_Session;
   const _Session._() : super._();
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$_Session.fromJson;
@@ -439,12 +485,18 @@ abstract class _Session extends Session {
   @JsonKey(name: 'session_level')
   String get sessionLevel;
   @override
+  @JsonKey(name: 'is_keynote')
+  bool? get isKeynote;
+  @override
+  @JsonKey(name: 'session_image')
+  String? get sessionImage;
+  @override
   String? get backgroundColor;
   @override
   String? get borderColor;
   @override
   @JsonKey(name: 'is_serviceSession')
-  bool get isServiceSession;
+  bool? get isServiceSession;
   @override
   @JsonKey(name: 'start_date_time')
   String? get startDateTime;
@@ -460,7 +512,7 @@ abstract class _Session extends Session {
   @override
   List<Speaker> get speakers;
   @override
-  List<Room> get rooms;
+  List<Room>? get rooms;
   @override
   @JsonKey(ignore: true)
   _$$_SessionCopyWith<_$_Session> get copyWith =>

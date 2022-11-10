@@ -1,6 +1,7 @@
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 
-final showFavoritedSessionsProvider = StateNotifierProvider<ShowFavoritedSessionsProvider, bool>(
+final showFavoritedSessionsProvider =
+    StateNotifierProvider<ShowFavoritedSessionsProvider, bool>(
         (_) => ShowFavoritedSessionsProvider());
 
 class ShowFavoritedSessionsProvider extends HydratedStateNotifier<bool> {

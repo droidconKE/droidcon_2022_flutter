@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../assets/images.dart';
 import '../../styles/colors/colors.dart';
 
-
 class OrganizersCard extends StatelessWidget {
   const OrganizersCard({Key? key}) : super(key: key);
   final List<String> _organizers = const [

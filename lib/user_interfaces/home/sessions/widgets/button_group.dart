@@ -75,10 +75,10 @@ class ButtonGroupButton extends StatelessWidget {
 
   const ButtonGroupButton(
       {Key? key,
-        this.active = false,
-        this.onTap,
-        required this.date,
-        required this.day})
+      this.active = false,
+      this.onTap,
+      required this.date,
+      required this.day})
       : super(key: key);
 
   @override
@@ -90,7 +90,9 @@ class ButtonGroupButton extends StatelessWidget {
         // height: 60,
         // width: 50,
         decoration: BoxDecoration(
-            color: active ? AppColors.orangeColor : AppColors.tealColor.withOpacity(.11),
+            color: active
+                ? AppColors.orangeColor
+                : AppColors.tealColor.withOpacity(.11),
             borderRadius: BorderRadius.circular(5)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,19 +102,15 @@ class ButtonGroupButton extends StatelessWidget {
               date,
               textAlign: TextAlign.left,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: active
-                    ? Colors.white
-                    : Colors.black,
-              ),
+                    color: active ? Colors.white : Colors.black,
+                  ),
             ),
             const SizedBox(height: 3),
             Text(
               day,
               style: Theme.of(context).textTheme.overline?.copyWith(
-                color: active
-                    ? Colors.white
-                    : Colors.black,
-              ),
+                    color: active ? Colors.white : Colors.black,
+                  ),
             ),
           ],
         ),

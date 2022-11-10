@@ -92,7 +92,7 @@ class SessionsPage extends ConsumerWidget {
               onPressed: ref.watch(showFavoritedSessionsProvider)
                   ? null
                   : () async {
-                      final filterSelection = showGeneralDialog(
+                      final filterSelection = await showGeneralDialog(
                         context: context,
                         barrierDismissible: true,
                         transitionDuration: const Duration(milliseconds: 500),
@@ -182,10 +182,10 @@ class SessionsPage extends ConsumerWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 20),
-            if(ref.watch(sessionsDisplayStyleProvider) ==
+            if (ref.watch(sessionsDisplayStyleProvider) ==
                 SessionsDisplayStyle.list)
-            SessionList(list: sampleSessions),
-            if(ref.watch(sessionsDisplayStyleProvider) ==
+              SessionList(list: sampleSessions),
+            if (ref.watch(sessionsDisplayStyleProvider) ==
                 SessionsDisplayStyle.cards)
               SessionCards(sessions: sampleSessions),
           ],

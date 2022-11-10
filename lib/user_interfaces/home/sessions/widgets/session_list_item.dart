@@ -71,24 +71,25 @@ class SessionListItem extends StatelessWidget {
                           color: Theme.of(context).textTheme.labelLarge?.color,
                           thickness: 3,
                         ),
-                        ...session.rooms
-                            .map((r) => Wrap(
-                                  children: <Widget>[
-                                    Text(
-                                      r.title,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge,
-                                    ),
-                                    const SizedBox(width: 5),
-                                  ],
-                                ))
-                            .toList()
+                        if (session.rooms != null)
+                          ...session.rooms!
+                              .map((r) => Wrap(
+                                    children: <Widget>[
+                                      Text(
+                                        r.title,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                      ),
+                                      const SizedBox(width: 5),
+                                    ],
+                                  ))
+                              .toList()
                       ],
                     ),
                     const SizedBox(height: 3),
                     Wrap(
-                      children: (session.speakers ?? []).map(
+                      children: session.speakers.map(
                         (s) {
                           return Row(
                             children: <Widget>[

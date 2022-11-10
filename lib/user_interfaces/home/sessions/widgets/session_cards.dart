@@ -63,19 +63,20 @@ class SessionCards extends StatelessWidget {
                                     ?.color,
                                 thickness: 3,
                               ),
-                              ...session.rooms
-                                  .map((r) => Wrap(
-                                        children: <Widget>[
-                                          Text(
-                                            r.title,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelLarge,
-                                          ),
-                                          const SizedBox(width: 5),
-                                        ],
-                                      ))
-                                  .toList()
+                              if (session.rooms != null)
+                                ...session.rooms!
+                                    .map((r) => Wrap(
+                                          children: <Widget>[
+                                            Text(
+                                              r.title,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge,
+                                            ),
+                                            const SizedBox(width: 5),
+                                          ],
+                                        ))
+                                    .toList()
                             ],
                           ),
                           const SizedBox(height: 11),

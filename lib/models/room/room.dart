@@ -11,7 +11,7 @@ class Room with _$Room {
   const factory Room({
     required int id,
     required String title,
-}) = _Room;
+  }) = _Room;
 
   factory Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);
 }

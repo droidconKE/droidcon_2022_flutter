@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../styles/colors/colors.dart';
+
 class FeedbackRating extends StatefulWidget {
   const FeedbackRating(
       {Key? key, this.initialValue, required this.onValueChanged})
@@ -29,30 +31,30 @@ class _FeedbackRatingState extends State<FeedbackRating> {
             .entries
             .map(
               (entry) => InkWell(
-            onTap: () {
-              setState(() => value = entry.key);
-              widget.onValueChanged.call(value);
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFFF5F5F5),
-                border: entry.key == value
-                    ? const Border.fromBorderSide(
-                    BorderSide(color: Colors.black))
-                    : null,
+                onTap: () {
+                  setState(() => value = entry.key);
+                  widget.onValueChanged.call(value);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF5F5F5),
+                    border: entry.key == value
+                        ? const Border.fromBorderSide(
+                            BorderSide(color: AppColors.blueColor))
+                        : null,
+                  ),
+                  height: 67,
+                  width: 67,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(entry.value, style: const TextStyle(fontSize: 35)),
+                      Text(entry.key.toCapitalized()),
+                    ],
+                  ),
+                ),
               ),
-              height: 67,
-              width: 67,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(entry.value, style: const TextStyle(fontSize: 35)),
-                  Text(entry.key.toCapitalized()),
-                ],
-              ),
-            ),
-          ),
-        )
+            )
             .toList());
   }
 }

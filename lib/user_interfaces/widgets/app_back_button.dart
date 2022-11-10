@@ -2,7 +2,7 @@ import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 
 class AppBackButton extends StatelessWidget {
-  const AppBackButton({ super.key, this.color, this.onPressed });
+  const AppBackButton({super.key, this.color, this.onPressed});
   final Color? color;
   final VoidCallback? onPressed;
 

@@ -17,7 +17,7 @@ class Passport extends StatelessWidget {
     this.size,
     this.backgroundOpacity = 1,
     this.frameColor,
-  })  : assert(backgroundOpacity <= 1);
+  }) : assert(backgroundOpacity <= 1);
 
   @override
   Widget build(BuildContext context) {

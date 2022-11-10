@@ -9,10 +9,10 @@ import '../authentication/widgets/signup_image_background.dart';
 import '../widgets/passport_photo.dart';
 import '../widgets/sliver_fab.dart';
 
-class SpeakerScreen extends StatelessWidget {
-  static String routeName = 'speaker';
+class SpeakerDetailScreen extends StatelessWidget {
+  static String routeName = 'speakerDetail';
 
-  const SpeakerScreen({super.key, required this.speaker});
+  const SpeakerDetailScreen({super.key, required this.speaker});
 
   final Speaker speaker;
 
@@ -21,15 +21,14 @@ class SpeakerScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SliverFab(
-        floatingWidget: const PassportPhoto(
+        floatingWidget: PassportPhoto(
           imageFrameSize: 2,
           imageSize: 100,
           circular: true,
-          image: CachedNetworkImageProvider(
-            'https://res.cloudinary.com/droidconke/image/upload/v1631971473/prod/upload/org_team/mwzoe8a4esxzwlompcqf.jpg',
-          ),
+          image: CachedNetworkImageProvider(speaker.avatar),
         ),
-        floatingPosition: FloatingPosition(top: -136, left: size.width/2 - 52),
+        floatingPosition:
+            FloatingPosition(top: -136, left: size.width / 2 - 52),
         slivers: <Widget>[
           const SliverAppBar(
             leading: AppBackButton(),
@@ -96,8 +95,8 @@ class SpeakerScreen extends StatelessWidget {
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Wrap(
+                    alignment: WrapAlignment.spaceBetween,
                     children: [
                       const Text('Twitter Handle'),
                       OutlinedButton.icon(
@@ -112,7 +111,6 @@ class SpeakerScreen extends StatelessWidget {
             ),
           )
         ],
-
       ),
     );
   }

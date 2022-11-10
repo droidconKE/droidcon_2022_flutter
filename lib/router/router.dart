@@ -1,6 +1,8 @@
 import 'package:droidcon_app/models/models.dart';
+import 'package:droidcon_app/models/organizer/organizer.dart';
 import 'package:droidcon_app/user_interfaces/home/main_home_page.dart';
 import 'package:droidcon_app/user_interfaces/home/sessions/session_detail_screen.dart';
+import 'package:droidcon_app/user_interfaces/speakers/speakers_screen.dart';
 import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
 import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/foundation.dart';
@@ -9,7 +11,7 @@ import 'package:go_router/go_router.dart';
 
 import '../user_interfaces/feedback/feedback_screen.dart';
 import '../user_interfaces/home/about/team_member_bio_screen.dart';
-import '../user_interfaces/speaker/speaker_screen.dart';
+import '../user_interfaces/speakers/speaker_detail_screen.dart';
 
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
@@ -52,10 +54,16 @@ final router = GoRouter(
           SessionDetailScreen(session: (state.extra! as Session)),
     ),
     GoRoute(
-      path: '/speaker',
-      name: SpeakerScreen.routeName,
+      path: '/speakers',
+      name: SpeakersScreen.routeName,
       builder: (BuildContext context, GoRouterState state) =>
-          SpeakerScreen(speaker: (state.extra! as Speaker)),
+          const SpeakersScreen(),
+    ),
+    GoRoute(
+      path: '/speaker-detail',
+      name: SpeakerDetailScreen.routeName,
+      builder: (BuildContext context, GoRouterState state) =>
+          SpeakerDetailScreen(speaker: (state.extra! as Speaker)),
     ),
     GoRoute(
       path: '/feedback',
@@ -67,15 +75,10 @@ final router = GoRouter(
       path: '/team-member-bio',
       name: TeamMemberBioScreen.routeName,
       builder: (BuildContext context, GoRouterState state) =>
-          const TeamMemberBioScreen(),
+          TeamMemberBioScreen(organizer: (state.extra! as Organizer)),
     ),
   ],
   observers: [
     // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
   ],
-/*refreshListenable: GoRouterRefreshStream(),
-      redirect: (state) {
-        String? redirectRoute;
-        return state.subloc == redirectRoute ? null : redirectRoute;
-      },*/
 );

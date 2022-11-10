@@ -15,6 +15,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
+import 'providers/token_provider/token_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,13 +48,16 @@ void main() async {
 
       /// register the [RestClient] in as a singleton
       GetIt.I.registerSingleton<RestClient>(RestClient());
+      GetIt.I.registerSingleton<TokenProvider>(TokenProvider());
       GetIt.I.allowReassignment = true;
       ErrorWidget.builder = (FlutterErrorDetails error) {
         Zone.current.handleUncaughtError(error.exception, error.stack!);
         return ErrorWidget(error.exception);
       };
 
-      runApp(const ProviderScope(child: DroidconApp()));
+      runApp(const ProviderScope(
+        child: DroidconApp(),
+      ));
     },
     (exception, stackTrace) {
       FirebaseCrashlytics.instance.recordError(exception, stackTrace);

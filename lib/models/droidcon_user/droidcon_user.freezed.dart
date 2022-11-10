@@ -23,7 +23,8 @@ mixin _$DroidconUser {
   String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
-  String? get created_at => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  String? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,43 +36,51 @@ mixin _$DroidconUser {
 abstract class $DroidconUserCopyWith<$Res> {
   factory $DroidconUserCopyWith(
           DroidconUser value, $Res Function(DroidconUser) then) =
-      _$DroidconUserCopyWithImpl<$Res>;
-  $Res call({String? name, String? email, String? avatar, String? created_at});
+      _$DroidconUserCopyWithImpl<$Res, DroidconUser>;
+  @useResult
+  $Res call(
+      {String? name,
+      String? email,
+      String? avatar,
+      @JsonKey(name: 'created_at') String? createdAt});
 }
 
 /// @nodoc
-class _$DroidconUserCopyWithImpl<$Res> implements $DroidconUserCopyWith<$Res> {
+class _$DroidconUserCopyWithImpl<$Res, $Val extends DroidconUser>
+    implements $DroidconUserCopyWith<$Res> {
   _$DroidconUserCopyWithImpl(this._value, this._then);
 
-  final DroidconUser _value;
   // ignore: unused_field
-  final $Res Function(DroidconUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
     Object? email = freezed,
     Object? avatar = freezed,
-    Object? created_at = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,43 +91,46 @@ abstract class _$$_DroidconUserCopyWith<$Res>
           _$_DroidconUser value, $Res Function(_$_DroidconUser) then) =
       __$$_DroidconUserCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, String? email, String? avatar, String? created_at});
+  @useResult
+  $Res call(
+      {String? name,
+      String? email,
+      String? avatar,
+      @JsonKey(name: 'created_at') String? createdAt});
 }
 
 /// @nodoc
 class __$$_DroidconUserCopyWithImpl<$Res>
-    extends _$DroidconUserCopyWithImpl<$Res>
+    extends _$DroidconUserCopyWithImpl<$Res, _$_DroidconUser>
     implements _$$_DroidconUserCopyWith<$Res> {
   __$$_DroidconUserCopyWithImpl(
       _$_DroidconUser _value, $Res Function(_$_DroidconUser) _then)
-      : super(_value, (v) => _then(v as _$_DroidconUser));
+      : super(_value, _then);
 
-  @override
-  _$_DroidconUser get _value => super._value as _$_DroidconUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
     Object? email = freezed,
     Object? avatar = freezed,
-    Object? created_at = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$_DroidconUser(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -127,7 +139,11 @@ class __$$_DroidconUserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DroidconUser implements _DroidconUser {
-  _$_DroidconUser({this.name, this.email, this.avatar, this.created_at});
+  _$_DroidconUser(
+      {this.name,
+      this.email,
+      this.avatar,
+      @JsonKey(name: 'created_at') this.createdAt});
 
   factory _$_DroidconUser.fromJson(Map<String, dynamic> json) =>
       _$$_DroidconUserFromJson(json);
@@ -139,11 +155,12 @@ class _$_DroidconUser implements _DroidconUser {
   @override
   final String? avatar;
   @override
-  final String? created_at;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
 
   @override
   String toString() {
-    return 'DroidconUser(name: $name, email: $email, avatar: $avatar, created_at: $created_at)';
+    return 'DroidconUser(name: $name, email: $email, avatar: $avatar, createdAt: $createdAt)';
   }
 
   @override
@@ -151,24 +168,20 @@ class _$_DroidconUser implements _DroidconUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DroidconUser &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.avatar, avatar) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(avatar),
-      const DeepCollectionEquality().hash(created_at));
+  int get hashCode => Object.hash(runtimeType, name, email, avatar, createdAt);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DroidconUserCopyWith<_$_DroidconUser> get copyWith =>
       __$$_DroidconUserCopyWithImpl<_$_DroidconUser>(this, _$identity);
 
@@ -185,7 +198,7 @@ abstract class _DroidconUser implements DroidconUser {
       {final String? name,
       final String? email,
       final String? avatar,
-      final String? created_at}) = _$_DroidconUser;
+      @JsonKey(name: 'created_at') final String? createdAt}) = _$_DroidconUser;
 
   factory _DroidconUser.fromJson(Map<String, dynamic> json) =
       _$_DroidconUser.fromJson;
@@ -197,7 +210,8 @@ abstract class _DroidconUser implements DroidconUser {
   @override
   String? get avatar;
   @override
-  String? get created_at;
+  @JsonKey(name: 'created_at')
+  String? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_DroidconUserCopyWith<_$_DroidconUser> get copyWith =>

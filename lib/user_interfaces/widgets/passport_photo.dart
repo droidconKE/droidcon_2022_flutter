@@ -2,7 +2,6 @@ import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 class PassportPhoto extends StatelessWidget {
-
   const PassportPhoto({
     super.key,
     required this.imageFrameSize,
@@ -31,7 +30,9 @@ class PassportPhoto extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: circular
                 ? BorderRadius.circular((imageSize + imageFrameSize * 2) / 2)
-                : (borderRadiusSize == 0 ? BorderRadius.zero : BorderRadius.circular(borderRadiusSize+imageFrameSize)),
+                : (borderRadiusSize == 0
+                    ? BorderRadius.zero
+                    : BorderRadius.circular(borderRadiusSize + imageFrameSize)),
             color: frameColor ?? AppColors.tealColor,
           ),
         ),
@@ -41,7 +42,9 @@ class PassportPhoto extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: circular
                 ? BorderRadius.circular(imageSize / 2)
-                : (borderRadiusSize == 0 ? BorderRadius.zero : BorderRadius.circular(borderRadiusSize)),
+                : (borderRadiusSize == 0
+                    ? BorderRadius.zero
+                    : BorderRadius.circular(borderRadiusSize)),
             color: Colors.white,
             image: DecorationImage(
               image: image,

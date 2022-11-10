@@ -234,7 +234,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Text(
-                              '@ ${session.startTime} | ${session.rooms[0].title}',
+                              '@ ${session.startTime} | ${session.rooms?[0].title}',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium

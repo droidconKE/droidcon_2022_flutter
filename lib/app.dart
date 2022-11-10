@@ -22,6 +22,7 @@ class DroidconApp extends ConsumerWidget {
         localizationsDelegates: const [
           FormBuilderLocalizations.delegate,
         ],
+
         /// This adjusts the theme dynamically  based on the users preferences
         themeMode: ref.watch(systemThemeProvider)
             ? ThemeMode.system

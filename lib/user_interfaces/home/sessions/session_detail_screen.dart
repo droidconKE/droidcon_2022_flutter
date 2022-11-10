@@ -1,13 +1,13 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:droidcon_app/models/session/session.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/speaker/speaker_screen.dart';
 import 'package:droidcon_app/user_interfaces/widgets/app_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../../assets/images.dart';
+import '../../speakers/speaker_detail_screen.dart';
 import '../../widgets/afrikon_icon.dart';
 
 class SessionDetailScreen extends StatelessWidget {
@@ -60,7 +60,7 @@ class SessionDetailScreen extends StatelessWidget {
                                 (speaker) => GestureDetector(
                                   onTap: () {
                                     context.pushNamed(
-                                      SpeakerScreen.routeName,
+                                      SpeakerDetailScreen.routeName,
                                       extra: speaker,
                                     );
                                   },
@@ -123,18 +123,20 @@ class SessionDetailScreen extends StatelessWidget {
                         color: Theme.of(context).textTheme.labelLarge?.color,
                         thickness: 3,
                       ),
-                      ...session.rooms
-                          .map((r) => Wrap(
-                                children: <Widget>[
-                                  Text(
-                                    r.title,
-                                    style:
-                                        Theme.of(context).textTheme.labelLarge,
-                                  ),
-                                  const SizedBox(width: 5),
-                                ],
-                              ))
-                          .toList()
+                      if (session.rooms != null)
+                        ...session.rooms!
+                            .map((r) => Wrap(
+                                  children: <Widget>[
+                                    Text(
+                                      r.title,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge,
+                                    ),
+                                    const SizedBox(width: 5),
+                                  ],
+                                ))
+                            .toList()
                     ],
                   ),
                   const SizedBox(height: 15),

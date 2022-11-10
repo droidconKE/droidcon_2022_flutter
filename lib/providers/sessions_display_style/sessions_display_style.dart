@@ -1,18 +1,19 @@
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 
-enum SessionsDisplayStyle{
-  list,
-  cards
-}
+enum SessionsDisplayStyle { list, cards }
 
-final sessionsDisplayStyleProvider = StateNotifierProvider<SessionsDisplayStyleProvider, SessionsDisplayStyle>(
+final sessionsDisplayStyleProvider =
+    StateNotifierProvider<SessionsDisplayStyleProvider, SessionsDisplayStyle>(
         (_) => SessionsDisplayStyleProvider());
 
-class SessionsDisplayStyleProvider extends HydratedStateNotifier<SessionsDisplayStyle> {
+class SessionsDisplayStyleProvider
+    extends HydratedStateNotifier<SessionsDisplayStyle> {
   SessionsDisplayStyleProvider() : super(SessionsDisplayStyle.list);
 
   toggle() {
-    state = state == SessionsDisplayStyle.cards ? SessionsDisplayStyle.list : SessionsDisplayStyle.cards;
+    state = state == SessionsDisplayStyle.cards
+        ? SessionsDisplayStyle.list
+        : SessionsDisplayStyle.cards;
   }
 
   @override

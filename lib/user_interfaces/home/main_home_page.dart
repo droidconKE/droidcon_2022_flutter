@@ -26,7 +26,7 @@ class MainHomePage extends ConsumerWidget {
       const HomeScreen(),
       FeedPage(),
       const SessionsPage(),
-      const AboutPage()
+      AboutPage()
     ];
     return Scaffold(
       body: screens[ref.watch(bottomNavigationProvider)],
