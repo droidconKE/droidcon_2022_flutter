@@ -8,13 +8,14 @@ environment:
 
 dependencies:
   cached_network_image: ^3.2.2
+  community_material_icon: ^5.9.55
   dio: ^4.0.6
   dio_cache_interceptor: ^3.3.1
   drawable: ^0.1.0
-  firebase_analytics: ^10.0.3
+  firebase_analytics: ^10.0.4
   firebase_core: ^2.1.1
-  firebase_crashlytics: ^3.0.3
-  firebase_performance: ^0.9.0+3
+  firebase_crashlytics: ^3.0.4
+  firebase_performance: ^0.9.0+4
   firebase_performance_dio: ^0.4.1
   flutter:
     sdk: flutter
@@ -26,15 +27,18 @@ dependencies:
   form_builder_validators: ^8.3.0
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
-  go_router: ^4.2.6
+  get_time_ago: ^1.1.7
+  go_router: ^5.1.3
   google_fonts: ^3.0.1
   google_sign_in: ^5.4.2
+  http: ^0.13.5
   hydrated_riverpod: ^0.0.3
   json_serializable: ^6.5.4
   package_info_plus: ^3.0.1
   path_provider: ^2.0.11
   pretty_dio_logger: ^1.1.1
   sizer: ^2.0.15
+  social_share: ^2.2.1
   video_player: ^2.4.7
   visibility_detector: ^0.3.3
 
