@@ -33,6 +33,7 @@ dependencies:
   google_sign_in: ^5.4.2
   http: ^0.13.5
   hydrated_riverpod: ^0.0.3
+  intl: ^0.17.0
   json_serializable: ^6.5.4
   package_info_plus: ^3.0.1
   path_provider: ^2.0.11

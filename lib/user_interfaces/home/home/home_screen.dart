@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../styles/colors/colors.dart';
+import '../../widgets/droidcon_logo.dart';
 import '../../widgets/feedback_button.dart';
 import '../../widgets/user_profile_avatar.dart';
 import '../../widgets/organizers_card.dart';
@@ -18,17 +19,12 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          children: [
-            Image.asset(
-              Theme.of(context).brightness == Brightness.dark
-                  ? AssetImages.droidconLogoWhite
-                  : AssetImages.droidconLogo,
-              scale: 2,
-            ),
-            const Spacer(),
-            const FeedbackButton(),
-            const SizedBox(width: 15),
-            const UserProfileAvatar(),
+          children: const [
+            DroidconLogo(),
+            Spacer(),
+            FeedbackButton(),
+            SizedBox(width: 15),
+            UserProfileAvatar(),
           ],
         ),
       ),

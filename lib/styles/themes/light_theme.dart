@@ -23,6 +23,21 @@ final lightTheme = ThemeData(
       bodyMedium: GoogleFonts.montserratTextTheme().bodyMedium?.copyWith(
             fontSize: 14,
           ),
+      bodySmall: GoogleFonts.montserratTextTheme().bodySmall?.copyWith(
+            fontSize: 13,
+          ),
+      labelLarge: GoogleFonts.montserratTextTheme().labelLarge?.copyWith(
+            fontSize: 12,
+            color: AppColors.greyTextColor,
+          ),
+      labelMedium: GoogleFonts.montserratTextTheme().labelMedium?.copyWith(
+            fontSize: 11,
+            color: AppColors.greyTextColor,
+          ),
+      labelSmall: GoogleFonts.montserratTextTheme().labelSmall?.copyWith(
+            fontSize: 10,
+            color: AppColors.greyTextColor,
+          ),
     ),
     brightness: Brightness.light,
     scaffoldBackgroundColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -52,12 +67,13 @@ final lightTheme = ThemeData(
         fontSize: 14,
       ),
       border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7),
-          borderSide:
-              const BorderSide(color: AppColors.lightGrayBackgroundColor)),
+        borderRadius: BorderRadius.circular(7),
+        borderSide: const BorderSide(color: AppColors.lightGrayBackgroundColor),
+      ),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7),
-          borderSide: const BorderSide(color: AppColors.blueDroidconColor)),
+        borderRadius: BorderRadius.circular(7),
+        borderSide: const BorderSide(color: AppColors.blueDroidconColor),
+      ),
       fillColor: AppColors.lightGrayBackgroundColor,
       filled: true,
     ),
@@ -75,5 +91,6 @@ final lightTheme = ThemeData(
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),
+        side: MaterialStateProperty.all(BorderSide(color: AppColors.blueColor)),
       ),
     ));

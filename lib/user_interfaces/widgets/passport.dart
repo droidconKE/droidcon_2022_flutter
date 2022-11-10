@@ -1,4 +1,3 @@
-import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:droidcon_app/user_interfaces/widgets/passport_photo.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +35,7 @@ class Passport extends StatelessWidget {
                 height: width,
                 alignment: Alignment.center,
                 child: PassportPhoto(
-                  imageFrameSize: 2,
+                  imageFrameSize: 1,
                   imageSize: imageSize,
                   image: image,
                   frameColor: frameColor,
