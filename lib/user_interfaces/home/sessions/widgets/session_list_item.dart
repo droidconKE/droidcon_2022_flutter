@@ -20,7 +20,7 @@ class SessionListItem extends StatelessWidget {
         context.pushNamed(SessionDetailScreen.routeName, extra: session);
       },
       child: Card(
-        margin: const EdgeInsets.all(3),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
         elevation: 10,
         child: Padding(
           padding: const EdgeInsets.all(20),
