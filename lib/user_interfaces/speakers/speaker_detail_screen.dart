@@ -8,6 +8,7 @@ import '../../styles/colors/colors.dart';
 import '../authentication/widgets/signup_image_background.dart';
 import '../widgets/passport_photo.dart';
 import '../widgets/sliver_fab.dart';
+import '../widgets/twitter_button.dart';
 
 class SpeakerDetailScreen extends StatelessWidget {
   static String routeName = 'speakerDetail';
@@ -93,20 +94,17 @@ class SpeakerDetailScreen extends StatelessWidget {
                   ),
                 ),
                 const Divider(),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Wrap(
-                    alignment: WrapAlignment.spaceBetween,
-                    children: [
-                      const Text('Twitter Handle'),
-                      OutlinedButton.icon(
-                        onPressed: () {},
-                        label: Text('@${speaker.twitter}'),
-                        icon: const Icon(CommunityMaterialIcons.twitter),
-                      ),
-                    ],
+                if (speaker.twitter?.isNotEmpty ?? false)
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      children: [
+                        const Text('Twitter Handle'),
+                        TwitterButton(handleOrUrl: speaker.twitter!),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           )

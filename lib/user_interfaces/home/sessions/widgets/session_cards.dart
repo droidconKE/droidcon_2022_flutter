@@ -45,8 +45,8 @@ class SessionCards extends StatelessWidget {
                               image: (session.sessionImage != null
                                       ? CachedNetworkImageProvider(
                                           session.sessionImage!)
-                                      :  const AssetImage(
-                                  AssetImages.droidconBanner))
+                                      : const AssetImage(
+                                          AssetImages.droidconBanner))
                                   as ImageProvider,
                               fit: BoxFit.cover)),
                     ),

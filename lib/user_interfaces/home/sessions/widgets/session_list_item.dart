@@ -90,7 +90,7 @@ class SessionListItem extends StatelessWidget {
                     const SizedBox(height: 3),
                     Wrap(
                       children: session.speakers.map(
-                        (s) {
+                        (speaker) {
                           return Row(
                             children: <Widget>[
                               const Icon(
@@ -100,7 +100,7 @@ class SessionListItem extends StatelessWidget {
                               ),
                               const SizedBox(width: 3),
                               Text(
-                                s.name,
+                                speaker.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium

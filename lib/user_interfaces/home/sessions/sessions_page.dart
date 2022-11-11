@@ -149,98 +149,108 @@ class SessionsPage extends ConsumerWidget {
             child: CircularProgressIndicator(),
           ),
           data: (sessions) {
-            return ListView(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: ref.watch(eventDatesProvider).when(
-                                    data: (dates) {
-                                      final index = dates.toList().indexWhere(
-                                          (date) =>
-                                              date ==
-                                              ref.watch(selectedDateProvider));
+            return RefreshIndicator(
+              onRefresh: () async {
+                ref.refresh(sessionsProvider);
+              },
+              child: ListView(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: ref.watch(eventDatesProvider).when(
+                                      data: (dates) {
+                                        final index = dates.toList().indexWhere(
+                                            (date) =>
+                                                date ==
+                                                ref.watch(
+                                                    selectedDateProvider));
 
-                                      return ButtonGroup(
-                                        selectedIndex: index > -1 ? index : 0,
-                                        onSelectedIndexChanged: (val) {
-                                          ref
-                                              .read(selectedDateProvider.notifier)
-                                              .set(val);
-                                        },
-                                        options: dates.toList(),
-                                      );
-                                    },
-                                    error: (err, stack) {
-                                      debugPrintStack(stackTrace: stack);
-                                      return Text(err.toString());
-                                    },
-                                    loading: () =>
-                                        const CircularProgressIndicator()),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        DroidconSwitch(
-                                          value:
-                                              ref.watch(sessionsFilterProvider) ==
-                                                  SessionsFilterState.bookmarked(),
-                                          onChanged: (val) {
+                                        return ButtonGroup(
+                                          selectedIndex: index > -1 ? index : 0,
+                                          onSelectedIndexChanged: (val) {
                                             ref
-                                                .read(
-                                                    sessionsFilterProvider.notifier)
-                                                .change(val
-                                                    ? SessionsFilterState
-                                                        .bookmarked()
-                                                    : SessionsFilterState.none());
+                                                .read(selectedDateProvider
+                                                    .notifier)
+                                                .set(val);
                                           },
-                                        ),
-                                        Text(
-                                          'My Sessions',
-                                          style:
-                                              Theme.of(context).textTheme.caption,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          options: dates.toList(),
+                                        );
+                                      },
+                                      error: (err, stack) {
+                                        debugPrintStack(stackTrace: stack);
+                                        return Text(err.toString());
+                                      },
+                                      loading: () =>
+                                          const CircularProgressIndicator()),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 40),
-                      Text(
-                        ref.watch(sessionsFilterProvider) ==
-                            SessionsFilterState.bookmarked()
-                            ? 'My sessions'
-                            : 'All sessions',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                    ],
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: <Widget>[
+                                          DroidconSwitch(
+                                            value: ref.watch(
+                                                    sessionsFilterProvider) ==
+                                                SessionsFilterState
+                                                    .bookmarked(),
+                                            onChanged: (val) {
+                                              ref
+                                                  .read(sessionsFilterProvider
+                                                      .notifier)
+                                                  .change(val
+                                                      ? SessionsFilterState
+                                                          .bookmarked()
+                                                      : SessionsFilterState
+                                                          .none());
+                                            },
+                                          ),
+                                          Text(
+                                            'My Sessions',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .caption,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 40),
+                        Text(
+                          ref.watch(sessionsFilterProvider) ==
+                                  SessionsFilterState.bookmarked()
+                              ? 'My sessions'
+                              : 'All sessions',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-
-                const SizedBox(height: 20),
-                if (ref.watch(sessionsDisplayStyleProvider) ==
-                    SessionsDisplayStyle.list)
-                  SessionList(list: sessions),
-                if (ref.watch(sessionsDisplayStyleProvider) ==
-                    SessionsDisplayStyle.cards)
-                  SessionCards(sessions: sessions),
-              ],
+                  const SizedBox(height: 20),
+                  if (ref.watch(sessionsDisplayStyleProvider) ==
+                      SessionsDisplayStyle.list)
+                    SessionList(list: sessions),
+                  if (ref.watch(sessionsDisplayStyleProvider) ==
+                      SessionsDisplayStyle.cards)
+                    SessionCards(sessions: sessions),
+                ],
+              ),
             );
           },
         ));

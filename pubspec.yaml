@@ -41,6 +41,7 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   sizer: ^2.0.15
   social_share: ^2.2.1
+  url_launcher: ^6.1.6
   video_player: ^2.4.7
   visibility_detector: ^0.3.3
 

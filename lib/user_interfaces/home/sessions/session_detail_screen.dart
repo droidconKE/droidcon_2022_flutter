@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 
 import '../../../assets/images.dart';
 import '../../speakers/speaker_detail_screen.dart';
+import '../../widgets/twitter_button.dart';
 
 class SessionDetailScreen extends StatelessWidget {
   static String routeName = 'session-detail';
@@ -60,19 +61,27 @@ class SessionDetailScreen extends StatelessWidget {
                               children: [
                                 ...session.speakers
                                     .map(
-                                      (speaker) => GestureDetector(
-                                        onTap: () {
-                                          context.pushNamed(
-                                            SpeakerDetailScreen.routeName,
-                                            extra: speaker,
-                                          );
-                                        },
-                                        child: Text(
-                                          speaker.name,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge,
-                                        ),
+                                      (speaker) => Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              context.pushNamed(
+                                                SpeakerDetailScreen.routeName,
+                                                extra: speaker,
+                                              );
+                                            },
+                                            child: Text(
+                                              speaker.name,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
+                                            ),
+                                          ),
+                                          const VerticalDivider(
+                                            width: 5,
+                                            thickness: 2,
+                                          ),
+                                        ],
                                       ),
                                     )
                                     .toList(),
@@ -166,13 +175,12 @@ class SessionDetailScreen extends StatelessWidget {
                 runSpacing: 20,
                 spacing: 20,
                 children: [
-                  const Text('Twitter Handle'),
+                  const Text('Twitter Handle(s)'),
                   ...session.speakers
+                      .where((speaker) => speaker.twitter?.isNotEmpty ?? false)
                       .map(
-                        (speaker) => OutlinedButton.icon(
-                          onPressed: () {},
-                          label: Text('@${speaker.twitter}'),
-                          icon: const Icon(CommunityMaterialIcons.twitter),
+                        (speaker) => TwitterButton(
+                          handleOrUrl: speaker.twitter!,
                         ),
                       )
                       .toList(),
