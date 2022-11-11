@@ -1,21 +1,24 @@
-import 'package:droidcon_app/models/droidcon_user/droidcon_user.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 
+import '../../models/user_info/user_info.dart';
+
 final userInfoProvider =
-    StateNotifierProvider<UserInfoProvider, DroidconUser?>((ref) {
+    StateNotifierProvider<UserInfoProvider, UserInfo?>((ref) {
   return UserInfoProvider();
 });
 
-class UserInfoProvider extends HydratedStateNotifier<DroidconUser?> {
+class UserInfoProvider extends HydratedStateNotifier<UserInfo?> {
   UserInfoProvider() : super(null);
 
+  set(UserInfo? newState) => state = newState;
+
   @override
-  DroidconUser? fromJson(Map<String, dynamic> json) {
-    return DroidconUser.fromJson(json);
+  UserInfo? fromJson(Map<String, dynamic> json) {
+    return UserInfo.fromJson(json);
   }
 
   @override
-  Map<String, dynamic>? toJson(DroidconUser? state) {
-    return state!.toJson();
+  Map<String, dynamic>? toJson(UserInfo? state) {
+    return state?.toJson();
   }
 }

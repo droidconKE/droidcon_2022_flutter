@@ -140,7 +140,8 @@ class FeedPage extends StatelessWidget {
                                         iconData:
                                             CommunityMaterialIcons.facebook,
                                         onPressed: () async {
-                                          final imageFile = await urlToFile(stories[index].image ?? '');
+                                          final imageFile = await urlToFile(
+                                              stories[index].image ?? '');
                                           await SocialShare.shareFacebookStory(
                                               imageFile.path,
                                               AppColors.blueColor.toHex(),
@@ -159,7 +160,8 @@ class FeedPage extends StatelessWidget {
                                         iconData:
                                             CommunityMaterialIcons.whatsapp,
                                         onPressed: () async {
-                                          await SocialShare.shareWhatsapp(stories[index].body);
+                                          await SocialShare.shareWhatsapp(
+                                              stories[index].body);
                                         },
                                       ),
                                       const SizedBox(width: 27),
@@ -168,7 +170,8 @@ class FeedPage extends StatelessWidget {
                                         iconData:
                                             CommunityMaterialIcons.telegram,
                                         onPressed: () async {
-                                          await SocialShare.shareWhatsapp(stories[index].body);
+                                          await SocialShare.shareWhatsapp(
+                                              stories[index].body);
                                         },
                                       ),
                                     ],
@@ -204,7 +207,7 @@ class FeedPage extends StatelessWidget {
 // get temporary path from temporary directory.
     String tempPath = tempDir.path;
 // create a new file in temporary path with random file name.
-    File file = File('$tempPath'+ (rng.nextInt(100)).toString() +'.png');
+    File file = File('$tempPath${(rng.nextInt(100)).toString()}.png');
 // call http.get method and pass imageUrl into it to get response.
     http.Response response = await http.get(Uri.parse(imageUrl));
 // write bodyBytes received in response to file.

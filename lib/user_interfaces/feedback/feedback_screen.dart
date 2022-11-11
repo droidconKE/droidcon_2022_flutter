@@ -62,7 +62,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             children: [
                               const SizedBox(height: 17),
                               Text(
-                                'How is/was the event',
+                                'How is / was the event',
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const SizedBox(height: 30),
@@ -108,8 +108,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 context: context,
                                 builder: (context) => AlertDialog(
                                   content: Text(
-                                      'Thank you for your feedback',
-                                    style: Theme.of(context).textTheme.titleMedium,
+                                    'Thank you for your feedback',
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
                                   ),
                                   actions: [
                                     SizedBox(

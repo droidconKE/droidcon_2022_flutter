@@ -33,34 +33,37 @@ mixin _$LoginResponse {
 abstract class $LoginResponseCopyWith<$Res> {
   factory $LoginResponseCopyWith(
           LoginResponse value, $Res Function(LoginResponse) then) =
-      _$LoginResponseCopyWithImpl<$Res>;
+      _$LoginResponseCopyWithImpl<$Res, LoginResponse>;
+  @useResult
   $Res call({String? token, Map<String, dynamic>? user});
 }
 
 /// @nodoc
-class _$LoginResponseCopyWithImpl<$Res>
+class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
     implements $LoginResponseCopyWith<$Res> {
   _$LoginResponseCopyWithImpl(this._value, this._then);
 
-  final LoginResponse _value;
   // ignore: unused_field
-  final $Res Function(LoginResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: user == freezed
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,31 +74,30 @@ abstract class _$$_LoginResponseCopyWith<$Res>
           _$_LoginResponse value, $Res Function(_$_LoginResponse) then) =
       __$$_LoginResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? token, Map<String, dynamic>? user});
 }
 
 /// @nodoc
 class __$$_LoginResponseCopyWithImpl<$Res>
-    extends _$LoginResponseCopyWithImpl<$Res>
+    extends _$LoginResponseCopyWithImpl<$Res, _$_LoginResponse>
     implements _$$_LoginResponseCopyWith<$Res> {
   __$$_LoginResponseCopyWithImpl(
       _$_LoginResponse _value, $Res Function(_$_LoginResponse) _then)
-      : super(_value, (v) => _then(v as _$_LoginResponse));
+      : super(_value, _then);
 
-  @override
-  _$_LoginResponse get _value => super._value as _$_LoginResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
     Object? user = freezed,
   }) {
     return _then(_$_LoginResponse(
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: user == freezed
+      user: freezed == user
           ? _value._user
           : user // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
@@ -133,19 +135,18 @@ class _$_LoginResponse implements _LoginResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginResponse &&
-            const DeepCollectionEquality().equals(other.token, token) &&
+            (identical(other.token, token) || other.token == token) &&
             const DeepCollectionEquality().equals(other._user, _user));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(_user));
+      runtimeType, token, const DeepCollectionEquality().hash(_user));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoginResponseCopyWith<_$_LoginResponse> get copyWith =>
       __$$_LoginResponseCopyWithImpl<_$_LoginResponse>(this, _$identity);
 

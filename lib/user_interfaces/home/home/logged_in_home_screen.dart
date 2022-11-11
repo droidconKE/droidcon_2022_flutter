@@ -1,5 +1,4 @@
 import 'package:droidcon_app/assets/images.dart';
-import 'package:droidcon_app/models/session_model.dart';
 import 'package:droidcon_app/user_interfaces/widgets/organizers_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import '../../../models/session/session.dart';
 import '../../../models/speaker_model.dart';
 import '../../../providers/home/home_provider.dart';
 import '../../../styles/colors/colors.dart';
@@ -22,28 +22,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
     SpeakerModel(speakerName: 'Kendi', speakerPhoto: AssetImages.profilePhoto),
   ];
 
-  final List<SessionModel> _sessions = [
-    SessionModel(
-        roomNo: 'Room 2',
-        sessionTime: '10:30',
-        sessionTitle: 'Compose Beyond Material Design',
-        sessionBanner: AssetImages.session1),
-    SessionModel(
-        roomNo: 'Room 1',
-        sessionTime: '10:30',
-        sessionTitle: 'Transforming Farmers Lves Using Android in Kenya',
-        sessionBanner: AssetImages.session2),
-    SessionModel(
-        roomNo: 'Room 2',
-        sessionTime: '10:30',
-        sessionTitle: 'Compose Beyond Material Design',
-        sessionBanner: AssetImages.session1),
-    SessionModel(
-        roomNo: 'Room 1',
-        sessionTime: '10:30',
-        sessionTitle: 'Transforming Farmers Lves Using Android in Kenya',
-        sessionBanner: AssetImages.session2),
-  ];
+  final List<Session> _sessions = [];
   final double horizontalPadding = 20.0;
 
   LoggedInHomeScreen({super.key});
@@ -224,7 +203,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   itemBuilder: (context, index) {
-                    SessionModel session = _sessions[index];
+                    Session session = _sessions[index];
                     return Container(
                       width: 250,
                       margin: const EdgeInsets.all(10),
@@ -236,13 +215,11 @@ class LoggedInHomeScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset(
-                            session.sessionBanner,
-                          ),
+                          Image.asset(AssetImages.droidconBanner),
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Text(
-                              session.sessionTitle,
+                              session.title,
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium
@@ -257,7 +234,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Text(
-                              '@ ${session.sessionTime} | ${session.roomNo}',
+                              '@ ${session.startTime} | ${session.rooms?[0].title}',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium

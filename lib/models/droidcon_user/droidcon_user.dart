@@ -5,12 +5,11 @@ part 'droidcon_user.g.dart';
 
 @freezed
 class DroidconUser with _$DroidconUser {
-  factory DroidconUser({
-    String? name,
-    String? email,
-    String? avatar,
-    String? created_at
-  }) = _DroidconUser;
+  factory DroidconUser(
+      {String? name,
+      String? email,
+      String? avatar,
+      @JsonKey(name: 'created_at') String? createdAt}) = _DroidconUser;
 
   factory DroidconUser.fromJson(Map<String, dynamic> json) =>
       _$DroidconUserFromJson(json);

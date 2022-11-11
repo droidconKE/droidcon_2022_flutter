@@ -67,8 +67,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '275140757840',
     projectId: 'droidconke2022-360211',
     storageBucket: 'droidconke2022-360211.appspot.com',
-    androidClientId: '275140757840-bvmv1qksiqieolg9dggmmt3nhejalkda.apps.googleusercontent.com',
-    iosClientId: '275140757840-rc63beoie2c7avig7hu6b6kll0t6q6vb.apps.googleusercontent.com',
+    androidClientId:
+        '275140757840-2cubiasllj5imovueep61dov3flarcsh.apps.googleusercontent.com',
+    iosClientId:
+        '275140757840-rc63beoie2c7avig7hu6b6kll0t6q6vb.apps.googleusercontent.com',
     iosBundleId: 'com.droidConKe.flutterApp',
   );
 
@@ -78,8 +80,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '275140757840',
     projectId: 'droidconke2022-360211',
     storageBucket: 'droidconke2022-360211.appspot.com',
-    androidClientId: '275140757840-bvmv1qksiqieolg9dggmmt3nhejalkda.apps.googleusercontent.com',
-    iosClientId: '275140757840-ajfq00o5ph1if4ggkkjshr50huk5c7n5.apps.googleusercontent.com',
+    androidClientId:
+        '275140757840-2cubiasllj5imovueep61dov3flarcsh.apps.googleusercontent.com',
+    iosClientId:
+        '275140757840-ajfq00o5ph1if4ggkkjshr50huk5c7n5.apps.googleusercontent.com',
     iosBundleId: 'ke.co.droidcon22flutter.droidcon2022Flutter',
   );
 }

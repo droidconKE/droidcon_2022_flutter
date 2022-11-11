@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../assets/images.dart';
 import '../../../../styles/colors/colors.dart';
 
-
 class SponsorsCard extends StatelessWidget {
   const SponsorsCard({Key? key}) : super(key: key);
   final List<String> _sponsors = const [

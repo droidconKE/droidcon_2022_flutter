@@ -11,7 +11,7 @@ _$_DroidconUser _$$_DroidconUserFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       email: json['email'] as String?,
       avatar: json['avatar'] as String?,
-      created_at: json['created_at'] as String?,
+      createdAt: json['created_at'] as String?,
     );
 
 Map<String, dynamic> _$$_DroidconUserToJson(_$_DroidconUser instance) =>
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$_DroidconUserToJson(_$_DroidconUser instance) =>
       'name': instance.name,
       'email': instance.email,
       'avatar': instance.avatar,
-      'created_at': instance.created_at,
+      'created_at': instance.createdAt,
     };

@@ -3,18 +3,19 @@ import 'package:droidcon_app/providers/login_with_google/login_with_google_provi
 import 'package:droidcon_app/providers/token_provider/token_provider.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_field.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
-import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:droidcon_app/user_interfaces/authentication/widgets/signin_image_background.dart';
+import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../styles/colors/colors.dart';
 import '../../providers/login_with_google/state/login_with_google_state.dart';
+import '../../styles/colors/colors.dart';
 
 class SignInScreen extends ConsumerWidget {
   static String routeName = 'signin';
+
   const SignInScreen({Key? key}) : super(key: key);
 
   @override
@@ -89,15 +90,12 @@ class SignInScreen extends ConsumerWidget {
                       const Text(
                         '- OR -',
                         style: TextStyle(
-                            color: AppColors.greyTextColor, fontSize: 14),
+                          color: AppColors.greyTextColor,
+                          fontSize: 14,
+                        ),
                       ),
-                      const SizedBox(
-                        height: 70,
-                      ),
-                      const AppTextField(
-                        name: 'email',
-                        hint: 'Email address',
-                      ),
+                      const SizedBox(height: 70),
+                      const AppTextField(name: 'email', hint: 'Email address'),
                       const SizedBox(
                         height: 20,
                       ),

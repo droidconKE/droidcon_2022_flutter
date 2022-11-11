@@ -21,6 +21,7 @@ jobs:
       with:
         channel: stable
 
+
     - name: Flutter Clean
       run: flutter clean
 

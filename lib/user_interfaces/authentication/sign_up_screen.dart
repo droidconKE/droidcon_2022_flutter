@@ -53,9 +53,7 @@ class SignUpScreen extends StatelessWidget {
                         height: 50,
                       ),
                       GoogleButton(
-                        onTap: () {
-                          
-                        },
+                        onTap: () {},
                         label: 'Sign up with Google',
                       ),
                       const SizedBox(
