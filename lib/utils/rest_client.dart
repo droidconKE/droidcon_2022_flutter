@@ -14,6 +14,7 @@ class RestClient {
 
   /// Get it from the environment variables
   final String? baseUrl = dotenv.env['SERVER_URL'];
+
   RestClient({BaseOptions? options}) {
     create(options);
   }
@@ -61,26 +62,33 @@ class RestClient {
 
     ///Add the interceptors
     // The [AuthInterceptor] to authenticate all requests
-    _dio!.interceptors.add(AuthInterceptor());
-    // The [SessionInterceptor] to authenticate all requests
-    if (kDebugMode) {
-      //The logger interceptor
-      _dio!.interceptors.add(PrettyDioLogger(
+    _dio!.interceptors.addAll([
+      AuthInterceptor(),
+      UserAgentInterceptor(),
+      if (kDebugMode)
+        PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
           responseBody: true,
           responseHeader: true,
           error: true,
           compact: true,
-          maxWidth: 90));
-      _dioNoAUth!.interceptors.add(PrettyDioLogger(
+          maxWidth: 90,
+        ),
+    ]);
+
+    _dioNoAUth!.interceptors.addAll([
+      UserAgentInterceptor(),
+      if (kDebugMode)
+        PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
           responseBody: true,
           responseHeader: true,
           error: true,
           compact: true,
-          maxWidth: 90));
-    }
+          maxWidth: 90,
+        )
+    ]);
   }
 }

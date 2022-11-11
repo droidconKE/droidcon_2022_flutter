@@ -35,6 +35,7 @@ dependencies:
   hydrated_riverpod: ^0.0.3
   intl: ^0.17.0
   json_serializable: ^6.5.4
+  package_info: ^2.0.2
   package_info_plus: ^3.0.1
   path_provider: ^2.0.11
   pretty_dio_logger: ^1.1.1
