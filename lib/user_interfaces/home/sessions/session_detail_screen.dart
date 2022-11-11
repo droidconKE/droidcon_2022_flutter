@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:droidcon_app/models/session/session.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
+import 'package:droidcon_app/user_interfaces/home/sessions/widgets/bookmark_session_button.dart';
 import 'package:droidcon_app/user_interfaces/widgets/app_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,7 +10,6 @@ import 'package:intl/intl.dart';
 
 import '../../../assets/images.dart';
 import '../../speakers/speaker_detail_screen.dart';
-import '../../widgets/afrikon_icon.dart';
 
 class SessionDetailScreen extends StatelessWidget {
   static String routeName = 'session-detail';
@@ -19,7 +20,6 @@ class SessionDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const isBookmarked = true; // TODO: Check if bookmarked
     return Scaffold(
       appBar: AppBar(
         leading: const AppBackButton(color: AppColors.blackColor),
@@ -55,36 +55,31 @@ class SessionDetailScreen extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          ...session.speakers
-                              .map(
-                                (speaker) => GestureDetector(
-                                  onTap: () {
-                                    context.pushNamed(
-                                      SpeakerDetailScreen.routeName,
-                                      extra: speaker,
-                                    );
-                                  },
-                                  child: Text(
-                                    speaker.name,
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          const Spacer(),
-                          InkWell(
-                            child: const AfrikonIcon(
-                              isBookmarked ? 'star' : 'star-outline',
-                              height: 24,
-                              color: isBookmarked
-                                  ? AppColors.orangeColor
-                                  : AppColors.blueColor,
+                          Expanded(
+                            child: Wrap(
+                              children: [
+                                ...session.speakers
+                                    .map(
+                                      (speaker) => GestureDetector(
+                                        onTap: () {
+                                          context.pushNamed(
+                                            SpeakerDetailScreen.routeName,
+                                            extra: speaker,
+                                          );
+                                        },
+                                        child: Text(
+                                          speaker.name,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge,
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                              ],
                             ),
-                            onTap: () {
-                              // TODO: Bookmark session
-                            },
                           ),
+                          BookmarkSessionButton(session: session),
                         ],
                       ),
                       const SizedBox(height: 25),
@@ -100,7 +95,10 @@ class SessionDetailScreen extends StatelessWidget {
                       const SizedBox(height: 15),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(AssetImages.droidconBanner),
+                        child: session.sessionImage != null
+                            ? CachedNetworkImage(
+                                imageUrl: session.sessionImage!)
+                            : Image.asset(AssetImages.droidconBanner),
                       ),
                     ],
                   ),

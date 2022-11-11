@@ -26,15 +26,15 @@ mixin _$Session {
   @JsonKey(name: 'session_format')
   String get sessionFormat => throw _privateConstructorUsedError;
   @JsonKey(name: 'session_level')
-  String get sessionLevel => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_keynote')
-  bool? get isKeynote => throw _privateConstructorUsedError;
+  String get sessionLevel =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'is_keynote') int? isKeynote,
+// @JsonKey(name: 'is_serviceSession') int? isServiceSession,
+  @JsonKey(name: 'is_bookmarked', defaultValue: false)
+  bool get isBookmarked => throw _privateConstructorUsedError;
   @JsonKey(name: 'session_image')
   String? get sessionImage => throw _privateConstructorUsedError;
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get borderColor => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_serviceSession')
-  bool? get isServiceSession => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_date_time')
   String? get startDateTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_time')
@@ -62,11 +62,10 @@ abstract class $SessionCopyWith<$Res> {
       String slug,
       @JsonKey(name: 'session_format') String sessionFormat,
       @JsonKey(name: 'session_level') String sessionLevel,
-      @JsonKey(name: 'is_keynote') bool? isKeynote,
+      @JsonKey(name: 'is_bookmarked', defaultValue: false) bool isBookmarked,
       @JsonKey(name: 'session_image') String? sessionImage,
       String? backgroundColor,
       String? borderColor,
-      @JsonKey(name: 'is_serviceSession') bool? isServiceSession,
       @JsonKey(name: 'start_date_time') String? startDateTime,
       @JsonKey(name: 'start_time') String? startTime,
       @JsonKey(name: 'end_date_time') String? endDateTime,
@@ -93,11 +92,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? slug = null,
     Object? sessionFormat = null,
     Object? sessionLevel = null,
-    Object? isKeynote = freezed,
+    Object? isBookmarked = null,
     Object? sessionImage = freezed,
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
-    Object? isServiceSession = freezed,
     Object? startDateTime = freezed,
     Object? startTime = freezed,
     Object? endDateTime = freezed,
@@ -126,10 +124,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.sessionLevel
           : sessionLevel // ignore: cast_nullable_to_non_nullable
               as String,
-      isKeynote: freezed == isKeynote
-          ? _value.isKeynote
-          : isKeynote // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isBookmarked: null == isBookmarked
+          ? _value.isBookmarked
+          : isBookmarked // ignore: cast_nullable_to_non_nullable
+              as bool,
       sessionImage: freezed == sessionImage
           ? _value.sessionImage
           : sessionImage // ignore: cast_nullable_to_non_nullable
@@ -142,10 +140,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      isServiceSession: freezed == isServiceSession
-          ? _value.isServiceSession
-          : isServiceSession // ignore: cast_nullable_to_non_nullable
-              as bool?,
       startDateTime: freezed == startDateTime
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
@@ -187,11 +181,10 @@ abstract class _$$_SessionCopyWith<$Res> implements $SessionCopyWith<$Res> {
       String slug,
       @JsonKey(name: 'session_format') String sessionFormat,
       @JsonKey(name: 'session_level') String sessionLevel,
-      @JsonKey(name: 'is_keynote') bool? isKeynote,
+      @JsonKey(name: 'is_bookmarked', defaultValue: false) bool isBookmarked,
       @JsonKey(name: 'session_image') String? sessionImage,
       String? backgroundColor,
       String? borderColor,
-      @JsonKey(name: 'is_serviceSession') bool? isServiceSession,
       @JsonKey(name: 'start_date_time') String? startDateTime,
       @JsonKey(name: 'start_time') String? startTime,
       @JsonKey(name: 'end_date_time') String? endDateTime,
@@ -215,11 +208,10 @@ class __$$_SessionCopyWithImpl<$Res>
     Object? slug = null,
     Object? sessionFormat = null,
     Object? sessionLevel = null,
-    Object? isKeynote = freezed,
+    Object? isBookmarked = null,
     Object? sessionImage = freezed,
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
-    Object? isServiceSession = freezed,
     Object? startDateTime = freezed,
     Object? startTime = freezed,
     Object? endDateTime = freezed,
@@ -248,10 +240,10 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value.sessionLevel
           : sessionLevel // ignore: cast_nullable_to_non_nullable
               as String,
-      isKeynote: freezed == isKeynote
-          ? _value.isKeynote
-          : isKeynote // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isBookmarked: null == isBookmarked
+          ? _value.isBookmarked
+          : isBookmarked // ignore: cast_nullable_to_non_nullable
+              as bool,
       sessionImage: freezed == sessionImage
           ? _value.sessionImage
           : sessionImage // ignore: cast_nullable_to_non_nullable
@@ -264,10 +256,6 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      isServiceSession: freezed == isServiceSession
-          ? _value.isServiceSession
-          : isServiceSession // ignore: cast_nullable_to_non_nullable
-              as bool?,
       startDateTime: freezed == startDateTime
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
@@ -303,17 +291,24 @@ class _$_Session extends _Session {
       {required this.title,
       required this.description,
       required this.slug,
-      @JsonKey(name: 'session_format') required this.sessionFormat,
-      @JsonKey(name: 'session_level') required this.sessionLevel,
-      @JsonKey(name: 'is_keynote') this.isKeynote,
-      @JsonKey(name: 'session_image') this.sessionImage,
+      @JsonKey(name: 'session_format')
+          required this.sessionFormat,
+      @JsonKey(name: 'session_level')
+          required this.sessionLevel,
+      @JsonKey(name: 'is_bookmarked', defaultValue: false)
+          required this.isBookmarked,
+      @JsonKey(name: 'session_image')
+          this.sessionImage,
       this.backgroundColor,
       this.borderColor,
-      @JsonKey(name: 'is_serviceSession') this.isServiceSession,
-      @JsonKey(name: 'start_date_time') this.startDateTime,
-      @JsonKey(name: 'start_time') this.startTime,
-      @JsonKey(name: 'end_date_time') this.endDateTime,
-      @JsonKey(name: 'end_time') this.endTime,
+      @JsonKey(name: 'start_date_time')
+          this.startDateTime,
+      @JsonKey(name: 'start_time')
+          this.startTime,
+      @JsonKey(name: 'end_date_time')
+          this.endDateTime,
+      @JsonKey(name: 'end_time')
+          this.endTime,
       required final List<Speaker> speakers,
       final List<Room>? rooms})
       : _speakers = speakers,
@@ -335,9 +330,11 @@ class _$_Session extends _Session {
   @override
   @JsonKey(name: 'session_level')
   final String sessionLevel;
+// @JsonKey(name: 'is_keynote') int? isKeynote,
+// @JsonKey(name: 'is_serviceSession') int? isServiceSession,
   @override
-  @JsonKey(name: 'is_keynote')
-  final bool? isKeynote;
+  @JsonKey(name: 'is_bookmarked', defaultValue: false)
+  final bool isBookmarked;
   @override
   @JsonKey(name: 'session_image')
   final String? sessionImage;
@@ -345,9 +342,6 @@ class _$_Session extends _Session {
   final String? backgroundColor;
   @override
   final String? borderColor;
-  @override
-  @JsonKey(name: 'is_serviceSession')
-  final bool? isServiceSession;
   @override
   @JsonKey(name: 'start_date_time')
   final String? startDateTime;
@@ -378,7 +372,7 @@ class _$_Session extends _Session {
 
   @override
   String toString() {
-    return 'Session(title: $title, description: $description, slug: $slug, sessionFormat: $sessionFormat, sessionLevel: $sessionLevel, isKeynote: $isKeynote, sessionImage: $sessionImage, backgroundColor: $backgroundColor, borderColor: $borderColor, isServiceSession: $isServiceSession, startDateTime: $startDateTime, startTime: $startTime, endDateTime: $endDateTime, endTime: $endTime, speakers: $speakers, rooms: $rooms)';
+    return 'Session(title: $title, description: $description, slug: $slug, sessionFormat: $sessionFormat, sessionLevel: $sessionLevel, isBookmarked: $isBookmarked, sessionImage: $sessionImage, backgroundColor: $backgroundColor, borderColor: $borderColor, startDateTime: $startDateTime, startTime: $startTime, endDateTime: $endDateTime, endTime: $endTime, speakers: $speakers, rooms: $rooms)';
   }
 
   @override
@@ -394,16 +388,14 @@ class _$_Session extends _Session {
                 other.sessionFormat == sessionFormat) &&
             (identical(other.sessionLevel, sessionLevel) ||
                 other.sessionLevel == sessionLevel) &&
-            (identical(other.isKeynote, isKeynote) ||
-                other.isKeynote == isKeynote) &&
+            (identical(other.isBookmarked, isBookmarked) ||
+                other.isBookmarked == isBookmarked) &&
             (identical(other.sessionImage, sessionImage) ||
                 other.sessionImage == sessionImage) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.borderColor, borderColor) ||
                 other.borderColor == borderColor) &&
-            (identical(other.isServiceSession, isServiceSession) ||
-                other.isServiceSession == isServiceSession) &&
             (identical(other.startDateTime, startDateTime) ||
                 other.startDateTime == startDateTime) &&
             (identical(other.startTime, startTime) ||
@@ -424,11 +416,10 @@ class _$_Session extends _Session {
       slug,
       sessionFormat,
       sessionLevel,
-      isKeynote,
+      isBookmarked,
       sessionImage,
       backgroundColor,
       borderColor,
-      isServiceSession,
       startDateTime,
       startTime,
       endDateTime,
@@ -455,17 +446,24 @@ abstract class _Session extends Session {
       {required final String title,
       required final String description,
       required final String slug,
-      @JsonKey(name: 'session_format') required final String sessionFormat,
-      @JsonKey(name: 'session_level') required final String sessionLevel,
-      @JsonKey(name: 'is_keynote') final bool? isKeynote,
-      @JsonKey(name: 'session_image') final String? sessionImage,
+      @JsonKey(name: 'session_format')
+          required final String sessionFormat,
+      @JsonKey(name: 'session_level')
+          required final String sessionLevel,
+      @JsonKey(name: 'is_bookmarked', defaultValue: false)
+          required final bool isBookmarked,
+      @JsonKey(name: 'session_image')
+          final String? sessionImage,
       final String? backgroundColor,
       final String? borderColor,
-      @JsonKey(name: 'is_serviceSession') final bool? isServiceSession,
-      @JsonKey(name: 'start_date_time') final String? startDateTime,
-      @JsonKey(name: 'start_time') final String? startTime,
-      @JsonKey(name: 'end_date_time') final String? endDateTime,
-      @JsonKey(name: 'end_time') final String? endTime,
+      @JsonKey(name: 'start_date_time')
+          final String? startDateTime,
+      @JsonKey(name: 'start_time')
+          final String? startTime,
+      @JsonKey(name: 'end_date_time')
+          final String? endDateTime,
+      @JsonKey(name: 'end_time')
+          final String? endTime,
       required final List<Speaker> speakers,
       final List<Room>? rooms}) = _$_Session;
   const _Session._() : super._();
@@ -484,9 +482,10 @@ abstract class _Session extends Session {
   @override
   @JsonKey(name: 'session_level')
   String get sessionLevel;
-  @override
-  @JsonKey(name: 'is_keynote')
-  bool? get isKeynote;
+  @override // @JsonKey(name: 'is_keynote') int? isKeynote,
+// @JsonKey(name: 'is_serviceSession') int? isServiceSession,
+  @JsonKey(name: 'is_bookmarked', defaultValue: false)
+  bool get isBookmarked;
   @override
   @JsonKey(name: 'session_image')
   String? get sessionImage;
@@ -494,9 +493,6 @@ abstract class _Session extends Session {
   String? get backgroundColor;
   @override
   String? get borderColor;
-  @override
-  @JsonKey(name: 'is_serviceSession')
-  bool? get isServiceSession;
   @override
   @JsonKey(name: 'start_date_time')
   String? get startDateTime;

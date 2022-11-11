@@ -1,14 +1,17 @@
 import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ButtonGroup extends StatefulWidget {
   final int selectedIndex;
-  final ValueChanged<int>? onSelectedIndexChanged;
+  final ValueChanged<DateTime>? onSelectedIndexChanged;
+  final List<DateTime> options;
 
   const ButtonGroup({
     Key? key,
     this.selectedIndex = 0,
     this.onSelectedIndexChanged,
+    required this.options,
   }) : super(key: key);
 
   @override
@@ -20,15 +23,15 @@ class _ButtonGroupState extends State<ButtonGroup> {
 
   @override
   void initState() {
-    _selectedIndex = widget.selectedIndex;
     super.initState();
+    _selectedIndex = widget.selectedIndex;
   }
 
   void updateSelectedIndex(index) {
     setState(() {
       _selectedIndex = index;
       if (widget.onSelectedIndexChanged != null) {
-        widget.onSelectedIndexChanged?.call(index);
+        widget.onSelectedIndexChanged?.call(widget.options[index]);
       }
     });
   }
@@ -38,30 +41,16 @@ class _ButtonGroupState extends State<ButtonGroup> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        ButtonGroupButton(
-          date: '16th',
-          day: 'Day 1',
-          active: _selectedIndex == 0,
-          onTap: () {
-            updateSelectedIndex(0);
-          },
-        ),
-        ButtonGroupButton(
-          date: '17th',
-          day: 'Day 2',
-          active: _selectedIndex == 1,
-          onTap: () {
-            updateSelectedIndex(1);
-          },
-        ),
-        ButtonGroupButton(
-          date: '18th',
-          day: 'Day 3',
-          active: _selectedIndex == 2,
-          onTap: () {
-            updateSelectedIndex(2);
-          },
-        ),
+        ...widget.options.asMap().entries.map(
+              (e) => ButtonGroupButton(
+                date: DateFormat('d').format(e.value),
+                day: 'Day ${e.key + 1}',
+                active: _selectedIndex == e.key,
+                onTap: () {
+                  updateSelectedIndex(e.key);
+                },
+              ),
+            ),
       ],
     );
   }
