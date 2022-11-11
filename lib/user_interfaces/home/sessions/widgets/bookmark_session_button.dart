@@ -19,9 +19,8 @@ class BookmarkSessionButton extends StatelessWidget {
       icon: AfrikonIcon(
         session.isBookmarked ? 'star' : 'star-outline',
         height: 24,
-        color: session.isBookmarked
-            ? AppColors.orangeColor
-            : AppColors.blueColor,
+        color:
+            session.isBookmarked ? AppColors.orangeColor : AppColors.blueColor,
       ),
       onPressed: () {
         // TODO: Bookmark session

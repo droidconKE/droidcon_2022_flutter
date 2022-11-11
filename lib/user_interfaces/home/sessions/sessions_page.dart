@@ -132,7 +132,18 @@ class SessionsPage extends ConsumerWidget {
         body: sessions.when(
           error: (err, stack) {
             debugPrintStack(stackTrace: stack);
-            return Text('Error: $err');
+            return Center(
+                child: Column(
+              children: [
+                Text('Error: $err'),
+                TextButton(
+                  onPressed: () {
+                    ref.refresh(sessionsProvider);
+                  },
+                  child: const Text('Retry'),
+                ),
+              ],
+            ));
           },
           loading: () => const Center(
             child: CircularProgressIndicator(),
@@ -164,7 +175,10 @@ class SessionsPage extends ConsumerWidget {
                                     options: dates.toList(),
                                   );
                                 },
-                                error: (err, stack) => Text(err.toString()),
+                                error: (err, stack) {
+                                  debugPrintStack(stackTrace: stack);
+                                  return Text(err.toString());
+                                },
                                 loading: () =>
                                     const CircularProgressIndicator()),
                           ),

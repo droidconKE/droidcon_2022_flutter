@@ -19,7 +19,8 @@ class Session with _$Session {
     @JsonKey(name: 'session_level') required String sessionLevel,
     // @JsonKey(name: 'is_keynote') int? isKeynote,
     // @JsonKey(name: 'is_serviceSession') int? isServiceSession,
-    @JsonKey(name: 'is_bookmarked', defaultValue: false) required bool isBookmarked,
+    @JsonKey(name: 'is_bookmarked', defaultValue: false)
+        required bool isBookmarked,
     @JsonKey(name: 'session_image') String? sessionImage,
     String? backgroundColor,
     String? borderColor,

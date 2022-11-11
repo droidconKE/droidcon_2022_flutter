@@ -9,12 +9,15 @@ final featuredSessionsProvider = FutureProvider<List<Session>>((ref) async {
   final sessions = await ref.watch(sessionsProvider.future);
   final eventDates = await ref.watch(eventDatesProvider.future);
 
-  final todaysIndex = eventDates.indexWhere((element) => element.isSameDay(DateTime.now()));
+  final todaysIndex =
+      eventDates.indexWhere((element) => element.isSameDay(DateTime.now()));
 
   List<Session>? selectionPool = sessions;
   if (![null, -1].contains(todaysIndex)) {
-    selectionPool = sessions.where((element) =>
-        element.startDateTimeObject?.isSameDay(DateTime.now()) ?? false).toList();
+    selectionPool = sessions
+        .where((element) =>
+            element.startDateTimeObject?.isSameDay(DateTime.now()) ?? false)
+        .toList();
   }
   selectionPool.shuffle();
 

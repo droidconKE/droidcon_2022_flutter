@@ -34,7 +34,7 @@ class UserProfileAvatar extends ConsumerWidget {
                 PrimaryButton(
                   label: 'Logout',
                   onPressed: () async {
-                    ref.read(userInfoProvider.notifier).clear();
+                    ref.read(userInfoProvider.notifier).set(null);
                     Navigator.pop(context);
                   },
                 ),
@@ -65,8 +65,7 @@ class UserProfileAvatar extends ConsumerWidget {
               ? null
               : DecorationImage(
                   image: NetworkImage(
-                    ref.watch(userInfoProvider)?.user.avatar ??
-                        'https://res.cloudinary.com/droidconke/image/upload/v1631971473/prod/upload/org_team/mwzoe8a4esxzwlompcqf.jpg',
+                    ref.watch(userInfoProvider)!.user.avatar!,
                   ),
                   alignment: Alignment.center,
                   fit: BoxFit.cover,

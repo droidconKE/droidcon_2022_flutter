@@ -13,6 +13,7 @@ class FeaturedSpeakers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Fetch featured speakers from remote
     List<Speaker> featuredSpeakers = [
       {
         "name": "Annunziata Kinya",
@@ -86,7 +87,6 @@ class FeaturedSpeakers extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(11))),
                     child: Text(
                       '+${remainingSpeakers > 0 ? remainingSpeakers : 0}',
-                      // TODO: Replace hard-coded value
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: AppColors.blueColor,
                           ),

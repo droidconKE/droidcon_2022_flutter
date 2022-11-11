@@ -23,7 +23,8 @@ final filteredSessionsListProvider = FutureProvider<List<Session>>((ref) async {
   final selectedDate = ref.watch(selectedDateProvider);
 
   final filteredEvents = filter.maybeWhen(
-    bookmarked: () => sessions.where((element) => element.isBookmarked).toList(),
+    bookmarked: () =>
+        sessions.where((element) => element.isBookmarked).toList(),
     orElse: () => sessions,
   );
   if (selectedDate != null) {
@@ -32,5 +33,7 @@ final filteredSessionsListProvider = FutureProvider<List<Session>>((ref) async {
             element.startDateTimeObject?.isSameDay(selectedDate) ?? false)
         .toList();
   }
-  return filteredEvents..sort((a, b) => Comparable.compare(a.startDateTimeObject!, b.startDateTimeObject!));
+  return filteredEvents
+    ..sort((a, b) =>
+        Comparable.compare(a.startDateTimeObject!, b.startDateTimeObject!));
 });

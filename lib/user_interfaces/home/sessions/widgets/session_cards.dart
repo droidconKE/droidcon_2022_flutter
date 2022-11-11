@@ -94,12 +94,17 @@ class SessionCards extends StatelessWidget {
                           Row(
                             children: [
                               ...session.speakers
-                                  .map((speaker) => PassportPhoto(
-                                        circular: true,
-                                        image: CachedNetworkImageProvider(
-                                            speaker.avatar),
-                                        imageFrameSize: 1,
-                                        imageSize: 32,
+                                  .map((speaker) => Row(
+                                        children: [
+                                          PassportPhoto(
+                                            circular: true,
+                                            image: CachedNetworkImageProvider(
+                                                speaker.avatar),
+                                            imageFrameSize: 1,
+                                            imageSize: 32,
+                                          ),
+                                          const SizedBox(width: 26),
+                                        ],
                                       ))
                                   .toList(),
                               const Spacer(),
