@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../models/session/session.dart';
-import '../show_favorited_sessions/state/sessions_filter_state.dart';
 
 extension DateTimeExtension on DateTime {
   bool isSameDay(DateTime date) {

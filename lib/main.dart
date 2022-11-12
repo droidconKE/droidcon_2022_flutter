@@ -55,12 +55,31 @@ void main() async {
         return ErrorWidget(error.exception);
       };
 
-      runApp(const ProviderScope(
-        child: DroidconApp(),
+      runApp(ProviderScope(
+        observers: [Logger()],
+        child: const DroidconApp(),
       ));
     },
     (exception, stackTrace) {
       FirebaseCrashlytics.instance.recordError(exception, stackTrace);
     },
   );
+}
+
+class Logger extends ProviderObserver {
+  @override
+  void didUpdateProvider(
+    ProviderBase provider,
+    Object? previousValue,
+    Object? newValue,
+    ProviderContainer container,
+  ) {
+    debugPrint('''
+{
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "previousValue": "${previousValue.toString().replaceRange((previousValue.toString().length > 100 ? 100 : previousValue.toString().length), previousValue.toString().length, '...')}"
+  "newValue": "${newValue.toString().replaceRange((newValue.toString().length > 100 ? 100 : newValue.toString().length), newValue.toString().length, '...')}"
+}
+''');
+  }
 }

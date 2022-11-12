@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../assets/images.dart';
 import '../../../../providers/providers.dart';
 import '../../../../styles/colors/colors.dart';
 
@@ -102,8 +103,7 @@ class FeaturedSessions extends ConsumerWidget {
                                                   null
                                               ? CachedNetworkImageProvider(
                                                   sessions[index].sessionImage!)
-                                              : const AssetImage(
-                                                  'assets/images/signin_background_light.png'))
+                                              : const AssetImage(AssetImages.droidconBanner))
                                           as ImageProvider,
                                       fit: BoxFit.cover,
                                     ),
