@@ -4,7 +4,6 @@ import 'package:droidcon_app/providers/sessions/event_dates_provider.dart';
 import 'package:droidcon_app/providers/sessions/filtered_sessions_provider.dart';
 import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
 import 'package:droidcon_app/providers/sessions_display_style/sessions_display_style.dart';
-import 'package:droidcon_app/providers/show_favorited_sessions/state/sessions_filter_state.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:droidcon_app/user_interfaces/home/sessions/sessions_filter_screen.dart';
 import 'package:droidcon_app/user_interfaces/home/sessions/widgets/button_group.dart';
@@ -12,7 +11,8 @@ import 'package:droidcon_app/user_interfaces/home/sessions/widgets/session_list.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../providers/show_favorited_sessions/sessions_filter_provider.dart';
+import '../../../providers/sessions_filter/sessions_filter_provider.dart';
+import '../../../providers/sessions_filter/state/sessions_filter_state.dart';
 import '../../widgets/afrikon_icon.dart';
 import '../../widgets/droidcon_logo.dart';
 import 'widgets/droidcon_switch.dart';

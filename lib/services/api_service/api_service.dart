@@ -11,7 +11,7 @@ class ApiService {
       Options? options,
       Map<String, dynamic>? queries}) async {
     try {
-      var response = await restClient.dio!.get('${restClient.baseUrl!}/$path',
+      var response = await restClient.dio!.get('${restClient.baseUrl}/$path',
           options: options, queryParameters: queries);
       return response.data;
     } on DioError catch (e) {
@@ -29,7 +29,7 @@ class ApiService {
       Options? options,
       Map<String, dynamic>? queries}) async {
     try {
-      var response = await restClient.dio!.post('${restClient.baseUrl!}/$path',
+      var response = await restClient.dio!.post('${restClient.baseUrl}/$path',
           data: data, options: options, queryParameters: queries);
       return response.data;
     } on DioError catch (e) {

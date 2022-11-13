@@ -1,6 +1,6 @@
 import 'package:droidcon_app/providers/selected_date/selected_date_provider.dart';
 import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
-import 'package:droidcon_app/providers/show_favorited_sessions/sessions_filter_provider.dart';
+import 'package:droidcon_app/providers/sessions_filter/sessions_filter_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
