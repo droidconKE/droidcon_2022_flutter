@@ -1,4 +1,3 @@
-import 'package:droidcon_app/providers/sessions/event_dates_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final selectedDateProvider =

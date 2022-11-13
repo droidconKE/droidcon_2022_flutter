@@ -47,20 +47,21 @@ class MainHomePage extends ConsumerWidget {
                 bottomNavBarItems.indexOf(navBarItem);
             bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
             return BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: AfrikonIcon(
-                    navBarItem['icon']!,
-                    color: isActive
-                        ? isDarkTheme
-                            ? AppColors.blueGreenDroidconColor
-                            : AppColors.blueDroidconColor
-                        : isDarkTheme
-                            ? AppColors.lightGreyTextColor
-                            : AppColors.greyTextColor,
-                  ),
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AfrikonIcon(
+                  navBarItem['icon']!,
+                  color: isActive
+                      ? isDarkTheme
+                          ? AppColors.blueGreenDroidconColor
+                          : AppColors.blueDroidconColor
+                      : isDarkTheme
+                          ? AppColors.lightGreyTextColor
+                          : AppColors.greyTextColor,
                 ),
-                label: navBarItem['title']);
+              ),
+              label: navBarItem['title'],
+            );
           }).toList()),
     );
   }
