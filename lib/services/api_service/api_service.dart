@@ -15,9 +15,9 @@ class ApiService {
           options: options, queryParameters: queries);
       return response.data;
     } on DioError catch (e) {
-      throw e.response!.data['message'];
+      throw e.response?.data['message'] ?? e.toString();
     } catch (e) {
-      throw 'An error has occured';
+      throw 'An error has occurred - ${e.toString()}';
     }
   }
 
@@ -35,7 +35,7 @@ class ApiService {
     } on DioError catch (e) {
       throw e.response!.data['message'];
     } catch (e) {
-      throw 'An error has occured';
+      throw 'An error has occurred';
     }
   }
 }

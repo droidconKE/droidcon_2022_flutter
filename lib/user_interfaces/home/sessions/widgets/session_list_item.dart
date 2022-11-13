@@ -1,12 +1,12 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../models/models.dart';
 import '../session_detail_screen.dart';
+import 'bookmark_session_button.dart';
 
 class SessionListItem extends StatelessWidget {
   final Session session;
@@ -15,13 +15,13 @@ class SessionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const isBookmarked = true; // TODO: Check if session is bookmarked
     return GestureDetector(
       onTap: () {
         context.pushNamed(SessionDetailScreen.routeName, extra: session);
       },
       child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
+        elevation: 10,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -31,7 +31,7 @@ class SessionListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    DateFormat('j')
+                    DateFormat('hh:mm')
                         .format(session.startDateTimeObject ?? DateTime.now()),
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.normal,
@@ -90,7 +90,7 @@ class SessionListItem extends StatelessWidget {
                     const SizedBox(height: 3),
                     Wrap(
                       children: session.speakers.map(
-                        (s) {
+                        (speaker) {
                           return Row(
                             children: <Widget>[
                               const Icon(
@@ -100,11 +100,12 @@ class SessionListItem extends StatelessWidget {
                               ),
                               const SizedBox(width: 3),
                               Text(
-                                s.name,
+                                speaker.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium
                                     ?.copyWith(color: AppColors.blueColor),
+                                overflow: TextOverflow.clip,
                               ),
                             ],
                           );
@@ -115,18 +116,7 @@ class SessionListItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20),
-              InkWell(
-                child: const AfrikonIcon(
-                  isBookmarked ? 'star' : 'star-outline',
-                  height: 24,
-                  color: isBookmarked
-                      ? AppColors.orangeColor
-                      : AppColors.blueColor,
-                ),
-                onTap: () {
-                  // TODO: Bookmark session
-                },
-              ),
+              BookmarkSessionButton(session: session),
             ],
           ),
         ),

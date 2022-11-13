@@ -8,8 +8,7 @@ class AuthInterceptor extends Interceptor {
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    TokenProvider tokenProvider = GetIt.I.get<TokenProvider>();
-    String token = tokenProvider.state;
+    final token = GetIt.I.get<TokenProvider>().state;
 
     /// Add the bearer token header to all requests if the token is not null
     if (token.isNotEmpty) {

@@ -1,16 +1,19 @@
+import 'package:droidcon_app/providers/show_favorited_sessions/sessions_filter_provider.dart';
+import 'package:droidcon_app/providers/show_favorited_sessions/state/sessions_filter_state.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../widgets/afrikon_icon.dart';
 
-class SessionsFilterScreen extends StatelessWidget {
+class SessionsFilterScreen extends ConsumerWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey();
 
   SessionsFilterScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -34,6 +37,9 @@ class SessionsFilterScreen extends StatelessWidget {
                 child: SafeArea(
                   child: FormBuilder(
                     key: _formKey,
+                    initialValue: ref
+                        .watch(sessionsFilterProvider)
+                        .maybeWhen(custom: (data) => data, orElse: () => {}),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +104,7 @@ class SessionsFilterScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const CustomSegmentedControlField(
-                          name: 'level',
+                          name: 'format',
                           options: [
                             'Keynote',
                             'Codelab',
@@ -111,10 +117,27 @@ class SessionsFilterScreen extends StatelessWidget {
                           width: double.maxFinite,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context)
-                                  .pop(_formKey.currentState!.value);
+                              if (_formKey.currentState!.saveAndValidate()) {
+                                ref
+                                    .read(sessionsFilterProvider.notifier)
+                                    .change(SessionsFilterState.custom(
+                                        _formKey.currentState!.value));
+                                Navigator.of(context).pop();
+                              }
                             },
                             child: const Text('FILTER'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: double.maxFinite,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              ref
+                                  .read(sessionsFilterProvider.notifier)
+                                  .change(SessionsFilterState.none());
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('CLEAR FILTER'),
                           ),
                         ),
                       ],
@@ -142,7 +165,7 @@ class CustomSegmentedControlField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilderSegmentedControl<String>(
-      name: 'level',
+      name: name,
       decoration: const InputDecoration(
         border: InputBorder.none,
         enabledBorder: InputBorder.none,

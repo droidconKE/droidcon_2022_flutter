@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:droidcon_app/models/login_response/login_response.dart';
 import 'package:droidcon_app/models/user_info/user_info.dart';
 import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
@@ -17,7 +18,7 @@ class UserProfileAvatar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final googleSignIn = ref.watch(loginWithGoogleProvider.notifier);
+    final userInfo = ref.watch(userInfoProvider);
     ref.listen(loginWithGoogleProvider, (oldState, state) {
       ref.read(userInfoProvider.notifier).set(state.maybeWhen(
             success: (LoginResponse res) => UserInfo.fromJson(res.toJson()),
@@ -34,6 +35,7 @@ class UserProfileAvatar extends ConsumerWidget {
                 PrimaryButton(
                   label: 'Logout',
                   onPressed: () async {
+                    ref.read(userInfoProvider.notifier).set(null);
                     ref.read(userInfoProvider.notifier).clear();
                     Navigator.pop(context);
                   },
@@ -42,7 +44,7 @@ class UserProfileAvatar extends ConsumerWidget {
                 GoogleButton(
                   label: 'Sign in with Google',
                   onTap: () async {
-                    googleSignIn.loginWithGoogle();
+                    ref.read(loginWithGoogleProvider.notifier).loginWithGoogle();
 
                     Navigator.pop(context);
                   },
@@ -58,21 +60,20 @@ class UserProfileAvatar extends ConsumerWidget {
         // color: AppColors.tealColor,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: ref.watch(userInfoProvider) == null
+          color: userInfo == null
               ? AppColors.tealColor
               : Colors.transparent,
-          image: ref.watch(userInfoProvider) == null
+          image: userInfo == null
               ? null
               : DecorationImage(
-                  image: NetworkImage(
-                    ref.watch(userInfoProvider)?.user.avatar ??
-                        'https://res.cloudinary.com/droidconke/image/upload/v1631971473/prod/upload/org_team/mwzoe8a4esxzwlompcqf.jpg',
+                  image: CachedNetworkImageProvider(
+                    userInfo.user.avatar ?? 'https://droidcon.co.ke/images/icons/apple-icon-120x120.png',
                   ),
                   alignment: Alignment.center,
                   fit: BoxFit.cover,
                 ),
         ),
-        child: ref.watch(userInfoProvider) != null
+        child: userInfo != null
             ? const SizedBox()
             : const AfrikonIcon('locked', color: Colors.white, height: 15),
       ),

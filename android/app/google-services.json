@@ -50,6 +50,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "275140757840-0m0qg2ovqf1ggs4341qb0lgsrekrjltp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ke.co.droidcon22flutter.droidcon_2022_flutter",
+            "certificate_hash": "03c45d81eb2e7547366026adcfb9e9839581d540"
+          }
+        },
+        {
           "client_id": "275140757840-2cubiasllj5imovueep61dov3flarcsh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

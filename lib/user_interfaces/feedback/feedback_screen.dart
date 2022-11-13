@@ -103,7 +103,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         child: PrimaryButton(
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
-                              // TODO: Submit value
+                              // TODO: Submit feedback to server
                               await showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
