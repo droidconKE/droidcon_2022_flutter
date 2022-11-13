@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
 import 'package:droidcon_app/utils/rest_client.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -31,8 +32,10 @@ void main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      final storage = await HydratedStorage.build(
-          storageDirectory: await getApplicationDocumentsDirectory());
+      final appDir = await getApplicationDocumentsDirectory();
+      final storage = await HydratedStorage.build(storageDirectory: appDir);
+      GetIt.I.registerSingleton<HiveCacheStore>(HiveCacheStore(appDir.path));
+      // GetIt.I.registerSingleton<CacheOptions>(ApiConfig.defaultCacheOptions);
       HydratedRiverpod.initialize(storage: storage);
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
