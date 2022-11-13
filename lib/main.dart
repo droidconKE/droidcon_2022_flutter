@@ -32,13 +32,9 @@ void main() async {
 
   await runZonedGuarded(
     () async {
-      WidgetsFlutterBinding.ensureInitialized();
       final storage = await HydratedStorage.build(
           storageDirectory: await getApplicationDocumentsDirectory());
       HydratedRiverpod.initialize(storage: storage);
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
       if (kDebugMode) {
         await FirebaseCrashlytics.instance
             .setCrashlyticsCollectionEnabled(false);
