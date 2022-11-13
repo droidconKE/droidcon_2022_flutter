@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:droidcon_app/utils/utils.dart';
 import 'package:firebase_performance_dio/firebase_performance_dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import 'custom_interceptors/error_interceptor.dart';
 
 /// This class configures the base API requests
 
@@ -14,10 +17,10 @@ class RestClient {
   Dio? get dio => _dio;
 
   /// Get it from the environment variables
-  final String? baseUrl = dotenv.env['SERVER_URL'];
+  final String baseUrl = dotenv.env['SERVER_URL'] ?? '';
 
-  RestClient({BaseOptions? options}) {
-    create(options);
+  RestClient({BaseOptions? options, CacheOptions? cacheOptions}) {
+    create((options ?? BaseOptions()).copyWith(baseUrl: baseUrl), cacheOptions);
   }
 
   ///The test rest client
@@ -57,13 +60,15 @@ class RestClient {
   }
 
   /// Instantiate the restclient class
-  void create([BaseOptions? options]) {
+  void create([BaseOptions? options, CacheOptions? cacheOptions]) {
     _dio = Dio(options);
     _dioNoAUth = Dio();
 
     ///Add the interceptors
     // The [AuthInterceptor] to authenticate all requests
     _dio!.interceptors.addAll([
+      ErrorInterceptor(),
+      if (cacheOptions != null) DioCacheInterceptor(options: cacheOptions),
       AuthInterceptor(),
       UserAgentInterceptor(),
       if (kDebugMode)
