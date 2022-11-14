@@ -7,20 +7,13 @@ import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../../../models/session/session.dart';
-import '../../../models/speaker_model.dart';
+import '../../../models/speaker/speaker.dart';
 import '../../../providers/home/home_provider.dart';
 import '../../../styles/colors/colors.dart';
 import 'widgets/sponsors_card.dart';
 
 class LoggedInHomeScreen extends ConsumerWidget {
-  final List<SpeakerModel> _speakers = [
-    SpeakerModel(
-        speakerName: 'Frank Tamre', speakerPhoto: AssetImages.profilePhoto),
-    SpeakerModel(speakerName: 'Juma', speakerPhoto: AssetImages.profilePhoto),
-    SpeakerModel(speakerName: 'Harun', speakerPhoto: AssetImages.profilePhoto),
-    SpeakerModel(speakerName: 'Dedan', speakerPhoto: AssetImages.profilePhoto),
-    SpeakerModel(speakerName: 'Kendi', speakerPhoto: AssetImages.profilePhoto),
-  ];
+  final List<Speaker> _speakers = [];
 
   final List<Session> _sessions = [];
   final double horizontalPadding = 20.0;
@@ -304,7 +297,7 @@ class LoggedInHomeScreen extends ConsumerWidget {
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     itemBuilder: ((context, index) {
-                      SpeakerModel speaker = _speakers[index];
+                      Speaker speaker = _speakers[index];
                       return Column(
                         children: [
                           Container(
@@ -315,9 +308,9 @@ class LoggedInHomeScreen extends ConsumerWidget {
                                   border: Border.all(
                                       color: AppColors.tealColor, width: 2.0),
                                   borderRadius: BorderRadius.circular(10)),
-                              child: Image.asset(speaker.speakerPhoto)),
+                              child: Image.asset(speaker.avatar)),
                           Text(
-                            speaker.speakerName,
+                            speaker.name,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium

@@ -1,5 +1,4 @@
 import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/models/organizer/organizer.dart';
 import 'package:droidcon_app/user_interfaces/home/main_home_page.dart';
 import 'package:droidcon_app/user_interfaces/home/sessions/session_detail_screen.dart';
 import 'package:droidcon_app/user_interfaces/speakers/speakers_screen.dart';
