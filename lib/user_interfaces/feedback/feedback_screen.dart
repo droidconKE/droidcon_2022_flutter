@@ -79,7 +79,9 @@ class FeedbackScreen extends ConsumerWidget {
                                   );
                                 },
                                 name: 'rating',
-                                validator: FormBuilderValidators.required(),
+                                validator: FormBuilderValidators.required(
+                                    errorText:
+                                        'Please select how you feed about the event.'),
                               ),
                               const SizedBox(height: 27),
                             ],
@@ -93,6 +95,8 @@ class FeedbackScreen extends ConsumerWidget {
                           hintText: 'Type message here',
                         ),
                         maxLines: 4,
+                        validator: FormBuilderValidators.required(
+                            errorText: 'Any more info?'),
                       ),
                       const SizedBox(height: 30),
                       SizedBox(
@@ -104,21 +108,27 @@ class FeedbackScreen extends ConsumerWidget {
                                   .read(feedbackRepositoryProvider)
                                   .postEventFeedback(
                                       formKey.currentState!.value);
-                              // TODO: Submit feedback to server
                               await showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
+                                  contentPadding: const EdgeInsets.only(top: 50, left: 75, right: 75),
+                                  buttonPadding: const EdgeInsets.only(bottom: 40, left: 70, right: 70),
                                   content: SizedBox(
-                                    height: 300,
+                                    height: 250,
                                     child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Image.asset(
-                                            'assets/images/1103-confetti-flat.gif'),
+                                          'assets/images/1103-confetti-flat.gif',
+                                          // height: 166,
+                                        ),
                                         Text(
                                           'Thank you for your feedback',
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleMedium,
+                                          textAlign: TextAlign.center,
                                         ),
                                       ],
                                     ),
