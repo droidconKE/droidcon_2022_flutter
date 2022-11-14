@@ -34,7 +34,7 @@ extension HexColor on Color {
 }
 
 class FeedPage extends ConsumerWidget {
-  FeedPage({super.key});
+  const FeedPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -224,11 +224,11 @@ class FeedPage extends ConsumerWidget {
 
 class SocialShareButton extends StatelessWidget {
   const SocialShareButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.iconData,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final IconData iconData;
   final String label;
