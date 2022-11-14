@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
@@ -19,7 +20,8 @@ import 'firebase_options.dart';
 import 'providers/token_provider/token_provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   LicenseRegistry.addLicense(() async* {
     final license =
         await rootBundle.loadString('assets/google_fonts/LICENSE.txt');
@@ -31,15 +33,11 @@ void main() async {
 
   await runZonedGuarded(
     () async {
-      WidgetsFlutterBinding.ensureInitialized();
       final appDir = await getApplicationDocumentsDirectory();
       final storage = await HydratedStorage.build(storageDirectory: appDir);
       GetIt.I.registerSingleton<HiveCacheStore>(HiveCacheStore(appDir.path));
       // GetIt.I.registerSingleton<CacheOptions>(ApiConfig.defaultCacheOptions);
       HydratedRiverpod.initialize(storage: storage);
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
       if (kDebugMode) {
         await FirebaseCrashlytics.instance
             .setCrashlyticsCollectionEnabled(false);
@@ -57,7 +55,7 @@ void main() async {
         Zone.current.handleUncaughtError(error.exception, error.stack!);
         return ErrorWidget(error.exception);
       };
-
+      FlutterNativeSplash.remove();
       runApp(ProviderScope(
         observers: [Logger()],
         child: const DroidconApp(),
