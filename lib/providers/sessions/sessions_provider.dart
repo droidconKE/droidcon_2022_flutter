@@ -2,7 +2,8 @@ import 'package:droidcon_app/models/models.dart';
 import 'package:droidcon_app/services/api_service/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../show_favorited_sessions/sessions_filter_provider.dart';
+import '../sessions_filter/sessions_filter_provider.dart';
+
 
 final sessionsProvider = FutureProvider<List<Session>>((ref) async {
   final filter = ref.watch(sessionsFilterProvider);
