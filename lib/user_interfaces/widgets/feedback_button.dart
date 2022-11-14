@@ -24,8 +24,11 @@ class FeedbackButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const [
-            AfrikonIcon('smiley-outline',
-                height: 12, color: AppColors.blackColor,),
+            AfrikonIcon(
+              'smiley-outline',
+              height: 12,
+              color: AppColors.blackColor,
+            ),
             Text(
               'Feedback',
               style: TextStyle(color: AppColors.blackColor, fontSize: 12),

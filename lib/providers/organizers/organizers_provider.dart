@@ -1,28 +1,38 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/models.dart';
-import '../../utils/rest_client.dart';
+import '../dio/dio_provider.dart';
+
+class OrganizersRepository {
+  OrganizersRepository(this.ref);
+
+  final ProviderRef ref;
+
+  Future<List<Organizer>> getOrganizers() async {
+    try {
+      final response = await ref
+          .read(dioClientProvider)
+          .get('/organizers/droidcon-ke-645/team');
+      return response.data['data']
+          .map<Organizer>((e) => Organizer.fromJson(e))
+          .toList();
+    } on DioError catch (e) {
+      throw e.message;
+    } on SocketException catch (e) {
+      throw e.message;
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
+
+// We expose our instance of Repository in a provider
+final organizersRepositoryProvider =
+    Provider((ref) => OrganizersRepository(ref));
 
 final organizersProvider = FutureProvider<List<Organizer>>((ref) async {
-  // TODO: Refactor to repository
-  try {
-    final response = await RestClient(
-            cacheOptions: RestClient.defaultCacheOptions
-                .copyWith(policy: CachePolicy.forceCache))
-        .dio!
-        .get('/organizers/droidcon-ke-645/team');
-    return response.data['data']
-        .map<Organizer>((e) => Organizer.fromJson(e))
-        .toList();
-  } on DioError catch (e) {
-    throw e.message;
-  } on SocketException catch (e) {
-    throw e.message;
-  } catch (e) {
-    rethrow;
-  }
+  return ref.watch(organizersRepositoryProvider).getOrganizers();
 });

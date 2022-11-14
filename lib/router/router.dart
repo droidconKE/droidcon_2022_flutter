@@ -4,14 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import '../models/models.dart';
 import '../user_interfaces/about/team_member_bio_screen.dart';
-import '../user_interfaces/authentication/sign_in_screen.dart';
-import '../user_interfaces/authentication/sign_up_screen.dart';
 import '../user_interfaces/feedback/feedback_screen.dart';
 import '../user_interfaces/landing/landing_screen.dart';
 import '../user_interfaces/sessions/session_detail_screen.dart';
 import '../user_interfaces/speakers/speaker_detail_screen.dart';
 import '../user_interfaces/speakers/speakers_screen.dart';
-import '../user_interfaces/splash/splash_screen.dart';
 import '../user_interfaces/widgets/theme_dialog.dart';
 
 final router = GoRouter(
@@ -19,28 +16,10 @@ final router = GoRouter(
   initialLocation: '/main-home',
   routes: <GoRoute>[
     GoRoute(
-      path: '/',
-      name: SplashScreen.routeName,
-      builder: (BuildContext context, GoRouterState state) =>
-          const SplashScreen(),
-    ),
-    GoRoute(
       path: '/theme',
       name: 'theme',
       builder: (BuildContext context, GoRouterState state) =>
           const ThemeDialog(),
-    ),
-    GoRoute(
-      path: '/signup',
-      name: SignUpScreen.routeName,
-      builder: (BuildContext context, GoRouterState state) =>
-          const SignUpScreen(),
-    ),
-    GoRoute(
-      path: '/signin',
-      name: SignInScreen.routeName,
-      builder: (BuildContext context, GoRouterState state) =>
-          const SignInScreen(),
     ),
     GoRoute(
       path: '/main-home',
@@ -69,8 +48,7 @@ final router = GoRouter(
     GoRoute(
       path: '/feedback',
       name: FeedbackScreen.routeName,
-      builder: (BuildContext context, GoRouterState state) =>
-          const FeedbackScreen(),
+      builder: (BuildContext context, GoRouterState state) => FeedbackScreen(),
     ),
     GoRoute(
       path: '/team-member-bio',

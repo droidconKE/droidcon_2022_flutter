@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -81,10 +80,11 @@ class ButtonGroupButton extends StatelessWidget {
         // height: 60,
         // width: 50,
         decoration: BoxDecoration(
-            color: active
-                ? AppColors.orangeColor
-                : AppColors.tealColor.withOpacity(.11),
-            borderRadius: BorderRadius.circular(5),),
+          color: active
+              ? AppColors.orangeColor
+              : AppColors.tealColor.withOpacity(.11),
+          borderRadius: BorderRadius.circular(5),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,

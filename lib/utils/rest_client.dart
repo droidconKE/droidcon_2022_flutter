@@ -57,7 +57,7 @@ class RestClient {
 
     ///Add the interceptors
     // The [AuthInterceptor] to authenticate all requests
-    _dio!.interceptors.add(AuthInterceptor());
+    // _dio!.interceptors.add(AuthInterceptor());
     // The [SessionInterceptor] to authenticate all requests
     if (kDebugMode) {
       //The logger interceptor
@@ -90,7 +90,7 @@ class RestClient {
     _dio!.interceptors.addAll([
       ErrorInterceptor(),
       if (cacheOptions != null) DioCacheInterceptor(options: cacheOptions),
-      AuthInterceptor(),
+      // AuthInterceptor(),
       UserAgentInterceptor(),
       if (kDebugMode)
         PrettyDioLogger(

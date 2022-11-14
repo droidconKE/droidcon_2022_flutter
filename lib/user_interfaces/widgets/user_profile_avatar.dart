@@ -7,8 +7,8 @@ import '../../models/user_info/user_info.dart';
 import '../../providers/login_with_google/login_with_google_provider.dart';
 import '../../providers/user_info/user_info_provider.dart';
 import '../../styles/colors/colors.dart';
-import '../authentication/widgets/google_button.dart';
 import 'afrikon_icon.dart';
+import 'google_button.dart';
 import 'primary_button.dart';
 
 class UserProfileAvatar extends ConsumerWidget {
@@ -19,11 +19,14 @@ class UserProfileAvatar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userInfo = ref.watch(userInfoProvider);
+
     ref.listen(loginWithGoogleProvider, (oldState, state) {
-      ref.read(userInfoProvider.notifier).set(state.maybeWhen(
-            success: (LoginResponse res) => UserInfo.fromJson(res.toJson()),
-            orElse: () => null,
-          ));
+      ref.read(userInfoProvider.notifier).set(
+            state.maybeWhen(
+              success: (LoginResponse res) => UserInfo.fromJson(res.toJson()),
+              orElse: () => null,
+            ),
+          );
     });
     return InkWell(
       onTap: () async {
@@ -36,7 +39,7 @@ class UserProfileAvatar extends ConsumerWidget {
                   label: 'Logout',
                   onPressed: () async {
                     ref.read(userInfoProvider.notifier).set(null);
-                    ref.read(userInfoProvider.notifier).clear();
+                    // ref.read(userInfoProvider.notifier).clear();
                     Navigator.pop(context);
                   },
                 ),
@@ -44,7 +47,7 @@ class UserProfileAvatar extends ConsumerWidget {
                 GoogleButton(
                   label: 'Sign in with Google',
                   onTap: () async {
-                    ref
+                    await ref
                         .read(loginWithGoogleProvider.notifier)
                         .loginWithGoogle();
 

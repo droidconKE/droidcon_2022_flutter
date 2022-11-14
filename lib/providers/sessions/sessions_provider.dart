@@ -4,14 +4,18 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/session/session.dart';
-import '../../utils/rest_client.dart';
-
+import '../dio/dio_provider.dart';
 
 class SessionsRepository {
+  final ProviderRef ref;
+
+  SessionsRepository(this.ref);
+
   Future<List<Session>> fetchSessions() async {
     try {
-      final response =
-      await RestClient().dio!.get('/events/droidconke-2022-281/schedule');
+      final response = await ref
+          .read(dioClientProvider)
+          .get('/events/droidconke-2022-281/schedule');
       return response.data['data']
           .map<Session>((e) => Session.fromJson(e))
           .toList();
@@ -26,7 +30,7 @@ class SessionsRepository {
 }
 
 // We expose our instance of Repository in a provider
-final sessionsRepositoryProvider = Provider((ref) => SessionsRepository());
+final sessionsRepositoryProvider = Provider((ref) => SessionsRepository(ref));
 
 final sessionsProvider = FutureProvider<List<Session>>((ref) async {
   final repository = ref.watch(sessionsRepositoryProvider);

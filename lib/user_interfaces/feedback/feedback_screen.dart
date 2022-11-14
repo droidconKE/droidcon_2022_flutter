@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../providers/feedback/event_feedback_provider.dart';
 import '../../styles/colors/colors.dart';
 import '../authentication/widgets/signup_image_background.dart';
 import '../widgets/app_back_button.dart';
 import '../widgets/primary_button.dart';
 import 'feedback_rating.dart';
 
-class FeedbackScreen extends StatefulWidget {
+class FeedbackScreen extends ConsumerWidget {
   static String routeName = 'feedback';
 
-  const FeedbackScreen({super.key});
+  FeedbackScreen({super.key});
 
-  @override
-  State<FeedbackScreen> createState() => _FeedbackScreenState();
-}
-
-class _FeedbackScreenState extends State<FeedbackScreen> {
   final formKey = GlobalKey<FormBuilderState>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -66,7 +63,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const SizedBox(height: 30),
-                              FormBuilderField<String>(
+                              FormBuilderField<int?>(
                                 builder: (field) {
                                   return InputDecorator(
                                     decoration: InputDecoration(
@@ -81,7 +78,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                     ),
                                   );
                                 },
-                                name: 'feedback',
+                                name: 'rating',
                                 validator: FormBuilderValidators.required(),
                               ),
                               const SizedBox(height: 27),
@@ -91,7 +88,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       ),
                       const SizedBox(height: 30),
                       FormBuilderTextField(
-                        name: 'info',
+                        name: 'feedback',
                         decoration: const InputDecoration(
                           hintText: 'Type message here',
                         ),
@@ -102,16 +99,29 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         width: double.maxFinite,
                         child: PrimaryButton(
                           onPressed: () async {
-                            if (formKey.currentState!.validate()) {
+                            if (formKey.currentState!.saveAndValidate()) {
+                              await ref
+                                  .read(feedbackRepositoryProvider)
+                                  .postEventFeedback(
+                                      formKey.currentState!.value);
                               // TODO: Submit feedback to server
-                              // TODO: show fancy dialog
                               await showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  content: Text(
-                                    'Thank you for your feedback',
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
+                                  content: SizedBox(
+                                    height: 300,
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                            'assets/images/1103-confetti-flat.gif'),
+                                        Text(
+                                          'Thank you for your feedback',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   actions: [
                                     SizedBox(
@@ -126,9 +136,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   ],
                                 ),
                               );
-                              if (mounted) {
-                                context.pop();
-                              }
+                              context.pop();
                             }
                           },
                           label: 'Submit Feedback'.toUpperCase(),
