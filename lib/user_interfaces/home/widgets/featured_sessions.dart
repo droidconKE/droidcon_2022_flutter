@@ -1,7 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:droidcon_app/providers/sessions/featured_sessions_provider.dart';
-import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/session_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +6,9 @@ import 'package:go_router/go_router.dart';
 import '../../../../assets/images.dart';
 import '../../../../providers/providers.dart';
 import '../../../../styles/colors/colors.dart';
+import '../../../providers/sessions/featured_sessions_provider.dart';
+import '../../../providers/sessions/sessions_provider.dart';
+import '../../sessions/session_detail_screen.dart';
 
 class FeaturedSessions extends ConsumerWidget {
   const FeaturedSessions({super.key});
@@ -103,7 +103,8 @@ class FeaturedSessions extends ConsumerWidget {
                                                   null
                                               ? CachedNetworkImageProvider(
                                                   sessions[index].sessionImage!)
-                                              : const AssetImage(AssetImages.droidconBanner))
+                                              : const AssetImage(
+                                                  AssetImages.droidconBanner))
                                           as ImageProvider,
                                       fit: BoxFit.cover,
                                     ),

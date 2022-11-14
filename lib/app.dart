@@ -1,11 +1,12 @@
-import 'package:droidcon_app/providers/providers.dart';
-import 'package:droidcon_app/router/router.dart';
-import 'package:droidcon_app/styles/themes/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:sizer/sizer.dart';
 
+import 'providers/theme/dark_theme_provider/dark_theme_provider.dart';
+import 'providers/theme/system_theme_provider.dart';
+import 'router/router.dart';
+import 'styles/themes/dark_theme.dart';
 import 'styles/themes/light_theme.dart';
 
 class DroidconApp extends ConsumerWidget {

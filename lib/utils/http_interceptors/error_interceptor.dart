@@ -13,7 +13,7 @@ class ErrorInterceptor extends Interceptor {
         break;
       case DioErrorType.other:
         err.error =
-        'Connection to API server failed due to internet connection';
+            'Connection to API server failed due to internet connection';
         break;
       case DioErrorType.receiveTimeout:
         err.error = 'Receive timeout in connection with API server';
@@ -39,14 +39,14 @@ class ErrorInterceptor extends Interceptor {
             err.error = err.response!.data['message'].toString();
           }
           if (err.response!.statusCode == 404 && err.response!.data is String) {
-            err.error = '${err.response!.statusCode}: Page not found.';
+            err.error = '${err.response!.statusCode}: Resource not found.';
           }
           if (err.response!.statusCode == 500 && err.response!.data is String) {
             err.error = '${err.response!.statusCode}: Internal server error.';
           }
         } else {
           err.error =
-          'Received invalid status code: ${err.response!.statusCode}';
+              'Received invalid status code: ${err.response!.statusCode}';
         }
         break;
     }

@@ -1,16 +1,16 @@
-import 'package:droidcon_app/assets/images.dart';
-import 'package:droidcon_app/user_interfaces/home/home/widgets/featured_speakers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../providers/user_info/user_info_provider.dart';
-import '../../../styles/colors/colors.dart';
-import '../../widgets/droidcon_logo.dart';
-import '../../widgets/feedback_button.dart';
-import '../../widgets/organizers_card.dart';
-import '../../widgets/user_profile_avatar.dart';
+import '../../assets/images.dart';
+import '../../providers/user_info/user_info_provider.dart';
+import '../../styles/colors/colors.dart';
+import '../widgets/droidcon_logo.dart';
+import '../widgets/feedback_button.dart';
+import '../widgets/organizers_card.dart';
+import '../widgets/user_profile_avatar.dart';
 import 'widgets/featured_sessions.dart';
+import 'widgets/featured_speakers.dart';
 import 'widgets/sponsors_card.dart';
 
 class HomeScreen extends ConsumerWidget {

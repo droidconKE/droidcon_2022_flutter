@@ -1,11 +1,11 @@
-import 'package:droidcon_app/providers/sessions_filter/sessions_filter_provider.dart';
-import 'package:droidcon_app/providers/sessions_filter/state/sessions_filter_state.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../widgets/afrikon_icon.dart';
+import '../../providers/sessions_filter/sessions_filter_provider.dart';
+import '../../providers/sessions_filter/state/sessions_filter_state.dart';
+import '../../styles/colors/colors.dart';
+import '../widgets/afrikon_icon.dart';
 
 class SessionsFilterScreen extends ConsumerWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey();

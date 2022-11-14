@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:droidcon_app/providers/organizers/individual_organizers_provider.dart';
-import 'package:droidcon_app/user_interfaces/home/about/team_member_bio_screen.dart';
-import 'package:droidcon_app/user_interfaces/widgets/feedback_button.dart';
-import 'package:droidcon_app/user_interfaces/widgets/organizers_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../assets/images.dart';
-import '../../widgets/passport.dart';
-import '../../widgets/user_profile_avatar.dart';
+import '../../providers/organizers/individual_organizers_provider.dart';
+import '../widgets/feedback_button.dart';
+import '../widgets/organizers_card.dart';
+import '../widgets/passport.dart';
+import '../widgets/user_profile_avatar.dart';
+import 'team_member_bio_screen.dart';
 
-class AboutPage extends ConsumerWidget {
-  const AboutPage({super.key});
+class AboutScreen extends ConsumerWidget {
+  const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,8 +76,10 @@ class AboutPage extends ConsumerWidget {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            context.pushNamed(TeamMemberBioScreen.routeName,
-                                extra: organizers[index]);
+                            context.pushNamed(
+                              TeamMemberBioScreen.routeName,
+                              extra: organizers[index],
+                            );
                           },
                           child: Passport(
                             image: CachedNetworkImageProvider(

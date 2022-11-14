@@ -1,5 +1,6 @@
-import 'package:droidcon_app/models/login_response/login_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../models/models.dart';
 
 part 'login_with_google_state.freezed.dart';
 

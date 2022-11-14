@@ -1,15 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/widgets/bookmark_session_button.dart';
-import 'package:droidcon_app/user_interfaces/speakers/speaker_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../assets/images.dart';
-import '../../../widgets/passport_photo.dart';
+import '../../../models/models.dart';
+import '../../../styles/colors/colors.dart';
+import '../../speakers/speaker_detail_screen.dart';
+import '../../widgets/passport_photo.dart';
 import '../session_detail_screen.dart';
+import 'bookmark_session_button.dart';
 
 class SessionCards extends StatelessWidget {
   final List<Session> sessions;

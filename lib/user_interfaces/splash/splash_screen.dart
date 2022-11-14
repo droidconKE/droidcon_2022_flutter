@@ -1,9 +1,10 @@
-import 'package:droidcon_app/providers/token_provider/token_provider.dart';
-import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../providers/providers.dart';
+import '../widgets/theme_dialog.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   static String routeName = 'splash';

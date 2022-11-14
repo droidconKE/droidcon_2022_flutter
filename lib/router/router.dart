@@ -1,16 +1,18 @@
-import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/user_interfaces/home/main_home_page.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/session_detail_screen.dart';
-import 'package:droidcon_app/user_interfaces/speakers/speakers_screen.dart';
-import 'package:droidcon_app/user_interfaces/user_interfaces.dart';
-import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../models/models.dart';
+import '../user_interfaces/about/team_member_bio_screen.dart';
+import '../user_interfaces/authentication/sign_in_screen.dart';
+import '../user_interfaces/authentication/sign_up_screen.dart';
 import '../user_interfaces/feedback/feedback_screen.dart';
-import '../user_interfaces/home/about/team_member_bio_screen.dart';
+import '../user_interfaces/landing/landing_screen.dart';
+import '../user_interfaces/sessions/session_detail_screen.dart';
 import '../user_interfaces/speakers/speaker_detail_screen.dart';
+import '../user_interfaces/speakers/speakers_screen.dart';
+import '../user_interfaces/splash/splash_screen.dart';
+import '../user_interfaces/widgets/theme_dialog.dart';
 
 final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
@@ -42,9 +44,9 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/main-home',
-      name: MainHomePage.routeName,
+      name: LandingScreen.routeName,
       builder: (BuildContext context, GoRouterState state) =>
-          const MainHomePage(),
+          const LandingScreen(),
     ),
     GoRoute(
       path: '/session-detail',

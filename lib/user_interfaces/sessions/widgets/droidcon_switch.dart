@@ -1,5 +1,7 @@
-import 'package:droidcon_app/styles/colors/colors.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../styles/colors/colors.dart';
 
 class DroidconSwitch extends StatefulWidget {
   final ValueChanged<bool> onChanged;

@@ -1,5 +1,3 @@
-import 'package:droidcon_app/assets/images.dart';
-import 'package:droidcon_app/user_interfaces/widgets/organizers_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
@@ -10,6 +8,8 @@ import '../../../models/session/session.dart';
 import '../../../models/speaker/speaker.dart';
 import '../../../providers/home/home_provider.dart';
 import '../../../styles/colors/colors.dart';
+import '../../assets/images.dart';
+import '../widgets/organizers_card.dart';
 import 'widgets/sponsors_card.dart';
 
 class LoggedInHomeScreen extends ConsumerWidget {

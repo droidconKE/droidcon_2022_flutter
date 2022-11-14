@@ -1,25 +1,28 @@
-import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/providers/selected_date/selected_date_provider.dart';
-import 'package:droidcon_app/providers/sessions/event_dates_provider.dart';
-import 'package:droidcon_app/providers/sessions/filtered_sessions_provider.dart';
-import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
-import 'package:droidcon_app/providers/sessions_display_style/sessions_display_style.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/sessions_filter_screen.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/widgets/button_group.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/widgets/session_list.dart';
+import '../../providers/selected_date/selected_date_provider.dart';
+import '../../providers/sessions/filtered_sessions_provider.dart';
+import '../../providers/sessions/sessions_provider.dart';
+import '../../providers/sessions_display_style/sessions_display_style.dart';
+import '../../styles/colors/colors.dart';
+import '../../utils/utils.dart';
+
+import '../../models/models.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../providers/sessions_filter/sessions_filter_provider.dart';
 import '../../../providers/sessions_filter/state/sessions_filter_state.dart';
-import '../../widgets/afrikon_icon.dart';
-import '../../widgets/droidcon_logo.dart';
+import '../../providers/sessions/event_dates_provider.dart';
+import '../widgets/afrikon_icon.dart';
+import '../widgets/droidcon_logo.dart';
+import 'sessions_filter_screen.dart';
+import 'widgets/button_group.dart';
 import 'widgets/droidcon_switch.dart';
 import 'widgets/session_cards.dart';
+import 'widgets/session_list.dart';
 
-class SessionsPage extends ConsumerWidget {
-  const SessionsPage({super.key});
+class SessionsScreen extends ConsumerWidget {
+  const SessionsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -144,17 +147,15 @@ class SessionsPage extends ConsumerWidget {
                             child: ref.watch(eventDatesProvider).when(
                                 data: (dates) {
                                   final index = dates.toList().indexWhere(
-                                          (date) =>
-                                      date ==
-                                          ref.watch(
-                                              selectedDateProvider));
+                                      (date) =>
+                                          date ==
+                                          ref.watch(selectedDateProvider));
 
                                   return ButtonGroup(
                                     selectedIndex: index > -1 ? index : 0,
                                     onSelectedIndexChanged: (val) {
                                       ref
-                                          .read(selectedDateProvider
-                                          .notifier)
+                                          .read(selectedDateProvider.notifier)
                                           .set(val);
                                     },
                                     options: dates.toList(),
@@ -164,8 +165,8 @@ class SessionsPage extends ConsumerWidget {
                                   debugPrintStack(stackTrace: stack);
                                   return Text(err.toString());
                                 },
-                                loading: () =>
-                                const Center(child: CircularProgressIndicator())),
+                                loading: () => const Center(
+                                    child: CircularProgressIndicator())),
                           ),
                           Expanded(
                             flex: 1,
@@ -173,30 +174,26 @@ class SessionsPage extends ConsumerWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
                                 Column(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     DroidconSwitch(
-                                      value: ref.watch(
-                                          sessionsFilterProvider) ==
-                                          SessionsFilterState
-                                              .bookmarked(),
+                                      value:
+                                          ref.watch(sessionsFilterProvider) ==
+                                              SessionsFilterState.bookmarked(),
                                       onChanged: (val) {
                                         ref
-                                            .read(sessionsFilterProvider
-                                            .notifier)
+                                            .read(
+                                                sessionsFilterProvider.notifier)
                                             .change(val
-                                            ? SessionsFilterState
-                                            .bookmarked()
-                                            : SessionsFilterState
-                                            .none());
+                                                ? SessionsFilterState
+                                                    .bookmarked()
+                                                : SessionsFilterState.none());
                                       },
                                     ),
                                     Text(
                                       'My Sessions',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption,
+                                      style:
+                                          Theme.of(context).textTheme.caption,
                                     ),
                                   ],
                                 ),
@@ -210,7 +207,7 @@ class SessionsPage extends ConsumerWidget {
                   const SizedBox(height: 40),
                   Text(
                     ref.watch(sessionsFilterProvider) ==
-                        SessionsFilterState.bookmarked()
+                            SessionsFilterState.bookmarked()
                         ? 'My sessions'
                         : 'All sessions',
                     style: Theme.of(context).textTheme.titleLarge,

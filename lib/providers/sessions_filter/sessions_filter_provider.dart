@@ -1,5 +1,6 @@
-import 'package:droidcon_app/providers/sessions_filter/state/sessions_filter_state.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
+
+import 'state/sessions_filter_state.dart';
 
 final sessionsFilterProvider =
     StateNotifierProvider<SessionsFilterProvider, SessionsFilterState>(

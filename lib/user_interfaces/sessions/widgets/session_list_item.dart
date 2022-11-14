@@ -1,10 +1,10 @@
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../models/models.dart';
+import '../../../styles/colors/colors.dart';
 import '../session_detail_screen.dart';
 import 'bookmark_session_button.dart';
 

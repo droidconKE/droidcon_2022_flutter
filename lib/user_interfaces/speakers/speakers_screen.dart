@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:droidcon_app/providers/speakers/speakers_provider.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/speakers/speaker_detail_screen.dart';
-import 'package:droidcon_app/user_interfaces/widgets/app_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../providers/speakers/speakers_provider.dart';
+import '../../styles/colors/colors.dart';
+import '../widgets/app_back_button.dart';
 import '../widgets/passport.dart';
+import 'speaker_detail_screen.dart';
 
 class SpeakersScreen extends ConsumerWidget {
   static String routeName = 'speakers';

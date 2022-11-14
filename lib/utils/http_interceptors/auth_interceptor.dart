@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:droidcon_app/providers/token_provider/token_provider.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../providers/token_provider/token_provider.dart';
 
 class AuthInterceptor extends Interceptor {
   @override

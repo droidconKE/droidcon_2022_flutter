@@ -46,7 +46,8 @@ class SponsorsCard extends ConsumerWidget {
                 (index) {
                   final isSvg =
                       sponsors[index].logo.toLowerCase().contains('.svg');
-                  final logoSize = sponsors[index].sponsorType == 'gold' ? 120.0 : 60.0;
+                  final logoSize =
+                      sponsors[index].sponsorType == 'gold' ? 120.0 : 60.0;
                   return GestureDetector(
                     onTap: () async {
                       if (!await launchUrl(Uri.parse(sponsors[index].link))) {

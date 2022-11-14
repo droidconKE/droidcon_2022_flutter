@@ -1,11 +1,14 @@
+import '../../utils/utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../styles/colors/colors.dart';
 
 class FeedbackRating extends StatefulWidget {
-  const FeedbackRating(
-      {Key? key, this.initialValue, required this.onValueChanged})
-      : super(key: key);
+  const FeedbackRating({
+    super.key,
+    this.initialValue,
+    required this.onValueChanged,
+  });
 
   final String? initialValue;
   final ValueChanged<String?> onValueChanged;
@@ -57,15 +60,4 @@ class _FeedbackRatingState extends State<FeedbackRating> {
             )
             .toList());
   }
-}
-
-// TODO: Put in utils?
-extension StringCasingExtension on String {
-  String toCapitalized() =>
-      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
-
-  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
-      .split(' ')
-      .map((str) => str.toCapitalized())
-      .join(' ');
 }

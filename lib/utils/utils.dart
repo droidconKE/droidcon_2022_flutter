@@ -1,2 +1,3 @@
 export 'rest_client.dart';
-export 'custom_interceptors/custom_interceptors.dart';
+export 'http_interceptors/http_interceptors.dart';
+export 'class_extensions.dart';
