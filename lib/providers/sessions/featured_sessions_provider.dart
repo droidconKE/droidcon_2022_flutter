@@ -12,7 +12,7 @@ final featuredSessionsProvider = FutureProvider<List<Session>>((ref) async {
   final todaysIndex =
       eventDates.indexWhere((element) => element.isSameDay(DateTime.now()));
 
-  List<Session>? selectionPool = sessions;
+  List<Session>? selectionPool = [...sessions];
   if (![null, -1].contains(todaysIndex)) {
     selectionPool = sessions
         .where((element) =>
