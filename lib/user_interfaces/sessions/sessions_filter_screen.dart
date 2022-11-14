@@ -14,6 +14,8 @@ class SessionsFilterScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final sessionsFilter = ref.watch(sessionsFilterProvider);
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -23,7 +25,8 @@ class SessionsFilterScreen extends ConsumerWidget {
               bottomRight: Radius.circular(14),
             ),
             child: Theme(
-              data: ThemeData(primaryColor: AppColors.blackColor),
+              data: Theme.of(context)
+                  .copyWith(primaryColor: AppColors.blackColor),
               child: Container(
                 padding: const EdgeInsets.all(20),
                 height: MediaQuery.of(context).size.height * .9,
@@ -128,16 +131,19 @@ class SessionsFilterScreen extends ConsumerWidget {
                             child: const Text('FILTER'),
                           ),
                         ),
-                        SizedBox(
-                          width: double.maxFinite,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              ref
-                                  .read(sessionsFilterProvider.notifier)
-                                  .change(SessionsFilterState.none());
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('CLEAR FILTER'),
+                        sessionsFilter.maybeWhen(
+                          orElse: () => const SizedBox(),
+                          custom: (_) => SizedBox(
+                            width: double.maxFinite,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                ref
+                                    .read(sessionsFilterProvider.notifier)
+                                    .change(SessionsFilterState.none());
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('CLEAR FILTER'),
+                            ),
                           ),
                         ),
                       ],
