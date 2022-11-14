@@ -31,8 +31,6 @@ void main() async {
     () async {
       final appDir = await getApplicationDocumentsDirectory();
       final storage = await HydratedStorage.build(storageDirectory: appDir);
-      // GetIt.I.registerSingleton<HiveCacheStore>(HiveCacheStore(appDir.path));
-      // GetIt.I.registerSingleton<CacheOptions>(ApiConfig.defaultCacheOptions);
       HydratedRiverpod.initialize(storage: storage);
       if (kDebugMode) {
         await FirebaseCrashlytics.instance
@@ -42,11 +40,6 @@ void main() async {
       }
       await dotenv.load(fileName: 'environments/.env');
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-
-      /// register the [RestClient] in as a singleton
-      // GetIt.I.registerSingleton<RestClient>(RestClient());
-      // GetIt.I.registerSingleton<TokenProvider>(TokenProvider());
-      // GetIt.I.allowReassignment = true;
       ErrorWidget.builder = (FlutterErrorDetails error) {
         Zone.current.handleUncaughtError(error.exception, error.stack!);
         return ErrorWidget(error.exception);
