@@ -1,9 +1,9 @@
-import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/providers/sessions/filtered_sessions_provider.dart';
-import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../models/models.dart';
 import 'event_dates_provider.dart';
+import 'sessions_provider.dart';
+import '../../utils/utils.dart';
 
 final featuredSessionsProvider = FutureProvider<List<Session>>((ref) async {
   final sessions = await ref.watch(sessionsProvider.future);

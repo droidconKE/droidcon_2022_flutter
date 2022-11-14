@@ -1,9 +1,9 @@
-import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/widgets/session_list_item.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/models.dart';
+import '../../../styles/colors/colors.dart';
 import 'session_list_divider.dart';
+import 'session_list_item.dart';
 
 class SessionList extends StatelessWidget {
   final List<Session> list;

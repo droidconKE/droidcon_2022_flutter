@@ -3,8 +3,6 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:droidcon_app/providers/feed/feed_provider.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -12,33 +10,20 @@ import 'package:path_provider/path_provider.dart';
 import 'package:social_share/social_share.dart';
 
 import '../../../assets/images.dart';
-import '../../widgets/afrikon_icon.dart';
-import '../../widgets/feedback_button.dart';
-import '../../widgets/user_profile_avatar.dart';
+import '../../providers/feed/feed_provider.dart';
+import '../../styles/colors/colors.dart';
+import '../../utils/utils.dart';
+import '../widgets/afrikon_icon.dart';
+import '../widgets/feedback_button.dart';
+import '../widgets/user_profile_avatar.dart';
 
-extension HexColor on Color {
-  /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".
-  static Color fromHex(String hexString) {
-    final buffer = StringBuffer();
-    if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
-    buffer.write(hexString.replaceFirst('#', ''));
-    return Color(int.parse(buffer.toString(), radix: 16));
-  }
-
-  /// Prefixes a hash sign if [leadingHashSign] is set to `true` (default is `true`).
-  String toHex({bool leadingHashSign = true}) => '${leadingHashSign ? '#' : ''}'
-      '${alpha.toRadixString(16).padLeft(2, '0')}'
-      '${red.toRadixString(16).padLeft(2, '0')}'
-      '${green.toRadixString(16).padLeft(2, '0')}'
-      '${blue.toRadixString(16).padLeft(2, '0')}';
-}
-
-class FeedPage extends ConsumerWidget {
-  const FeedPage({super.key});
+class FeedScreen extends ConsumerWidget {
+  const FeedScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feed = ref.watch(feedProvider);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

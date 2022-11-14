@@ -1,5 +1,6 @@
-import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'sessions_provider.dart';
 
 final eventDatesProvider = FutureProvider<List<DateTime>>((ref) async {
   final sessions = await ref.watch(sessionsProvider.future);

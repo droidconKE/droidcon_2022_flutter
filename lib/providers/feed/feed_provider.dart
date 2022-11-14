@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:droidcon_app/models/models.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/feed/feed.dart';

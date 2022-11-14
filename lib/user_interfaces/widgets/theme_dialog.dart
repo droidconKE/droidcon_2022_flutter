@@ -1,7 +1,8 @@
-import 'package:droidcon_app/providers/providers.dart';
-import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../providers/providers.dart';
+import 'primary_button.dart';
 
 class ThemeDialog extends ConsumerWidget {
   const ThemeDialog({Key? key}) : super(key: key);

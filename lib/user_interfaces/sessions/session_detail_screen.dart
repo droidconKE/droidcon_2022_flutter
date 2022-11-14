@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:droidcon_app/models/session/session.dart';
-import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/home/sessions/widgets/bookmark_session_button.dart';
-import 'package:droidcon_app/user_interfaces/widgets/app_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../../assets/images.dart';
-import '../../speakers/speaker_detail_screen.dart';
-import '../../widgets/twitter_button.dart';
+import '../../models/session/session.dart';
+import '../../styles/colors/colors.dart';
+import '../speakers/speaker_detail_screen.dart';
+import '../widgets/app_back_button.dart';
+import '../widgets/twitter_button.dart';
+import 'widgets/bookmark_session_button.dart';
 
 class SessionDetailScreen extends StatelessWidget {
   static String routeName = 'session-detail';

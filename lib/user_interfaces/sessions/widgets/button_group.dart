@@ -1,6 +1,8 @@
-import 'package:droidcon_app/styles/colors/colors.dart';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../../../styles/colors/colors.dart';
 
 class ButtonGroup extends StatefulWidget {
   final int selectedIndex;
@@ -82,7 +84,7 @@ class ButtonGroupButton extends StatelessWidget {
             color: active
                 ? AppColors.orangeColor
                 : AppColors.tealColor.withOpacity(.11),
-            borderRadius: BorderRadius.circular(5)),
+            borderRadius: BorderRadius.circular(5),),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,

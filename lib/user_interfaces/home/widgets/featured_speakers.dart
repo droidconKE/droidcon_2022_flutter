@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:droidcon_app/providers/speakers/featured_speakers_provider.dart';
-import 'package:droidcon_app/providers/speakers/speakers_provider.dart';
-import 'package:droidcon_app/user_interfaces/speakers/speaker_detail_screen.dart';
-import 'package:droidcon_app/user_interfaces/speakers/speakers_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../styles/colors/colors.dart';
-import '../../../widgets/passport.dart';
+import '../../../providers/speakers/featured_speakers_provider.dart';
+import '../../../providers/speakers/speakers_provider.dart';
+import '../../speakers/speaker_detail_screen.dart';
+import '../../speakers/speakers_screen.dart';
+import '../../widgets/passport.dart';
 
 class FeaturedSpeakers extends ConsumerWidget {
   const FeaturedSpeakers({super.key});

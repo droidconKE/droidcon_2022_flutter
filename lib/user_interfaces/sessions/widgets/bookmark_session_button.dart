@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../models/session/session.dart';
 import '../../../../styles/colors/colors.dart';
-import '../../../widgets/afrikon_icon.dart';
+import '../../widgets/afrikon_icon.dart';
 
 class BookmarkSessionButton extends StatelessWidget {
   const BookmarkSessionButton({
