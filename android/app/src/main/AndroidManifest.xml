@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ke.co.droidcon22flutter.droidcon_2022_flutter">
    <application
-        android:label="droidcon_2022_flutter"
+        android:label="droidconKe22 Flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
