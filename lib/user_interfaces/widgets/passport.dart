@@ -56,7 +56,10 @@ class Passport extends StatelessWidget {
                   subtitle!,
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontSize: 11),
                 ),
             ],
           ),

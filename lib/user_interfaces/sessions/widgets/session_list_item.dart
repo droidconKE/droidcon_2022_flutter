@@ -15,12 +15,14 @@ class SessionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark=Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: () {
         context.pushNamed(SessionDetailScreen.routeName, extra: session);
       },
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
+        color: isDark ? AppColors.greyDarkThemeBackground : Colors.white,
         elevation: 10,
         child: Padding(
           padding: const EdgeInsets.all(20),

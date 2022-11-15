@@ -26,12 +26,21 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          const SliverAppBar(
-            leading: AppBackButton(),
-            title: Text('Feedback'),
+          SliverAppBar(
+            leading: AppBackButton(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.white,
+            ),
+            title: Text('Feedback',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.white,
+                    )),
             expandedHeight: 180.0,
             backgroundColor: AppColors.blueColor,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: const FlexibleSpaceBar(
               background: SignUpSVGBackground(),
             ),
           ),
@@ -50,12 +59,18 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             .textTheme
                             .titleMedium
                             ?.copyWith(
-                                color: AppColors.blueColor,
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? AppColors.tealColor
+                                    : AppColors.blueColor,
                                 fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 30),
                       Card(
                         elevation: 1,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.black
+                            : Colors.white,
                         child: SizedBox(
                           width: double.maxFinite,
                           child: Column(
@@ -92,9 +107,24 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       const SizedBox(height: 30),
                       FormBuilderTextField(
                         name: 'info',
-                        decoration: const InputDecoration(
-                          hintText: 'Type message here',
+                        style: TextStyle(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? AppColors.tealColor
+                              : AppColors.blueDroidconColor,
                         ),
+                        decoration: InputDecoration(
+                            hintText: 'Type message here',
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? AppColors.tealColor
+                                  : AppColors.blueDroidconColor,
+                            )),
+                            fillColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.black38
+                                    : Colors.white),
                         maxLines: 4,
                       ),
                       const SizedBox(height: 30),

@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:droidcon_app/user_interfaces/widgets/theme_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -29,11 +30,20 @@ class FeedScreen extends ConsumerWidget {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Image.asset(
-              Theme.of(context).brightness == Brightness.dark
-                  ? AssetImages.droidconLogoWhite
-                  : AssetImages.droidconLogo,
-              scale: 2,
+            GestureDetector(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const ThemeDialog();
+                    });
+              },
+              child: Image.asset(
+                Theme.of(context).brightness == Brightness.dark
+                    ? AssetImages.droidconLogoWhite
+                    : AssetImages.droidconLogo,
+                scale: 2,
+              ),
             ),
             const Spacer(),
             const FeedbackButton(),

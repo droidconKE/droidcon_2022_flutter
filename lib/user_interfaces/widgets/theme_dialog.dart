@@ -1,3 +1,4 @@
+import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,9 @@ class ThemeDialog extends ConsumerWidget {
       body: Center(
         child: Card(
           margin: const EdgeInsets.all(20),
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.greyDarkThemeBackground
+              : Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -45,7 +49,7 @@ class ThemeDialog extends ConsumerWidget {
                 ThemeWidget(
                     label: 'Use light theme',
                     onTap: () {
-                      ref.read(systemThemeProvider.notifier).setUser();
+                      // ref.read(systemThemeProvider.notifier).setUser();
                       ref.read(darkThemeProvider.notifier).setLight();
                     },
                     selected: !ref.watch(darkThemeProvider) &&
@@ -57,7 +61,7 @@ class ThemeDialog extends ConsumerWidget {
                     label: 'Use dark theme',
                     onTap: () {
                       ref.read(darkThemeProvider.notifier).setDark();
-                      ref.read(systemThemeProvider.notifier).setUser();
+                      // ref.read(systemThemeProvider.notifier).setUser();ß
                     },
                     selected: ref.watch(darkThemeProvider) &&
                         !ref.watch(systemThemeProvider)),

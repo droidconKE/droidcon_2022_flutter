@@ -58,7 +58,9 @@ class SessionsScreen extends ConsumerWidget {
                   'list-alt',
                   color: ref.watch(sessionsDisplayStyleProvider) ==
                           SessionsDisplayStyle.list
-                      ? AppColors.blueColor
+                      ? Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.tealColor
+                          : AppColors.blueColor
                       : AppColors.greyTextColor,
                 ),
               ),
@@ -72,7 +74,9 @@ class SessionsScreen extends ConsumerWidget {
                   'view-agenda',
                   color: ref.watch(sessionsDisplayStyleProvider) ==
                           SessionsDisplayStyle.cards
-                      ? AppColors.blueColor
+                      ? Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.tealColor
+                          : AppColors.blueColor
                       : AppColors.greyTextColor,
                 ),
               ),
@@ -110,10 +114,22 @@ class SessionsScreen extends ConsumerWidget {
                 child: Stack(
                   alignment: Alignment.topRight,
                   children: [
-                    Row(children: const [
-                      Text('Filter'),
-                      SizedBox(width: 8),
-                      AfrikonIcon('filter-outline'),
+                    Row(children: [
+                      Text(
+                        'Filter',
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? AppColors.tealColor
+                                    : AppColors.blueColor),
+                      ),
+                      const SizedBox(width: 8),
+                      AfrikonIcon(
+                        'filter-outline',
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.tealColor
+                            : Colors.black,
+                      ),
                     ]),
                     ref.watch(sessionsFilterProvider).maybeWhen(
                           custom: (filter) => Container(
@@ -192,8 +208,16 @@ class SessionsScreen extends ConsumerWidget {
                                     ),
                                     Text(
                                       'My Sessions',
-                                      style:
-                                          Theme.of(context).textTheme.caption,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .caption
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.dark
+                                                  ? AppColors.tealColor
+                                                  : AppColors
+                                                      .blueDroidconColor),
                                     ),
                                   ],
                                 ),
@@ -210,7 +234,10 @@ class SessionsScreen extends ConsumerWidget {
                             SessionsFilterState.bookmarked()
                         ? 'My sessions'
                         : 'All sessions',
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.tealColor
+                            : AppColors.blueDroidconColor),
                   ),
                 ],
               ),

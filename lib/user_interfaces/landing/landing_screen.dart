@@ -26,6 +26,9 @@ class LandingScreen extends ConsumerWidget {
       body: bottomNavBarItems[ref.watch(bottomNavigationProvider)]['screen'],
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
+          backgroundColor: Theme.of(context).brightness == Brightness.dark
+              ? Colors.black
+              : Colors.white,
           currentIndex: ref.watch(bottomNavigationProvider),
           onTap: (index) {
             ref.read(bottomNavigationProvider.notifier).changeIndex(index);

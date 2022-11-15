@@ -18,6 +18,7 @@ class SessionCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: sessions
           .map(
@@ -30,7 +31,7 @@ class SessionCards extends StatelessWidget {
               },
               child: Card(
                 margin: const EdgeInsets.only(bottom: 16, right: 20, left: 20),
-                color: AppColors.lightGrayColor,
+                color: isDark ? Colors.black : AppColors.lightGrayColor,
                 child: Column(
                   children: [
                     Container(
@@ -90,7 +91,10 @@ class SessionCards extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge
-                                ?.copyWith(fontWeight: FontWeight.bold),
+                                ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                        isDark ? Colors.white : Colors.black),
                           ),
                           const SizedBox(height: 16),
                           Row(

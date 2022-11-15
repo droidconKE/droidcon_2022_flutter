@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../styles/colors/colors.dart';
@@ -49,7 +48,11 @@ class _DroidconSwitchState extends State<DroidconSwitch> {
               width: 35,
               height: 15,
               decoration: BoxDecoration(
-                color: _value ? AppColors.orangeColor : AppColors.blackColor,
+                color: _value
+                    ? AppColors.orangeColor
+                    : Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : AppColors.blackColor,
                 borderRadius: BorderRadius.circular(7.5),
               ),
             ),

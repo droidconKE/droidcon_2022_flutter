@@ -19,6 +19,7 @@ class TeamMemberBioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: SliverFab(
         floatingWidget: PassportPhoto(
@@ -30,13 +31,20 @@ class TeamMemberBioScreen extends StatelessWidget {
         floatingPosition:
             FloatingPosition(top: -136, left: size.width / 2 - 52),
         slivers: <Widget>[
-          const SliverAppBar(
-            leading: AppBackButton(),
-            title: Text('Team'),
+          SliverAppBar(
+            leading: AppBackButton(
+              color: isDark ? Colors.white : null,
+            ),
+            title: Text(
+              'Team',
+              style: TextStyle(
+                color: isDark ? Colors.white : null,
+              ),
+            ),
             expandedHeight: 136.0,
             backgroundColor: AppColors.blueColor,
             // floating: true,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: const FlexibleSpaceBar(
               background: SignUpSVGBackground(),
               centerTitle: true,
             ),
@@ -58,7 +66,10 @@ class TeamMemberBioScreen extends StatelessWidget {
                     ),
                     Text(
                       organizer.name,
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: isDark
+                              ? AppColors.tealColor
+                              : AppColors.blueColor),
                     ),
                     const SizedBox(height: 11),
                     Text(
@@ -76,7 +87,10 @@ class TeamMemberBioScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Bio',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: isDark
+                                ? AppColors.tealColor
+                                : AppColors.blueColor),
                       ),
                       Text(organizer.bio),
                       const SizedBox(height: 26),
@@ -93,7 +107,9 @@ class TeamMemberBioScreen extends StatelessWidget {
                       OutlinedButton.icon(
                         onPressed: () {},
                         label: Text('@${organizer.twitterHandle}'),
-                        icon: const Icon(CommunityMaterialIcons.twitter),
+                        icon: const Icon(
+                          CommunityMaterialIcons.twitter,
+                        ),
                       ),
                     ],
                   ),

@@ -40,10 +40,15 @@ class _FeedbackRatingState extends State<FeedbackRating> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF5F5F5),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.greyDarkThemeBackground
+                        : const Color(0xFFF5F5F5),
                     border: entry.key == value
-                        ? const Border.fromBorderSide(
-                            BorderSide(color: AppColors.blueColor))
+                        ? Border.fromBorderSide(BorderSide(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? AppColors.tealColor
+                                    : AppColors.blueColor))
                         : null,
                   ),
                   height: 67,

@@ -21,10 +21,15 @@ class SessionDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBackButton(color: AppColors.blackColor),
-        title: const Text('Session Details'),
+        leading:
+            AppBackButton(color: isDark ? Colors.white : AppColors.blackColor),
+        title: Text('Session Details',
+            style: TextStyle(
+              color: isDark ? Colors.white : AppColors.blackColor,
+            )),
         titleTextStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: AppColors.blackColor,
             ),
@@ -41,16 +46,22 @@ class SessionDetailScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Icon(
+                          Icon(
                             CommunityMaterialIcons.android,
-                            color: AppColors.orangeColor,
+                            color: isDark
+                                ? AppColors.tealColor
+                                : AppColors.orangeColor,
                           ),
                           Text(
                             'Speaker',
                             style: Theme.of(context)
                                 .textTheme
                                 .labelMedium
-                                ?.copyWith(color: AppColors.orangeColor),
+                                ?.copyWith(
+                                  color: isDark
+                                      ? AppColors.tealColor
+                                      : AppColors.orangeColor,
+                                ),
                           ),
                         ],
                       ),

@@ -20,6 +20,7 @@ class SpeakerDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: SliverFab(
         floatingWidget: PassportPhoto(
@@ -31,13 +32,16 @@ class SpeakerDetailScreen extends StatelessWidget {
         floatingPosition:
             FloatingPosition(top: -136, left: size.width / 2 - 52),
         slivers: <Widget>[
-          const SliverAppBar(
-            leading: AppBackButton(),
-            title: Text('Speaker'),
+          SliverAppBar(
+            leading: AppBackButton(color: isDark ? Colors.white : null),
+            title: Text(
+              'Speaker',
+              style: TextStyle(color: isDark ? Colors.white : null),
+            ),
             expandedHeight: 136.0,
             backgroundColor: AppColors.blueColor,
             // floating: true,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: const FlexibleSpaceBar(
               background: SignUpSVGBackground(),
               centerTitle: true,
             ),
@@ -69,7 +73,10 @@ class SpeakerDetailScreen extends StatelessWidget {
                   children: [
                     Text(
                       speaker.name,
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: isDark
+                              ? AppColors.tealColor
+                              : AppColors.blueColor),
                     ),
                     const SizedBox(height: 11),
                     Text(
@@ -86,7 +93,10 @@ class SpeakerDetailScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Bio',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: isDark
+                                ? AppColors.tealColor
+                                : AppColors.blueColor),
                       ),
                       Text(speaker.biography),
                       const SizedBox(height: 26),
