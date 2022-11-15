@@ -31,20 +31,20 @@ class AuthRepository {
 final authRepositoryProvider = Provider((ref) => AuthRepository(ref));
 
 final loginWithGoogleProvider =
-StateNotifierProvider<LoginWithGoogleProvider, LoginWithGoogleState>((ref) {
+    StateNotifierProvider<LoginWithGoogleProvider, LoginWithGoogleState>((ref) {
   return LoginWithGoogleProvider(ref.read(authRepositoryProvider));
 });
 
 class LoginWithGoogleProvider extends StateNotifier<LoginWithGoogleState> {
-  LoginWithGoogleProvider(this.repository) : super(LoginWithGoogleState.initial());
+  LoginWithGoogleProvider(this.repository)
+      : super(LoginWithGoogleState.initial());
 
   final AuthRepository repository;
 
   Future loginWithGoogle() async {
     state = LoginWithGoogleState.loading();
     try {
-      LoginResponse loginResponse =
-      await repository.loginWithGoogle();
+      LoginResponse loginResponse = await repository.loginWithGoogle();
       state = LoginWithGoogleState.success(loginResponse);
     } on String catch (e) {
       state = LoginWithGoogleState.failed(e);
