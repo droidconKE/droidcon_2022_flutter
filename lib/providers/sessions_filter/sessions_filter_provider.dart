@@ -1,4 +1,4 @@
-import 'package:droidcon_app/providers/show_favorited_sessions/state/sessions_filter_state.dart';
+import 'package:droidcon_app/providers/sessions_filter/state/sessions_filter_state.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 
 final sessionsFilterProvider =

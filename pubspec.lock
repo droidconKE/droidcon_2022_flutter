@@ -239,6 +239,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.1"
+  dio_cache_interceptor_hive_store:
+    dependency: "direct main"
+    description:
+      name: dio_cache_interceptor_hive_store
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0"
   drawable:
     dependency: "direct main"
     description:
@@ -423,7 +430,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.13"
+    version: "2.2.14"
   flutter_riverpod:
     dependency: "direct main"
     description:

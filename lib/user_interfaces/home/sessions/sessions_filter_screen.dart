@@ -1,5 +1,5 @@
-import 'package:droidcon_app/providers/show_favorited_sessions/sessions_filter_provider.dart';
-import 'package:droidcon_app/providers/show_favorited_sessions/state/sessions_filter_state.dart';
+import 'package:droidcon_app/providers/sessions_filter/sessions_filter_provider.dart';
+import 'package:droidcon_app/providers/sessions_filter/state/sessions_filter_state.dart';
 import 'package:droidcon_app/styles/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
