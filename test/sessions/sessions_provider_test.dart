@@ -10,6 +10,7 @@ class FakeSessionsRepository extends Mock implements SessionsRepository {
   Future<List<Session>> fetchSessions() async {
     return [
       const Session(
+          id: 1,
           title: 'Session Title',
           description: 'Session description',
           slug: 'Session slug',
