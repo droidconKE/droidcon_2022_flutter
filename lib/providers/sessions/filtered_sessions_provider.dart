@@ -1,20 +1,10 @@
-import 'package:droidcon_app/providers/selected_date/selected_date_provider.dart';
-import 'package:droidcon_app/providers/sessions/sessions_provider.dart';
-import 'package:droidcon_app/providers/sessions_filter/sessions_filter_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../../models/session/session.dart';
-
-extension DateTimeExtension on DateTime {
-  bool isSameDay(DateTime date) {
-    // ignore hour,minute,second..
-    final dateFormat = DateFormat("yyyy-MM-dd");
-    final date1 = dateFormat.format(this);
-    final date2 = dateFormat.format(date);
-    return date1 == date2;
-  }
-}
+import '../../utils/utils.dart';
+import '../selected_date/selected_date_provider.dart';
+import '../sessions_filter/sessions_filter_provider.dart';
+import 'sessions_provider.dart';
 
 final filteredSessionsListProvider = FutureProvider<List<Session>>((ref) async {
   final filter = ref.watch(sessionsFilterProvider);

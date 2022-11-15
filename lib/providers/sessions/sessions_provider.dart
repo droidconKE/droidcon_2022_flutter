@@ -1,4 +1,7 @@
-import 'package:droidcon_app/models/models.dart';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:droidcon_app/models/session/session.dart';
 import 'package:droidcon_app/services/api_service/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

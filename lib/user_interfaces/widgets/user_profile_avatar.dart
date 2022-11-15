@@ -1,15 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:droidcon_app/models/login_response/login_response.dart';
-import 'package:droidcon_app/models/user_info/user_info.dart';
-import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
-import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../models/models.dart';
+import '../../models/user_info/user_info.dart';
 import '../../providers/login_with_google/login_with_google_provider.dart';
 import '../../providers/user_info/user_info_provider.dart';
 import '../../styles/colors/colors.dart';
 import '../authentication/widgets/google_button.dart';
+import 'afrikon_icon.dart';
+import 'primary_button.dart';
 
 class UserProfileAvatar extends ConsumerWidget {
   const UserProfileAvatar({
@@ -44,7 +44,9 @@ class UserProfileAvatar extends ConsumerWidget {
                 GoogleButton(
                   label: 'Sign in with Google',
                   onTap: () async {
-                    ref.read(loginWithGoogleProvider.notifier).loginWithGoogle();
+                    ref
+                        .read(loginWithGoogleProvider.notifier)
+                        .loginWithGoogle();
 
                     Navigator.pop(context);
                   },
@@ -60,14 +62,13 @@ class UserProfileAvatar extends ConsumerWidget {
         // color: AppColors.tealColor,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: userInfo == null
-              ? AppColors.tealColor
-              : Colors.transparent,
+          color: userInfo == null ? AppColors.tealColor : Colors.transparent,
           image: userInfo == null
               ? null
               : DecorationImage(
                   image: CachedNetworkImageProvider(
-                    userInfo.user.avatar ?? 'https://droidcon.co.ke/images/icons/apple-icon-120x120.png',
+                    userInfo.user.avatar ??
+                        'https://droidcon.co.ke/images/icons/apple-icon-120x120.png',
                   ),
                   alignment: Alignment.center,
                   fit: BoxFit.cover,

@@ -1,17 +1,17 @@
-import 'package:droidcon_app/models/login_response/login_response.dart';
-import 'package:droidcon_app/providers/login_with_google/login_with_google_provider.dart';
-import 'package:droidcon_app/providers/token_provider/token_provider.dart';
-import 'package:droidcon_app/user_interfaces/authentication/widgets/app_text_field.dart';
-import 'package:droidcon_app/user_interfaces/authentication/widgets/google_button.dart';
-import 'package:droidcon_app/user_interfaces/authentication/widgets/signin_image_background.dart';
-import 'package:droidcon_app/user_interfaces/widgets/primary_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../models/models.dart';
+import '../../providers/login_with_google/login_with_google_provider.dart';
 import '../../providers/login_with_google/state/login_with_google_state.dart';
+import '../../providers/providers.dart';
 import '../../styles/colors/colors.dart';
+import '../widgets/primary_button.dart';
+import 'widgets/app_text_field.dart';
+import 'widgets/google_button.dart';
+import 'widgets/signin_image_background.dart';
 
 class SignInScreen extends ConsumerWidget {
   static String routeName = 'signin';
@@ -41,7 +41,11 @@ class SignInScreen extends ConsumerWidget {
           children: [
             //The Background image
             const Positioned(
-                left: 0, right: 0, top: 0, child: SignInSVGBackground()),
+              left: 0,
+              right: 0,
+              top: 0,
+              child: SignInSVGBackground(),
+            ),
             Positioned(
                 top: 25,
                 left: 25,
@@ -85,7 +89,7 @@ class SignInScreen extends ConsumerWidget {
                             );
                           }),
                       const SizedBox(
-                        height: 37,
+                        height: 37
                       ),
                       const Text(
                         '- OR -',
@@ -104,7 +108,7 @@ class SignInScreen extends ConsumerWidget {
                         hint: 'Password',
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 30
                       ),
                       Row(
                         children: [

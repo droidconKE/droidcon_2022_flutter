@@ -1,5 +1,6 @@
-import 'package:droidcon_app/user_interfaces/widgets/passport_photo.dart';
 import 'package:flutter/material.dart';
+
+import 'passport_photo.dart';
 
 class Passport extends StatelessWidget {
   final String? title;

@@ -1,6 +1,5 @@
-import 'package:droidcon_app/models/login_response/login_response.dart';
-import 'package:droidcon_app/services/authentication/authentication_service.dart';
-
+import '../../models/models.dart';
+import '../../services/authentication/authentication_service.dart';
 import 'state/login_with_google_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

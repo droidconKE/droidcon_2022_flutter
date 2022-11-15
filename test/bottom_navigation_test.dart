@@ -1,5 +1,5 @@
 // Using mockito to keep track of when a provider notify its listeners
-import 'package:droidcon_app/providers/bottom_navigation/bottom_navigation_provider.dart';
+import 'package:droidcon_app/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

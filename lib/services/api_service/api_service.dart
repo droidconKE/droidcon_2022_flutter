@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:droidcon_app/utils/utils.dart';
+
+import '../../utils/utils.dart';
 
 class ApiService {
   static RestClient restClient = RestClient();

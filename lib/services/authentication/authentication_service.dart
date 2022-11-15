@@ -1,6 +1,8 @@
-import 'package:droidcon_app/models/models.dart';
-import 'package:droidcon_app/services/api_service/api_service.dart';
+
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../models/models.dart';
+import '../api_service/api_service.dart';
 
 class AuthenticationService {
   /// Login with Google

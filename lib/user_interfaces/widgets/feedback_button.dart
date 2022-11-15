@@ -1,9 +1,9 @@
-import 'package:droidcon_app/styles/colors/colors.dart';
-import 'package:droidcon_app/user_interfaces/widgets/afrikon_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../styles/colors/colors.dart';
 import '../feedback/feedback_screen.dart';
+import 'afrikon_icon.dart';
 
 class FeedbackButton extends StatelessWidget {
   const FeedbackButton({super.key});
@@ -25,7 +25,7 @@ class FeedbackButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const [
             AfrikonIcon('smiley-outline',
-                height: 12, color: AppColors.blackColor),
+                height: 12, color: AppColors.blackColor,),
             Text(
               'Feedback',
               style: TextStyle(color: AppColors.blackColor, fontSize: 12),
