@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/models.dart';
 import '../../models/user_info/user_info.dart';
 import '../../providers/login_with_google/login_with_google_provider.dart';
+import '../../providers/sessions/bookmarked_sessions_provider.dart';
 import '../../providers/user_info/user_info_provider.dart';
 import '../../styles/colors/colors.dart';
 import 'afrikon_icon.dart';
@@ -27,6 +28,14 @@ class UserProfileAvatar extends ConsumerWidget {
               orElse: () => null,
             ),
           );
+    });
+
+    ref.listen(userInfoProvider, (previous, next) {
+      if (next == null) {
+        ref.refresh(bookmarkedSessionsProvider);
+      } else {
+        ref.read(bookmarkedSessionsProvider.notifier).fetchRemote();
+      }
     });
 
     return InkWell(
@@ -55,7 +64,7 @@ class UserProfileAvatar extends ConsumerWidget {
                   if (userInfo != null)
                     PrimaryButton(
                       label: 'Logout',
-                      onPressed: () async {
+                      onPressed: () {
                         ref.read(userInfoProvider.notifier).set(null);
                         Navigator.pop(context);
                       },

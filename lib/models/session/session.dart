@@ -12,6 +12,7 @@ class Session with _$Session {
   const Session._();
 
   const factory Session({
+    required int id,
     required String title,
     required String description,
     required String slug,
