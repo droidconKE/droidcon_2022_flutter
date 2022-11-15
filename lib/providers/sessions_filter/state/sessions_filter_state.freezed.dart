@@ -20,21 +20,21 @@ mixin _$SessionsFilterState {
   TResult when<TResult extends Object?>({
     required TResult Function() none,
     required TResult Function() bookmarked,
-    required TResult Function(Map<String, dynamic> response) custom,
+    required TResult Function(SessionFilter filter) custom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
     TResult? Function()? bookmarked,
-    TResult? Function(Map<String, dynamic> response)? custom,
+    TResult? Function(SessionFilter filter)? custom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
     TResult Function()? bookmarked,
-    TResult Function(Map<String, dynamic> response)? custom,
+    TResult Function(SessionFilter filter)? custom,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,7 +118,7 @@ class _$_None implements _None {
   TResult when<TResult extends Object?>({
     required TResult Function() none,
     required TResult Function() bookmarked,
-    required TResult Function(Map<String, dynamic> response) custom,
+    required TResult Function(SessionFilter filter) custom,
   }) {
     return none();
   }
@@ -128,7 +128,7 @@ class _$_None implements _None {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
     TResult? Function()? bookmarked,
-    TResult? Function(Map<String, dynamic> response)? custom,
+    TResult? Function(SessionFilter filter)? custom,
   }) {
     return none?.call();
   }
@@ -138,7 +138,7 @@ class _$_None implements _None {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
     TResult Function()? bookmarked,
-    TResult Function(Map<String, dynamic> response)? custom,
+    TResult Function(SessionFilter filter)? custom,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -226,7 +226,7 @@ class _$_Bookmarked implements _Bookmarked {
   TResult when<TResult extends Object?>({
     required TResult Function() none,
     required TResult Function() bookmarked,
-    required TResult Function(Map<String, dynamic> response) custom,
+    required TResult Function(SessionFilter filter) custom,
   }) {
     return bookmarked();
   }
@@ -236,7 +236,7 @@ class _$_Bookmarked implements _Bookmarked {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
     TResult? Function()? bookmarked,
-    TResult? Function(Map<String, dynamic> response)? custom,
+    TResult? Function(SessionFilter filter)? custom,
   }) {
     return bookmarked?.call();
   }
@@ -246,7 +246,7 @@ class _$_Bookmarked implements _Bookmarked {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
     TResult Function()? bookmarked,
-    TResult Function(Map<String, dynamic> response)? custom,
+    TResult Function(SessionFilter filter)? custom,
     required TResult orElse(),
   }) {
     if (bookmarked != null) {
@@ -299,7 +299,9 @@ abstract class _$$_CustomCopyWith<$Res> {
   factory _$$_CustomCopyWith(_$_Custom value, $Res Function(_$_Custom) then) =
       __$$_CustomCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, dynamic> response});
+  $Res call({SessionFilter filter});
+
+  $SessionFilterCopyWith<$Res> get filter;
 }
 
 /// @nodoc
@@ -312,32 +314,36 @@ class __$$_CustomCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? response = null,
+    Object? filter = null,
   }) {
     return _then(_$_Custom(
-      null == response
-          ? _value._response
-          : response // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+      null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as SessionFilter,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SessionFilterCopyWith<$Res> get filter {
+    return $SessionFilterCopyWith<$Res>(_value.filter, (value) {
+      return _then(_value.copyWith(filter: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_Custom implements _Custom {
-  _$_Custom(final Map<String, dynamic> response) : _response = response;
+  _$_Custom(this.filter);
 
-  final Map<String, dynamic> _response;
   @override
-  Map<String, dynamic> get response {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_response);
-  }
+  final SessionFilter filter;
 
   @override
   String toString() {
-    return 'SessionsFilterState.custom(response: $response)';
+    return 'SessionsFilterState.custom(filter: $filter)';
   }
 
   @override
@@ -345,12 +351,11 @@ class _$_Custom implements _Custom {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Custom &&
-            const DeepCollectionEquality().equals(other._response, _response));
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_response));
+  int get hashCode => Object.hash(runtimeType, filter);
 
   @JsonKey(ignore: true)
   @override
@@ -363,9 +368,9 @@ class _$_Custom implements _Custom {
   TResult when<TResult extends Object?>({
     required TResult Function() none,
     required TResult Function() bookmarked,
-    required TResult Function(Map<String, dynamic> response) custom,
+    required TResult Function(SessionFilter filter) custom,
   }) {
-    return custom(response);
+    return custom(filter);
   }
 
   @override
@@ -373,9 +378,9 @@ class _$_Custom implements _Custom {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
     TResult? Function()? bookmarked,
-    TResult? Function(Map<String, dynamic> response)? custom,
+    TResult? Function(SessionFilter filter)? custom,
   }) {
-    return custom?.call(response);
+    return custom?.call(filter);
   }
 
   @override
@@ -383,11 +388,11 @@ class _$_Custom implements _Custom {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
     TResult Function()? bookmarked,
-    TResult Function(Map<String, dynamic> response)? custom,
+    TResult Function(SessionFilter filter)? custom,
     required TResult orElse(),
   }) {
     if (custom != null) {
-      return custom(response);
+      return custom(filter);
     }
     return orElse();
   }
@@ -428,9 +433,9 @@ class _$_Custom implements _Custom {
 }
 
 abstract class _Custom implements SessionsFilterState {
-  factory _Custom(final Map<String, dynamic> response) = _$_Custom;
+  factory _Custom(final SessionFilter filter) = _$_Custom;
 
-  Map<String, dynamic> get response;
+  SessionFilter get filter;
   @JsonKey(ignore: true)
   _$$_CustomCopyWith<_$_Custom> get copyWith =>
       throw _privateConstructorUsedError;

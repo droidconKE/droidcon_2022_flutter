@@ -64,9 +64,5 @@ class SessionsRepository {
 final sessionsRepositoryProvider = Provider((ref) => SessionsRepository(ref));
 
 final sessionsProvider = FutureProvider<List<Session>>((ref) async {
-  final repository = ref.watch(sessionsRepositoryProvider);
-  // TODO: If filter = SessionFilterState.custom() fetch sessions matching filters
-  // final filter = ref.watch(sessionsFilterProvider);
-
-  return repository.fetchSessions();
+  return ref.watch(sessionsRepositoryProvider).fetchSessions();
 });

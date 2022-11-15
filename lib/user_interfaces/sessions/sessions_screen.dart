@@ -1,18 +1,15 @@
-import '../../providers/selected_date/selected_date_provider.dart';
-import '../../providers/sessions/filtered_sessions_provider.dart';
-import '../../providers/sessions/sessions_provider.dart';
-import '../../providers/sessions_display_style/sessions_display_style.dart';
-import '../../styles/colors/colors.dart';
-import '../../utils/utils.dart';
-
-import '../../models/models.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../providers/sessions_filter/sessions_filter_provider.dart';
 import '../../../providers/sessions_filter/state/sessions_filter_state.dart';
+import '../../providers/selected_date/selected_date_provider.dart';
 import '../../providers/sessions/event_dates_provider.dart';
+import '../../providers/sessions/filtered_sessions_provider.dart';
+import '../../providers/sessions/sessions_provider.dart';
+import '../../providers/sessions_display_style/sessions_display_style.dart';
+import '../../styles/colors/colors.dart';
+import '../../utils/utils.dart';
 import '../widgets/afrikon_icon.dart';
 import '../widgets/droidcon_logo.dart';
 import 'sessions_filter_screen.dart';
@@ -34,14 +31,7 @@ class SessionsScreen extends ConsumerWidget {
           .read(selectedDateProvider.notifier)
           .set(next.value?[index > -1 ? index : 0]);
     });
-    ref.listen(sessionsFilterProvider, (previous, next) {
-      if (![previous, next].contains(SessionsFilterState.bookmarked())) {
-        ref.refresh(sessionsProvider);
-      }
-    });
-
-    AsyncValue<List<Session>> sessions =
-        ref.watch(filteredSessionsListProvider);
+    final sessions = ref.watch(filteredSessionsListProvider);
     return Scaffold(
         appBar: AppBar(
           title: Row(
