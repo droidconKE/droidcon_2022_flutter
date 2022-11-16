@@ -48,6 +48,7 @@ final lightTheme = ThemeData(
   progressIndicatorTheme: const ProgressIndicatorThemeData(
     color: AppColors.orangeColor,
   ),
+  primaryColor: AppColors.blueColor,
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
     selectedIconTheme: IconThemeData(color: AppColors.blueColor),
@@ -86,13 +87,22 @@ final lightTheme = ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       ),
-      side: MaterialStateProperty.all(const BorderSide(
-        color: AppColors.blueColor,
-      )),
+      side: MaterialStateProperty.all(
+        const BorderSide(color: AppColors.blueColor),
+      ),
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(
+        (AppColors.blueColor),
+      ),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      ),
+      // textStyle: MaterialStateProperty.all(Theme.of(context).elevatedButtonTheme.tex),
     ),
   ),
 );

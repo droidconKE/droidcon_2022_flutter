@@ -1,27 +1,68 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:droidcon_app/models/session/session.dart';
-import 'package:droidcon_app/services/api_service/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../sessions_filter/sessions_filter_provider.dart';
-
+import '../../models/session/session.dart';
+import '../dio/dio_provider.dart';
 
 class SessionsRepository {
+  final ProviderRef ref;
+
+  SessionsRepository(this.ref);
+
   Future<List<Session>> fetchSessions() async {
-    final response =
-        await ApiService.getData(path: 'events/droidconke-2022-281/schedule');
-    return response['data'].map<Session>((e) => Session.fromJson(e)).toList();
+    try {
+      final response = await ref
+          .read(dioClientProvider)
+          .get('/events/droidconke-2022-281/schedule');
+      return response.data['data']
+          .map<Session>((e) => Session.fromJson(e))
+          .toList();
+    } on DioError catch (e) {
+      throw e.message;
+    } on SocketException catch (e) {
+      throw e.message;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<Session>> fetchBookmarked() async {
+    try {
+      final response = await ref
+          .read(dioClientProvider)
+          .get('/events/droidconke-2022-281/bookmarked_schedule');
+      return response.data['data']
+          .map<Session>((e) => Session.fromJson(e))
+          .toList();
+    } on DioError catch (e) {
+      throw e.message;
+    } on SocketException catch (e) {
+      throw e.message;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response> toggleSessionBookmark(int id) async {
+    try {
+      return await ref
+          .read(dioClientProvider)
+          .post('/events/droidconke-2022-281/bookmark_schedule/$id');
+      /*} on DioError catch (e) {
+      throw e.message;
+    } on SocketException catch (e) {
+      throw e.message;*/
+    } catch (e) {
+      rethrow;
+    }
   }
 }
 
 // We expose our instance of Repository in a provider
-final sessionsRepositoryProvider = Provider((ref) => SessionsRepository());
+final sessionsRepositoryProvider = Provider((ref) => SessionsRepository(ref));
 
 final sessionsProvider = FutureProvider<List<Session>>((ref) async {
-  final filter = ref.watch(sessionsFilterProvider);
-  final repository = ref.watch(sessionsRepositoryProvider);
-  // TODO: If filter = SessionFilterState.custom() fetch sessions matching filters
-  return repository.fetchSessions();
+  return ref.watch(sessionsRepositoryProvider).fetchSessions();
 });

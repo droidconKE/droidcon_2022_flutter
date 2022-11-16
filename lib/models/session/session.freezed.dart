@@ -20,6 +20,7 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Session {
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get slug => throw _privateConstructorUsedError;
@@ -57,7 +58,8 @@ abstract class $SessionCopyWith<$Res> {
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       String description,
       String slug,
       @JsonKey(name: 'session_format') String sessionFormat,
@@ -87,6 +89,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? slug = null,
@@ -104,6 +107,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? rooms = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -176,7 +183,8 @@ abstract class _$$_SessionCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       String description,
       String slug,
       @JsonKey(name: 'session_format') String sessionFormat,
@@ -203,6 +211,7 @@ class __$$_SessionCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? slug = null,
@@ -220,6 +229,10 @@ class __$$_SessionCopyWithImpl<$Res>
     Object? rooms = freezed,
   }) {
     return _then(_$_Session(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -288,7 +301,8 @@ class __$$_SessionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Session extends _Session {
   const _$_Session(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.description,
       required this.slug,
       @JsonKey(name: 'session_format')
@@ -318,6 +332,8 @@ class _$_Session extends _Session {
   factory _$_Session.fromJson(Map<String, dynamic> json) =>
       _$$_SessionFromJson(json);
 
+  @override
+  final int id;
   @override
   final String title;
   @override
@@ -372,7 +388,7 @@ class _$_Session extends _Session {
 
   @override
   String toString() {
-    return 'Session(title: $title, description: $description, slug: $slug, sessionFormat: $sessionFormat, sessionLevel: $sessionLevel, isBookmarked: $isBookmarked, sessionImage: $sessionImage, backgroundColor: $backgroundColor, borderColor: $borderColor, startDateTime: $startDateTime, startTime: $startTime, endDateTime: $endDateTime, endTime: $endTime, speakers: $speakers, rooms: $rooms)';
+    return 'Session(id: $id, title: $title, description: $description, slug: $slug, sessionFormat: $sessionFormat, sessionLevel: $sessionLevel, isBookmarked: $isBookmarked, sessionImage: $sessionImage, backgroundColor: $backgroundColor, borderColor: $borderColor, startDateTime: $startDateTime, startTime: $startTime, endDateTime: $endDateTime, endTime: $endTime, speakers: $speakers, rooms: $rooms)';
   }
 
   @override
@@ -380,6 +396,7 @@ class _$_Session extends _Session {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Session &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -411,6 +428,7 @@ class _$_Session extends _Session {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       title,
       description,
       slug,
@@ -443,7 +461,8 @@ class _$_Session extends _Session {
 
 abstract class _Session extends Session {
   const factory _Session(
-      {required final String title,
+      {required final int id,
+      required final String title,
       required final String description,
       required final String slug,
       @JsonKey(name: 'session_format')
@@ -470,6 +489,8 @@ abstract class _Session extends Session {
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$_Session.fromJson;
 
+  @override
+  int get id;
   @override
   String get title;
   @override

@@ -1,3 +1,4 @@
+import 'package:droidcon_app/models/session_filter/session_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,8 @@ class SessionsFilterScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final sessionsFilter = ref.watch(sessionsFilterProvider);
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -23,7 +26,8 @@ class SessionsFilterScreen extends ConsumerWidget {
               bottomRight: Radius.circular(14),
             ),
             child: Theme(
-              data: ThemeData(primaryColor: AppColors.blackColor),
+              data: Theme.of(context)
+                  .copyWith(primaryColor: AppColors.blackColor),
               child: Container(
                 padding: const EdgeInsets.all(20),
                 height: MediaQuery.of(context).size.height * .9,
@@ -39,9 +43,9 @@ class SessionsFilterScreen extends ConsumerWidget {
                     key: _formKey,
                     initialValue: ref
                         .watch(sessionsFilterProvider)
-                        .maybeWhen(custom: (data) => data, orElse: () => {}),
+                        .maybeWhen(custom: (data) => data.toJson(), orElse: () => {}),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Row(
@@ -83,21 +87,22 @@ class SessionsFilterScreen extends ConsumerWidget {
                             name: 'level',
                             options: ['Beginner', 'Intermediate', 'Expert']),
                         const SizedBox(height: 32),
-                        Text(
+                        /*Text(
                           'Topic',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const CustomSegmentedControlField(
-                            name: 'topic',
-                            options: ['UI/UI Design', 'Backend', 'APIs']),
-                        const SizedBox(height: 32),
+                          name: 'topic',
+                          options: ['UI/UI Design', 'Backend', 'APIs'],
+                        ),
+                        const SizedBox(height: 32),*/
                         Text(
                           'Rooms',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const CustomSegmentedControlField(
-                            name: 'rooms',
-                            options: ['Room 1', 'Room 2', 'Room 3']),
+                            name: 'room',
+                            options: ['Room A', 'Room B', 'Room C']),
                         const SizedBox(height: 32),
                         Text(
                           'Session Type',
@@ -109,10 +114,12 @@ class SessionsFilterScreen extends ConsumerWidget {
                             'Keynote',
                             'Codelab',
                             'Session',
-                            'Lightning Talk',
-                            'Panel Discussion'
+                            'Lightning\ntalk',
+                            'Workshop',
+                            'Panel'
                           ],
                         ),
+                        const SizedBox(height: 32),
                         SizedBox(
                           width: double.maxFinite,
                           child: ElevatedButton(
@@ -121,23 +128,27 @@ class SessionsFilterScreen extends ConsumerWidget {
                                 ref
                                     .read(sessionsFilterProvider.notifier)
                                     .change(SessionsFilterState.custom(
-                                        _formKey.currentState!.value));
+                                        SessionFilter.fromJson(_formKey.currentState!.value)));
                                 Navigator.of(context).pop();
                               }
                             },
                             child: const Text('FILTER'),
                           ),
                         ),
-                        SizedBox(
-                          width: double.maxFinite,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              ref
-                                  .read(sessionsFilterProvider.notifier)
-                                  .change(SessionsFilterState.none());
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('CLEAR FILTER'),
+                        sessionsFilter.maybeWhen(
+                          orElse: () => const SizedBox(),
+                          custom: (_) => SizedBox(
+                            width: double.maxFinite,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                _formKey.currentState!.reset();
+                                ref
+                                    .read(sessionsFilterProvider.notifier)
+                                    .change(SessionsFilterState.none());
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('CLEAR FILTER'),
+                            ),
                           ),
                         ),
                       ],

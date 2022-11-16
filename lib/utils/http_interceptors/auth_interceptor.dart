@@ -1,18 +1,22 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
-
-import '../../providers/token_provider/token_provider.dart';
+import 'package:droidcon_app/providers/user_info/user_info_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthInterceptor extends Interceptor {
+  AuthInterceptor(this.ref);
+
+  final ProviderRef ref;
+
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final token = GetIt.I.get<TokenProvider>().state;
+    // final token = GetIt.I.get<TokenProvider>().state;
+    final token = ref.read(userInfoProvider)?.token;
 
     /// Add the bearer token header to all requests if the token is not null
-    if (token.isNotEmpty) {
+    if (token?.isNotEmpty ?? false) {
       options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
     }
     options.headers.addAll({

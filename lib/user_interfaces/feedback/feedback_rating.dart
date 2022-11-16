@@ -10,15 +10,15 @@ class FeedbackRating extends StatefulWidget {
     required this.onValueChanged,
   });
 
-  final String? initialValue;
-  final ValueChanged<String?> onValueChanged;
+  final int? initialValue;
+  final ValueChanged<int?> onValueChanged;
 
   @override
   State<FeedbackRating> createState() => _FeedbackRatingState();
 }
 
 class _FeedbackRatingState extends State<FeedbackRating> {
-  String? value;
+  int? value;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _FeedbackRatingState extends State<FeedbackRating> {
   Widget build(BuildContext context) {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: {'bad': '😔', 'okay': '😐', 'great': '😊'}
+        children: {1: '😔', 3: '😐', 5: '😊'}
             .entries
             .map(
               (entry) => InkWell(
@@ -57,7 +57,7 @@ class _FeedbackRatingState extends State<FeedbackRating> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(entry.value, style: const TextStyle(fontSize: 35)),
-                      Text(entry.key.toCapitalized()),
+                      Text(entry.key.toString().toCapitalized()),
                     ],
                   ),
                 ),

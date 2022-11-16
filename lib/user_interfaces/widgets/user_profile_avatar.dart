@@ -5,10 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/models.dart';
 import '../../models/user_info/user_info.dart';
 import '../../providers/login_with_google/login_with_google_provider.dart';
+import '../../providers/sessions/bookmarked_sessions_provider.dart';
 import '../../providers/user_info/user_info_provider.dart';
 import '../../styles/colors/colors.dart';
-import '../authentication/widgets/google_button.dart';
 import 'afrikon_icon.dart';
+import 'google_button.dart';
 import 'primary_button.dart';
 
 class UserProfileAvatar extends ConsumerWidget {
@@ -19,39 +20,74 @@ class UserProfileAvatar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userInfo = ref.watch(userInfoProvider);
+
     ref.listen(loginWithGoogleProvider, (oldState, state) {
-      ref.read(userInfoProvider.notifier).set(state.maybeWhen(
-            success: (LoginResponse res) => UserInfo.fromJson(res.toJson()),
-            orElse: () => null,
-          ));
+      ref.read(userInfoProvider.notifier).set(
+            state.maybeWhen(
+              success: (LoginResponse res) => UserInfo.fromJson(res.toJson()),
+              orElse: () => null,
+            ),
+          );
     });
+
+    ref.listen(userInfoProvider, (previous, next) {
+      if (next == null) {
+        ref.refresh(bookmarkedSessionsProvider);
+      } else {
+        ref.read(bookmarkedSessionsProvider.notifier).fetchRemote();
+      }
+    });
+
     return InkWell(
       onTap: () async {
         await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            actions: [
-              if (ref.watch(userInfoProvider) != null)
-                PrimaryButton(
-                  label: 'Logout',
-                  onPressed: () async {
-                    ref.read(userInfoProvider.notifier).set(null);
-                    ref.read(userInfoProvider.notifier).clear();
-                    Navigator.pop(context);
-                  },
+            titlePadding: const EdgeInsets.all(0),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  child: Text(
+                    'CANCEL',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
-              if (ref.watch(userInfoProvider) == null)
-                GoogleButton(
-                  label: 'Sign in with Google',
-                  onTap: () async {
-                    ref
-                        .read(loginWithGoogleProvider.notifier)
-                        .loginWithGoogle();
+              ],
+            ),
+            content: SizedBox(
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (userInfo != null)
+                    PrimaryButton(
+                      label: 'Logout',
+                      onPressed: () {
+                        ref.read(userInfoProvider.notifier).set(null);
+                        Navigator.pop(context);
+                      },
+                    ),
+                  if (userInfo == null)
+                    ref.watch(loginWithGoogleProvider).maybeWhen(
+                          loading: () => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          orElse: () => GoogleButton(
+                            label: 'Sign in with Google',
+                            onTap: () async {
+                              await ref
+                                  .read(loginWithGoogleProvider.notifier)
+                                  .loginWithGoogle();
 
-                    Navigator.pop(context);
-                  },
-                ),
-            ],
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                ],
+              ),
+            ),
           ),
         );
       },

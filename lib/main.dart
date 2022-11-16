@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_performance/firebase_performance.dart';
@@ -10,14 +9,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hydrated_riverpod/hydrated_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
-import 'providers/token_provider/token_provider.dart';
-import 'utils/utils.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -35,8 +31,6 @@ void main() async {
     () async {
       final appDir = await getApplicationDocumentsDirectory();
       final storage = await HydratedStorage.build(storageDirectory: appDir);
-      GetIt.I.registerSingleton<HiveCacheStore>(HiveCacheStore(appDir.path));
-      // GetIt.I.registerSingleton<CacheOptions>(ApiConfig.defaultCacheOptions);
       HydratedRiverpod.initialize(storage: storage);
       if (kDebugMode) {
         await FirebaseCrashlytics.instance
@@ -46,11 +40,6 @@ void main() async {
       }
       await dotenv.load(fileName: 'environments/.env');
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-
-      /// register the [RestClient] in as a singleton
-      GetIt.I.registerSingleton<RestClient>(RestClient());
-      GetIt.I.registerSingleton<TokenProvider>(TokenProvider());
-      GetIt.I.allowReassignment = true;
       ErrorWidget.builder = (FlutterErrorDetails error) {
         Zone.current.handleUncaughtError(error.exception, error.stack!);
         return ErrorWidget(error.exception);
