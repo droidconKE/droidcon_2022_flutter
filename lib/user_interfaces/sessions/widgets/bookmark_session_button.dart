@@ -1,4 +1,5 @@
 import 'package:droidcon_app/providers/sessions/bookmarked_sessions_provider.dart';
+import 'package:droidcon_app/providers/user_info/user_info_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,6 +18,7 @@ class BookmarkSessionButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bookmarkedSessions = ref.watch(bookmarkedSessionsProvider);
+    final userInfo = ref.watch(userInfoProvider);
     final isBookmarked = bookmarkedSessions.maybeWhen(
       success: (sessions) =>
           (sessions as List<Session>)
@@ -33,7 +35,11 @@ class BookmarkSessionButton extends ConsumerWidget {
         color: isBookmarked ? AppColors.orangeColor : AppColors.blueColor,
       ),
       onPressed: () {
-        ref.read(bookmarkedSessionsProvider.notifier).toggle(session);
+        if(userInfo != null) {
+          ref.read(bookmarkedSessionsProvider.notifier).toggle(session);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please login to bookmark sessions')));
+        }
       },
     );
   }
