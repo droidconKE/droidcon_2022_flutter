@@ -27,12 +27,14 @@ class ThemeDialog extends ConsumerWidget {
               children: [
                 Text(
                   'What is your preferred theme?',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                 ),
                 const SizedBox(height: 20),
 
@@ -41,6 +43,7 @@ class ThemeDialog extends ConsumerWidget {
                     label: 'Use system theme',
                     onTap: () {
                       ref.read(systemThemeProvider.notifier).toggle();
+                      Navigator.pop(context);
                     },
                     selected: ref.watch(systemThemeProvider)),
                 const SizedBox(height: 20),
@@ -51,6 +54,7 @@ class ThemeDialog extends ConsumerWidget {
                     onTap: () {
                       // ref.read(systemThemeProvider.notifier).setUser();
                       ref.read(darkThemeProvider.notifier).setLight();
+                      Navigator.pop(context);
                     },
                     selected: !ref.watch(darkThemeProvider) &&
                         !ref.watch(systemThemeProvider)),
@@ -61,23 +65,11 @@ class ThemeDialog extends ConsumerWidget {
                     label: 'Use dark theme',
                     onTap: () {
                       ref.read(darkThemeProvider.notifier).setDark();
+                      Navigator.pop(context);
                       // ref.read(systemThemeProvider.notifier).setUser();ß
                     },
                     selected: ref.watch(darkThemeProvider) &&
                         !ref.watch(systemThemeProvider)),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: PrimaryButton(
-                        label: 'Dismiss',
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ],
-                )
               ],
             ),
           ),
@@ -91,6 +83,7 @@ class ThemeWidget extends StatelessWidget {
   final String label;
   final bool selected;
   final void Function()? onTap;
+
   const ThemeWidget(
       {Key? key, required this.label, required this.selected, this.onTap})
       : super(key: key);
