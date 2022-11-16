@@ -60,8 +60,7 @@ class SponsorsCard extends ConsumerWidget {
                             semanticsLabel: sponsors[index].name,
                             width: logoSize,
                             placeholderBuilder: (BuildContext context) =>
-                                const Center(
-                                    child: CircularProgressIndicator()),
+                                const SizedBox(),
                           )
                         : CachedNetworkImage(
                             imageUrl: sponsors[index].logo,

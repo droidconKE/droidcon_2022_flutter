@@ -56,8 +56,7 @@ class OrganizersCard extends ConsumerWidget {
                             semanticsLabel: organizers[index].name,
                             width: 60,
                             placeholderBuilder: (BuildContext context) =>
-                                const Center(
-                                    child: CircularProgressIndicator()),
+                                const SizedBox(),
                           )
                         : CachedNetworkImage(
                             imageUrl: organizers[index].photo,
