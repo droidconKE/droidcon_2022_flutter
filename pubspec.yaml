@@ -2,7 +2,7 @@ name: droidcon_app
 description: Flutter app for Kenya's 3rd Android Developer Conference - droidcon
   to be held in Nairobi from November 16-18th 2022.
 publish_to: "none"
-version: 1.2.0+3
+version: 1.3.0+4
 environment:
   sdk: ">=2.18.0 <3.0.0"
 
