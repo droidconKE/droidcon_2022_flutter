@@ -41,9 +41,8 @@ class SessionsFilterScreen extends ConsumerWidget {
                 child: SafeArea(
                   child: FormBuilder(
                     key: _formKey,
-                    initialValue: ref
-                        .watch(sessionsFilterProvider)
-                        .maybeWhen(custom: (data) => data.toJson(), orElse: () => {}),
+                    initialValue: ref.watch(sessionsFilterProvider).maybeWhen(
+                        custom: (data) => data.toJson(), orElse: () => {}),
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,9 +82,21 @@ class SessionsFilterScreen extends ConsumerWidget {
                           'Level',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
-                        const CustomSegmentedControlField(
-                            name: 'level',
-                            options: ['Beginner', 'Intermediate', 'Expert']),
+                        CustomSegmentedControlField(
+                          name: 'level',
+                          options: const ['Beginner', 'Intermediate', 'Expert'],
+                          validator: (val) {
+                            if (val == null &&
+                                _formKey.currentState!.fields['room']!.value ==
+                                    null &&
+                                _formKey.currentState!.fields['format']!
+                                        .value ==
+                                    null) {
+                              return 'Select at least one filter';
+                            }
+                            return null;
+                          },
+                        ),
                         const SizedBox(height: 32),
                         /*Text(
                           'Topic',
@@ -100,17 +111,29 @@ class SessionsFilterScreen extends ConsumerWidget {
                           'Rooms',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
-                        const CustomSegmentedControlField(
-                            name: 'room',
-                            options: ['Room A', 'Room B', 'Room C']),
+                        CustomSegmentedControlField(
+                          name: 'room',
+                          options: const ['Room A', 'Room B', 'Room C'],
+                          validator: (val) {
+                            if (val == null &&
+                                _formKey.currentState!.fields['level']!.value ==
+                                    null &&
+                                _formKey.currentState!.fields['format']!
+                                        .value ==
+                                    null) {
+                              return 'Select at least one filter';
+                            }
+                            return null;
+                          },
+                        ),
                         const SizedBox(height: 32),
                         Text(
                           'Session Type',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
-                        const CustomSegmentedControlField(
+                        CustomSegmentedControlField(
                           name: 'format',
-                          options: [
+                          options: const [
                             'Keynote',
                             'Codelab',
                             'Session',
@@ -118,6 +141,16 @@ class SessionsFilterScreen extends ConsumerWidget {
                             'Workshop',
                             'Panel'
                           ],
+                          validator: (val) {
+                            if (val == null &&
+                                _formKey.currentState!.fields['level']!.value ==
+                                    null &&
+                                _formKey.currentState!.fields['room']!.value ==
+                                    null) {
+                              return 'Select at least one filter';
+                            }
+                            return null;
+                          },
                         ),
                         const SizedBox(height: 32),
                         SizedBox(
@@ -128,7 +161,8 @@ class SessionsFilterScreen extends ConsumerWidget {
                                 ref
                                     .read(sessionsFilterProvider.notifier)
                                     .change(SessionsFilterState.custom(
-                                        SessionFilter.fromJson(_formKey.currentState!.value)));
+                                        SessionFilter.fromJson(
+                                            _formKey.currentState!.value)));
                                 Navigator.of(context).pop();
                               }
                             },
@@ -169,14 +203,17 @@ class CustomSegmentedControlField extends StatelessWidget {
     Key? key,
     required this.options,
     required this.name,
+    this.validator,
   }) : super(key: key);
   final List<String> options;
   final String name;
+  final FormFieldValidator? validator;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderSegmentedControl<String>(
       name: name,
+      validator: validator,
       decoration: const InputDecoration(
         border: InputBorder.none,
         enabledBorder: InputBorder.none,

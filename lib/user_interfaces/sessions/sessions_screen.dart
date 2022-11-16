@@ -118,7 +118,7 @@ class SessionsScreen extends ConsumerWidget {
                         'filter-outline',
                         color: Theme.of(context).brightness == Brightness.dark
                             ? AppColors.tealColor
-                            : Colors.black,
+                            : AppColors.blueColor,
                       ),
                     ]),
                     ref.watch(sessionsFilterProvider).maybeWhen(
@@ -126,7 +126,7 @@ class SessionsScreen extends ConsumerWidget {
                             height: 10,
                             width: 10,
                             decoration: const BoxDecoration(
-                              color: AppColors.tealColor,
+                              color: AppColors.orangeColor,
                               shape: BoxShape.circle,
                             ),
                           ),

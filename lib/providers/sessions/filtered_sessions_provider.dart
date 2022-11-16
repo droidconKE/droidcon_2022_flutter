@@ -15,25 +15,25 @@ final filteredSessionsListProvider = FutureProvider<List<Session>>((ref) async {
   final selectedDate = ref.watch(selectedDateProvider);
 
   final List<Session> filteredEvents = filter.when(
+    none: () => sessions,
     bookmarked: () => bookmarkedSessions.maybeWhen(
       success: (data) => data,
       orElse: () => <Session>[],
     ),
-    none: () => sessions,
     custom: (SessionFilter filter) {
       return sessions.where((element) {
-        final levelFilter = filter.level == null ||
+        final levelFilter = filter.level == null ? null :
             (element.sessionLevel.toLowerCase() == filter.level?.toLowerCase());
-        final typeFilter = filter.format == null ||
+        final typeFilter = filter.format == null ? null :
             (element.sessionFormat.toLowerCase() ==
                 filter.format?.toLowerCase() ||
             element.title.toLowerCase() == filter.format?.toLowerCase());
-        final roomFilter = filter.room == null ||
+        final roomFilter = filter.room == null ? null :
             (element.rooms
                     ?.map((e) => e.title.toLowerCase())
-                    .contains(filter.room?.toLowerCase()) ??
-                false);
-        return levelFilter && typeFilter && roomFilter;
+                    .contains(filter.room?.toLowerCase()));
+        return [levelFilter, typeFilter, roomFilter]
+            .whereNotNull().fold(true, (value, element) => value && element);
       }).toList();
     },
   );

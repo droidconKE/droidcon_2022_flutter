@@ -37,3 +37,7 @@ extension HexColor on Color {
       '${green.toRadixString(16).padLeft(2, '0')}'
       '${blue.toRadixString(16).padLeft(2, '0')}';
 }
+
+extension NotNullIterable<E> on Iterable<E?> {
+  Iterable<E> whereNotNull() => whereType<E>();
+}
