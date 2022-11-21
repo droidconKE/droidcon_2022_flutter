@@ -15,7 +15,7 @@ class SessionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark=Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: () {
         context.pushNamed(SessionDetailScreen.routeName, extra: session);

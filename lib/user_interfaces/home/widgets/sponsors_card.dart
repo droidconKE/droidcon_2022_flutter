@@ -61,6 +61,7 @@ class SponsorsCard extends ConsumerWidget {
                             width: logoSize,
                             placeholderBuilder: (BuildContext context) =>
                                 const SizedBox(),
+                            color: isDark ? Colors.white : Colors.black,
                           )
                         : CachedNetworkImage(
                             imageUrl: sponsors[index].logo,

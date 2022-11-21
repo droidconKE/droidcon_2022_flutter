@@ -57,6 +57,7 @@ class OrganizersCard extends ConsumerWidget {
                             width: 60,
                             placeholderBuilder: (BuildContext context) =>
                                 const SizedBox(),
+                            color: isDark ? Colors.white : Colors.black,
                           )
                         : CachedNetworkImage(
                             imageUrl: organizers[index].photo,
