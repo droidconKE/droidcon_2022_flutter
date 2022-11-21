@@ -13,7 +13,7 @@ class SessionFilter with _$SessionFilter {
     String? room,
     String? format,
     String? topic,
-}) = _SessionFilter;
+  }) = _SessionFilter;
 
   factory SessionFilter.fromJson(Map<String, dynamic> json) =>
       _$SessionFilterFromJson(json);

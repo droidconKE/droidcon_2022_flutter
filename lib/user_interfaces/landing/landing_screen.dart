@@ -18,7 +18,7 @@ class LandingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bottomNavBarItems = <Map<String, dynamic>>[
       {'title': 'Home', 'icon': 'home', 'screen': const HomeScreen()},
-      {'title': 'Feed', 'icon': 'bell', 'screen': const FeedScreen()},
+      // {'title': 'Feed', 'icon': 'bell', 'screen': const FeedScreen()},
       {'title': 'Sessions', 'icon': 'time', 'screen': const SessionsScreen()},
       {'title': 'About', 'icon': 'flower', 'screen': const AboutScreen()},
     ];

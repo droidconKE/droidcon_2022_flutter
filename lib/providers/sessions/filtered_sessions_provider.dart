@@ -22,18 +22,23 @@ final filteredSessionsListProvider = FutureProvider<List<Session>>((ref) async {
     ),
     custom: (SessionFilter filter) {
       return sessions.where((element) {
-        final levelFilter = filter.level == null ? null :
-            (element.sessionLevel.toLowerCase() == filter.level?.toLowerCase());
-        final typeFilter = filter.format == null ? null :
-            (element.sessionFormat.toLowerCase() ==
-                filter.format?.toLowerCase() ||
-            element.title.toLowerCase() == filter.format?.toLowerCase());
-        final roomFilter = filter.room == null ? null :
-            (element.rooms
-                    ?.map((e) => e.title.toLowerCase())
-                    .contains(filter.room?.toLowerCase()));
+        final levelFilter = filter.level == null
+            ? null
+            : (element.sessionLevel.toLowerCase() ==
+                filter.level?.toLowerCase());
+        final typeFilter = filter.format == null
+            ? null
+            : (element.sessionFormat.toLowerCase() ==
+                    filter.format?.toLowerCase() ||
+                element.title.toLowerCase() == filter.format?.toLowerCase());
+        final roomFilter = filter.room == null
+            ? null
+            : (element.rooms
+                ?.map((e) => e.title.toLowerCase())
+                .contains(filter.room?.toLowerCase()));
         return [levelFilter, typeFilter, roomFilter]
-            .whereNotNull().fold(true, (value, element) => value && element);
+            .whereNotNull()
+            .fold(true, (value, element) => value && element);
       }).toList();
     },
   );

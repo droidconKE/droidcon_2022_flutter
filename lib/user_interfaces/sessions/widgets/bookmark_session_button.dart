@@ -35,10 +35,11 @@ class BookmarkSessionButton extends ConsumerWidget {
         color: isBookmarked ? AppColors.orangeColor : AppColors.blueColor,
       ),
       onPressed: () {
-        if(userInfo != null) {
+        if (userInfo != null) {
           ref.read(bookmarkedSessionsProvider.notifier).toggle(session);
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please login to bookmark sessions')));
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Please login to bookmark sessions')));
         }
       },
     );
